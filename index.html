@@ -1395,6 +1395,37 @@ nav.scrolled .nav-dropdown:hover .nav-dropdown-trigger{color:var(--warm-light)}
 nav.scrolled .nav-dropdown-menu{background:var(--deep);border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 40px rgba(0,0,0,.3)}
 nav.scrolled .nav-dropdown-menu a{color:var(--mist)}
 nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:var(--warm-light)}
+
+/* Markdown rendering inside chat bubbles */
+.chat-msg-bot .chat-bubble p {
+  margin: 0 0 6px 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-dark);
+}
+.chat-msg-bot .chat-bubble p:last-child {
+  margin-bottom: 0;
+}
+.chat-msg-bot .chat-bubble ul,
+.chat-msg-bot .chat-bubble ol {
+  margin: 6px 0;
+  padding-left: 18px;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+.chat-msg-bot .chat-bubble li {
+  margin: 2px 0;
+}
+.chat-msg-bot .chat-bubble a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+.chat-msg-bot .chat-bubble a:hover {
+  color: var(--deep);
+}
+.chat-msg-bot .chat-bubble strong {
+  font-weight: 600;
+}
 </style>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
