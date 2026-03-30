@@ -2009,44 +2009,8 @@ if (hamburger && navLinks) {
 <!-- CHATBOT SCRIPT -->
 <script>
 (function() {
-  const SITE_CONTENT = `=== CUTRUST WEBSITE CONTENT ===
-Organization: Credit Union Pension & Benefits Trust (CUtrust)
-Location: British Columbia, Canada
-Contact: croy@cutrust.com
-Website: https://chirantanroy.github.io/cutrust2/
-
---- PAGE: Homepage ---
-Credit Union Pension & Benefits Trust. Supporting your health and financial wellness. Governing and administering multi-employer pension and benefits programs for British Columbia credit union employees and beneficiaries.
-Participating Employers: Coast Capital Savings, Vancity, Beem Credit Union, Prospera Credit Union, Central1, BlueShore Financial, First West Credit Union, Interior Savings, Island Savings, Westminster Savings.
-Contact: Management Office: 908-1166 Alberni St. Vancouver, BC V6E 3Z3. Billing & Admin: 768 Seymour Street, 11th Floor, Vancouver, BC V6B 3K9.
-General Enquiry: info@cutrust.com. Pension Employees: 1.844.451.9698, pensions@cutrust.com. Pension Employers: 1.844.557.3346, CUPensionEmployer@morneaushepell.com. Benefits Employees: 1.844.451.9698, benefits@cutrust.com. Benefits Employers: 1.844.557.3346, CUBTEmployers@hroffice.com.
-
---- PAGE: About Us ---
-Vision: To be the premier pension and benefits provider in a multi-employer setting.
-Mission: To serve the best interest of plan members while providing employers with an efficient mechanism for delivering programs.
-History: 1971 Plan Established as Money Purchase Plan. 1990 Defined Benefit Added (1.75% accrual rate). 1996 Flexible Participation. 2003 New DB Option (1.20% accrual rate).
-Trustees: Tom Webster (Chair), Bill Corbett, TJ Schmaltz, Daryl Hosein, Ted Schisler, Ron Johnston, John de Leeuw, Inderjeet Singh, Rob Parker, Tony Dunham.
-Leadership: Farouk Ratansi (Executive Director, 28+ years), Charlene Da Cruz (Benefits Director, 15+ years), Chirantan Roy (Operations Manager, MBA UBC Sauder).
-
---- PAGE: Employers ---
-CUtrust is your Pension & Benefits Partner. Board of Trustees is made up of elected representatives from within the credit union system. Employers are the owner, not a client.
-Services: Single Administrative Source, Save Time & Resources, Shape Your Strategy, Support Your Employees, Achieve HR Objectives.
-Why CUtrust: Recognized Credit Union Expertise, Up-to-Date Advice, Economies of Scale, Large Industry Presence, Enhanced Coverage, Customized Benefits, Flexibility, Fair Pricing based on your claim experience.
-
---- PAGE: Our Pension Plan ---
-BC Credit Union Employees Pension Plan: non-collectively bargained, multi-employer, hybrid pension plan. Registered in BC.
-Plan Divisions: 1.75% DB Division (contributory, final avg earnings, added 1990). 1.2% DB Division (non-contributory, added 2003). Money Purchase Division (original 1971).
-Performance (Q4 2025): $1.32B assets, 10.5% 3-year return. Asset Allocation: Fixed Income 46%, Public Equities 35.9%, Real Estate 9.5%, Infrastructure 8.2%.
-Funded Status: 1.75% Div 108% smoothed / 110% market. 1.2% Div 117% smoothed / 119% market.
-Membership (Q3 2025): 1.75% Div: Active 47.2%, Deferred 25.5%, Retirees 27.3%. 1.2% Div: Active 15.5%, Deferred 23.2%, Retirees 61.3%.
-Governance: Board of Trustees, quarterly meetings, Governance Committee and Investment Committee.
-
---- PAGE: Our Benefits Plan ---
-Comprehensive employment benefits: life insurance, health, disability and more. Multi-employer benefit program acting as buyer group for economies of scale.
-Programs: Traditional Benefits and Flexible Benefits.
-Coverage: Life Insurance, AD&D, Short-term & Long-term Disability, Critical Illness, Extended Health Care, Vision Care, Dental Care, Employee & Family Assistance Program.`;
-
-  const SYSTEM_PROMPT = "You are a helpful assistant for CUtrust, the Credit Union Pension & Benefits Trust in British Columbia, Canada. Answer questions ONLY based on the website content below. If the answer is not in the content, say you don't have that information and direct the user to contact croy@cutrust.com or call 1.844.451.9698. Be friendly, professional, and concise. Keep responses to 2-4 sentences for simple questions. Use plain text with line breaks. Use dashes for lists.\n\nWEBSITE CONTENT:\n" + SITE_CONTENT;
+  // Site content and system prompt are handled by the Cloudflare Worker.
+  // This keeps your content and instructions out of the browser source code.
 
   let chatHistory = [];
   let isLoading = false;
@@ -2142,18 +2106,23 @@ Coverage: Life Insurance, AD&D, Short-term & Long-term Disability, Critical Illn
     showTyping();
 
     try {
-      // Race between the API call and a 30-second timeout
+      // Race between the API call and a 60-second timeout
       var timeoutPromise = new Promise(function(_, reject) {
         setTimeout(function() { reject(new Error('Request timed out')); }, 60000);
       });
-      var fetchPromise = fetch('https://api.anthropic.com/v1/messages', {
+
+      // ╔══════════════════════════════════════════════════════════╗
+      // ║  CHANGE THIS URL to your Cloudflare Worker URL          ║
+      // ║  e.g. https://cutrust-chatbot.your-account.workers.dev  ║
+      // ╚══════════════════════════════════════════════════════════╝
+      var WORKER_URL = 'https://cutrust-chatbot.YOUR-SUBDOMAIN.workers.dev';
+
+      var fetchPromise = fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: chatHistory.slice(-10)
+          message: msg,
+          conversation_history: chatHistory.slice(-10)
         })
       });
 
@@ -2165,15 +2134,7 @@ Coverage: Life Insurance, AD&D, Short-term & Long-term Disability, Critical Illn
 
       var data = await resp.json();
 
-      var reply = '';
-      if (data && data.content && Array.isArray(data.content)) {
-        for (var i = 0; i < data.content.length; i++) {
-          if (data.content[i].type === 'text' && data.content[i].text) {
-            if (reply) reply += '\n';
-            reply += data.content[i].text;
-          }
-        }
-      }
+      var reply = (data && data.response) ? data.response : '';
       if (!reply) {
         reply = 'Sorry, I could not generate a response right now. Please try again.';
       }
