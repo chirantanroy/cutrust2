@@ -2027,37 +2027,11 @@ if (hamburger && navLinks) {
     return d.innerHTML;
   }
 
-  function renderBotText(text) {
+function renderBotText(text) {
     try {
       if (!text || typeof text !== 'string') return '';
-      let safe = escapeHtml(text);
-      // Bold
-      safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      // Process lines
-      const lines = safe.split('\n');
-      const out = [];
-      let inList = false;
-      for (const raw of lines) {
-        const line = raw.trim();
-        const numMatch = line.match(/^(\d+)\.\s+(.+)/);
-        const bulMatch = line.match(/^[-•]\s+(.+)/);
-        if (numMatch) {
-          if (!inList) { out.push('<div class="cb-list">'); inList = true; }
-          out.push('<div class="cb-item"><span class="cb-num">' + numMatch[1] + '.</span><span>' + numMatch[2] + '</span></div>');
-        } else if (bulMatch) {
-          if (!inList) { out.push('<div class="cb-list">'); inList = true; }
-          out.push('<div class="cb-item"><span class="cb-dot">●</span><span>' + bulMatch[1] + '</span></div>');
-        } else {
-          if (inList) { out.push('</div>'); inList = false; }
-          if (line === '') out.push('<div style="height:6px"></div>');
-          else out.push('<div>' + line + '</div>');
-        }
-      }
-      if (inList) out.push('</div>');
-      return out.join('');
+      return marked.parse(text);
     } catch (e) {
-      console.error('renderBotText error:', e);
-      // Fallback: return plain escaped text
       return escapeHtml(text).replace(/\n/g, '<br>');
     }
   }
