@@ -2139,8 +2139,28 @@ if (hamburger && navLinks) {
         reply = 'Sorry, I could not generate a response right now. Please try again.';
       }
 
-      removeTyping();
-      appendMessage('bot', reply);
+removeTyping();
+
+// Create empty bot bubble
+var wrapper = document.createElement('div');
+wrapper.className = 'chat-msg chat-msg-bot';
+var bubble = document.createElement('div');
+bubble.className = 'chat-bubble';
+wrapper.appendChild(bubble);
+messagesEl.appendChild(wrapper);
+
+// Typewriter effect — reveal character by character
+var charIndex = 0;
+var speed = 12; // milliseconds per character (lower = faster)
+var typingInterval = setInterval(function() {
+  if (charIndex < reply.length) {
+    bubble.innerHTML = renderBotText(reply.substring(0, charIndex + 1));
+    charIndex++;
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  } else {
+    clearInterval(typingInterval);
+  }
+}, speed);
       chatHistory.push({ role: 'assistant', content: reply });
       if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
     } catch (e) {
