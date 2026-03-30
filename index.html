@@ -2160,6 +2160,9 @@ var typingInterval = setInterval(function() {
     messagesEl.scrollTop = messagesEl.scrollHeight;
   } else {
     clearInterval(typingInterval);
+     // Now replace plain text with fully rendered markdown
+    bubble.innerHTML = marked.parse(reply);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 }, speed);
       chatHistory.push({ role: 'assistant', content: reply });
