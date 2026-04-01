@@ -1255,7 +1255,7 @@ if (hamburger && navLinks) {
     const canvas = document.getElementById('chart-service');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const W = canvas.width, H = canvas.height;
+    const W = canvas.parentElement.clientWidth - 48, H = 220;
     const dpr = window.devicePixelRatio || 1;
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
@@ -1313,7 +1313,7 @@ if (hamburger && navLinks) {
     const canvas = document.getElementById('chart-scenario');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const W = canvas.width, H = canvas.height;
+    const W = canvas.parentElement.clientWidth - 48, H = 220;
     const dpr = window.devicePixelRatio || 1;
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
