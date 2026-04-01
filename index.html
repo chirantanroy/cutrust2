@@ -1508,7 +1508,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
           <div class="chat-suggestions" id="chatbot-suggestions">
             <button class="chat-suggest-btn" onclick="sendChatMessage(this.textContent)">What pension plans are offered?</button>
             <button class="chat-suggest-btn" onclick="sendChatMessage(this.textContent)">What benefits are offered by CUtrust?</button>
-            <button class="chat-suggest-btn" onclick="sendChatMessage(this.textContent)">Who are the participating employers?</button>
+            <button class="chat-suggest-btn" onclick="sendChatMessage(this.textContent)">How to calculate my pension?</button>
             <button class="chat-suggest-btn" onclick="sendChatMessage(this.textContent)">How is the fund performing?</button>
           </div>
         </div>
@@ -2222,9 +2222,9 @@ var typingInterval = setInterval(function() {
       console.error('CUtrust chatbot error:', e);
       removeTyping();
       try {
-        var errorMsg = 'I am having trouble connecting right now. Please try again, or contact us at croy@cutrust.com.';
+        var errorMsg = 'I am having trouble connecting right now. Please try again, or contact us at info@cutrust.com.';
         if (e && e.message && e.message.indexOf('timed out') > -1) {
-          errorMsg = 'The request took too long. Please try again with a simpler question, or contact us at croy@cutrust.com.';
+          errorMsg = 'The request took too long. Please try again with a simpler question, or contact us at info@cutrust.com.';
         }
         appendMessage('bot', errorMsg);
       } catch (e2) {
