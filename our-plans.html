@@ -214,6 +214,303 @@ nav.scrolled .nav-hamburger span {
 .funded-table tr:last-child td{border-bottom:none}
 .funded-table .highlight{font-weight:700;color:var(--deep);font-family:'Public Sans',sans-serif;font-size:1.2rem}
 
+/* === PENSION CALCULATOR === */
+.calc-container {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+@media (max-width: 1024px) {
+  .calc-container { grid-template-columns: 1fr; }
+}
+
+/* Input Card */
+.calc-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+  backdrop-filter: blur(8px);
+}
+.calc-card-title {
+  font-family: "Public Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.2px;
+}
+
+/* Fields */
+.calc-field { margin-bottom: 22px; }
+.calc-field:last-child { margin-bottom: 0; }
+.calc-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+.calc-label {
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--mist);
+  letter-spacing: 0.3px;
+  display: block;
+  margin-bottom: 8px;
+}
+.calc-label-row .calc-label { margin-bottom: 0; }
+.calc-value {
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  background: rgba(74,158,175,0.15);
+  padding: 2px 10px;
+  border-radius: 6px;
+  min-width: 48px;
+  text-align: center;
+}
+
+/* Slider */
+.calc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.1);
+  outline: none;
+  transition: background 0.2s;
+}
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 3px solid var(--deep);
+  box-shadow: 0 0 0 3px rgba(74,158,175,0.25), 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.calc-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 5px rgba(74,158,175,0.3), 0 2px 12px rgba(0,0,0,0.4);
+}
+.calc-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 3px solid var(--deep);
+  box-shadow: 0 0 0 3px rgba(74,158,175,0.25);
+}
+.calc-slider.warm::-webkit-slider-thumb { background: var(--warm); box-shadow: 0 0 0 3px rgba(212,165,116,0.25), 0 2px 8px rgba(0,0,0,0.3); }
+.calc-slider.warm::-moz-range-thumb { background: var(--warm); }
+.calc-slider.accent::-webkit-slider-thumb { background: #5BC0A0; box-shadow: 0 0 0 3px rgba(91,192,160,0.25), 0 2px 8px rgba(0,0,0,0.3); }
+.calc-slider.accent::-moz-range-thumb { background: #5BC0A0; }
+
+.calc-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--steel);
+  margin-top: 4px;
+  font-family: "Public Sans", sans-serif;
+}
+
+/* Toggle Buttons */
+.calc-toggle-group {
+  display: flex;
+  gap: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.calc-toggle {
+  flex: 1;
+  padding: 10px 16px;
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.03);
+  color: var(--steel);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.2px;
+}
+.calc-toggle:hover { background: rgba(255,255,255,0.06); color: var(--mist); }
+.calc-toggle.active {
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* === RESULTS === */
+.result-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 640px) {
+  .result-hero-grid { grid-template-columns: 1fr; }
+}
+.result-hero-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 22px 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.result-hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.result-hero-card.primary {
+  background: linear-gradient(135deg, rgba(74,158,175,0.15), rgba(74,158,175,0.05));
+  border-color: rgba(74,158,175,0.25);
+}
+.result-hero-card.accent {
+  background: linear-gradient(135deg, rgba(91,192,160,0.1), rgba(91,192,160,0.03));
+  border-color: rgba(91,192,160,0.2);
+}
+.result-hero-card.warn {
+  background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(212,165,116,0.03));
+  border-color: rgba(212,165,116,0.2);
+}
+.result-hero-label {
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.result-hero-amount {
+  font-family: "Public Sans", sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+.result-hero-card.primary .result-hero-amount { color: #6DD4E8; }
+.result-hero-card.accent .result-hero-amount { color: #5BC0A0; }
+.result-hero-card.warn .result-hero-amount { color: var(--warm); }
+.result-hero-sub {
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.82rem;
+  color: var(--mist);
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+/* Charts */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 640px) {
+  .charts-row { grid-template-columns: 1fr; }
+}
+.chart-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+.chart-title {
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mist);
+  margin-bottom: 16px;
+  letter-spacing: 0.2px;
+}
+
+/* Projection Table */
+.projection-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.projection-note {
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.72rem;
+  color: var(--steel);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+.projection-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.projection-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.8rem;
+}
+.projection-table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: var(--steel);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+.projection-table td {
+  padding: 9px 12px;
+  color: var(--mist);
+  font-weight: 400;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  white-space: nowrap;
+}
+.projection-table tbody tr:hover td {
+  background: rgba(255,255,255,0.03);
+}
+.projection-table td:nth-child(5),
+.projection-table td:nth-child(6) {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* Disclaimer */
+.calc-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(212,165,116,0.06);
+  border: 1px solid rgba(212,165,116,0.15);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.75rem;
+  color: var(--mist);
+  line-height: 1.6;
+}
+.calc-disclaimer svg { flex-shrink: 0; margin-top: 2px; }
+.calc-disclaimer strong { color: var(--warm); }
+
+
+  
 /* FOOTER */
 footer{padding:48px 48px 32px;background:#0F252F;border-top:1px solid rgba(255,255,255,.05)}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
@@ -553,6 +850,175 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   </div>
 </div>
 
+<!-- SECTION: Pension Calculator (Dark Theme) -->
+<div class="content-section dark" id="pension-calculator-section">
+  <div class="section-inner">
+
+    <div class="section-label reveal" style="color:var(--warm)">Estimate</div>
+    <h2 class="reveal delay-1">DB Pension Calculator</h2>
+    <p class="reveal delay-2" style="margin-bottom:40px;">
+      Estimate your defined benefit pension under the BC Credit Union Employees' Pension Plan. 
+      Adjust the sliders below to model your retirement scenario.
+    </p>
+
+    <div class="calc-container reveal delay-3">
+
+      <!-- LEFT: Inputs -->
+      <div class="calc-inputs">
+        <div class="calc-card">
+          <h3 class="calc-card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Your Information
+          </h3>
+
+          <!-- Plan Division -->
+          <div class="calc-field">
+            <label class="calc-label">Plan Division</label>
+            <div class="calc-toggle-group">
+              <button class="calc-toggle active" data-value="1.75" onclick="setDivision(this)">1.75% Division</button>
+              <button class="calc-toggle" data-value="1.20" onclick="setDivision(this)">1.20% Division</button>
+            </div>
+          </div>
+
+          <!-- Years of Service — Pre-2010 -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Years of Service — Pre-2010</label>
+              <span class="calc-value" id="val-pre2010">8</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-pre2010" min="0" max="35" value="8" step="1" oninput="calculate()">
+            <div class="calc-range-labels"><span>0</span><span>35</span></div>
+          </div>
+
+          <!-- Years of Service — 2010 to 2016 -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Years of Service — 2010 to 2016</label>
+              <span class="calc-value" id="val-2010to2016">6</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-2010to2016" min="0" max="6" value="6" step="1" oninput="calculate()">
+            <div class="calc-range-labels"><span>0</span><span>6</span></div>
+          </div>
+
+          <!-- Years of Service — Post-2016 -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Years of Service — Post-2016</label>
+              <span class="calc-value" id="val-post2016">10</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-post2016" min="0" max="35" value="10" step="1" oninput="calculate()">
+            <div class="calc-range-labels"><span>0</span><span>35</span></div>
+          </div>
+
+          <!-- Planned Retirement Age -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Planned Retirement Age</label>
+              <span class="calc-value" id="val-retAge">62</span>
+            </div>
+            <input type="range" class="calc-slider accent" id="slider-retAge" min="55" max="71" value="62" step="1" oninput="calculate()">
+            <div class="calc-range-labels"><span>55</span><span>71</span></div>
+          </div>
+
+          <!-- Highest Average Earnings -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Highest Avg Earnings (best 5 yr in last 10)</label>
+              <span class="calc-value" id="val-earnings">$85,000</span>
+            </div>
+            <input type="range" class="calc-slider warm" id="slider-earnings" min="30000" max="250000" value="85000" step="1000" oninput="calculate()">
+            <div class="calc-range-labels"><span>$30k</span><span>$250k</span></div>
+          </div>
+
+          <!-- Trustee Consent -->
+          <div class="calc-field">
+            <label class="calc-label">Trustee Consent for Early Retirement?</label>
+            <div class="calc-toggle-group">
+              <button class="calc-toggle active" data-value="Yes" onclick="setConsent(this)">Yes</button>
+              <button class="calc-toggle" data-value="No" onclick="setConsent(this)">No</button>
+            </div>
+          </div>
+
+          <!-- CPI -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Assumed Annual CPI (%)</label>
+              <span class="calc-value" id="val-cpi">2.0%</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-cpi" min="0" max="6" value="2.0" step="0.5" oninput="calculate()">
+            <div class="calc-range-labels"><span>0%</span><span>6%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="calc-results">
+
+        <!-- Summary Cards -->
+        <div class="result-hero-grid">
+          <div class="result-hero-card primary">
+            <div class="result-hero-label">Estimated Annual Pension</div>
+            <div class="result-hero-amount" id="res-annual">$21,420</div>
+            <div class="result-hero-sub" id="res-monthly">$1,785 / month</div>
+          </div>
+          <div class="result-hero-card">
+            <div class="result-hero-label">If at Age 65 (Unreduced)</div>
+            <div class="result-hero-amount" id="res-unreduced">$24,480</div>
+            <div class="result-hero-sub" id="res-unreduced-monthly">$2,040 / month</div>
+          </div>
+          <div class="result-hero-card accent">
+            <div class="result-hero-label">Income Replacement</div>
+            <div class="result-hero-amount" id="res-replacement">25.2%</div>
+            <div class="result-hero-sub" id="res-unreduced-replacement">28.8% unreduced</div>
+          </div>
+          <div class="result-hero-card warn">
+            <div class="result-hero-label">Early Ret. Penalty Cost</div>
+            <div class="result-hero-amount" id="res-penalty">$3,060</div>
+            <div class="result-hero-sub" id="res-penalty-pct">12.5% of pension lost</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+          <div class="chart-card">
+            <h4 class="chart-title">Pension by Service Period</h4>
+            <canvas id="chart-service" width="320" height="220"></canvas>
+          </div>
+          <div class="chart-card">
+            <h4 class="chart-title">Planned Age vs. Unreduced</h4>
+            <canvas id="chart-scenario" width="320" height="220"></canvas>
+          </div>
+        </div>
+
+        <!-- 10-Year Projection -->
+        <div class="projection-card">
+          <h4 class="chart-title" style="margin-bottom:4px;">10-Year Post-Retirement Projection</h4>
+          <p class="projection-note">Pre-2010: 50% CPI (max 3%) &nbsp;|&nbsp; Post-2009: surplus-dependent (modeled at 25% CPI)</p>
+          <div class="projection-table-wrap">
+            <table class="projection-table" id="projection-table">
+              <thead>
+                <tr>
+                  <th>Year</th><th>Age</th><th>Pre-2010 (Indexed)</th><th>Post-2009 (Indexed)</th><th>Total Annual</th><th>Monthly</th>
+                </tr>
+              </thead>
+              <tbody id="projection-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="calc-disclaimer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warm)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>Disclaimer:</strong> Estimates only. Actual amounts depend on final plan calculations, CRA limits at retirement, trustee surplus decisions, and individual circumstances. Contact CU Trust for official estimates.</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END: Pension Calculator Section -->
+
+  
 <!-- GOVERNANCE -->
 <div class="content-section">
   <div class="section-label reveal" style="color:var(--steel)">Governance</div>
@@ -626,6 +1092,256 @@ if (hamburger && navLinks) {
   });
 }
 
+(function() {
+  // === STATE ===
+  let division = 1.75;
+  let trusteeConsent = 'Yes';
+
+  window.setDivision = function(btn) {
+    btn.parentElement.querySelectorAll('.calc-toggle').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    division = parseFloat(btn.dataset.value);
+    calculate();
+  };
+
+  window.setConsent = function(btn) {
+    btn.parentElement.querySelectorAll('.calc-toggle').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    trusteeConsent = btn.dataset.value;
+    calculate();
+  };
+
+  // === CALCULATION ENGINE ===
+  window.calculate = function() {
+    const pre2010 = parseInt(document.getElementById('slider-pre2010').value);
+    const y2010to2016 = parseInt(document.getElementById('slider-2010to2016').value);
+    const post2016 = parseInt(document.getElementById('slider-post2016').value);
+    const retAge = parseInt(document.getElementById('slider-retAge').value);
+    const earnings = parseInt(document.getElementById('slider-earnings').value);
+    const cpi = parseFloat(document.getElementById('slider-cpi').value) / 100;
+
+    // Update display values
+    document.getElementById('val-pre2010').textContent = pre2010;
+    document.getElementById('val-2010to2016').textContent = y2010to2016;
+    document.getElementById('val-post2016').textContent = post2016;
+    document.getElementById('val-retAge').textContent = retAge;
+    document.getElementById('val-earnings').textContent = '$' + earnings.toLocaleString();
+    document.getElementById('val-cpi').textContent = (cpi * 100).toFixed(1) + '%';
+
+    const CRA_MAX = 3610.67;
+    const accrualRate = division === 1.75 ? 0.0175 : 0.012;
+    const maxEarnings = division === 1.75 ? Math.round(CRA_MAX / 0.0175 * 100) / 100 : Math.round(CRA_MAX / 0.012 * 100) / 100;
+    const cappedEarnings = Math.min(earnings, maxEarnings);
+    const totalService = pre2010 + y2010to2016 + post2016;
+
+    // NRA per period
+    const nraPre2010 = division === 1.75 ? 60 : 62;
+    const nra2010to2016 = division === 1.75 ? 62 : 65;
+    const nraPost2016 = 65;
+
+    // Early Retirement Penalties
+    let penaltyPre2010 = 0;
+    if (retAge < nraPre2010) {
+      if (trusteeConsent === 'Yes' && totalService >= 10) {
+        penaltyPre2010 = (nraPre2010 - retAge) * 0.03;
+      } else {
+        penaltyPre2010 = (nraPre2010 - retAge) * 0.06;
+      }
+    }
+
+    let penalty2010to2016 = 0;
+    if (retAge < nra2010to2016) {
+      penalty2010to2016 = (nra2010to2016 - retAge) * 0.06;
+    }
+
+    let penaltyPost2016 = 0;
+    if (retAge < 65) {
+      penaltyPost2016 = (65 - retAge) * 0.06;
+    }
+
+    // Annual pension per period
+    const pensionPre2010 = accrualRate * pre2010 * cappedEarnings * (1 - penaltyPre2010);
+    const pension2010to2016 = accrualRate * y2010to2016 * cappedEarnings * (1 - penalty2010to2016);
+    const pensionPost2016 = accrualRate * post2016 * cappedEarnings * (1 - penaltyPost2016);
+    const totalAnnual = pensionPre2010 + pension2010to2016 + pensionPost2016;
+
+    // Unreduced
+    const unreduced = accrualRate * totalService * cappedEarnings;
+    const penaltyCost = unreduced - totalAnnual;
+    const replacementRatio = earnings > 0 ? totalAnnual / earnings : 0;
+    const unreducedReplacement = earnings > 0 ? unreduced / earnings : 0;
+    const pctLost = unreduced > 0 ? penaltyCost / unreduced : 0;
+
+    // Update hero cards
+    document.getElementById('res-annual').textContent = '$' + Math.round(totalAnnual).toLocaleString();
+    document.getElementById('res-monthly').textContent = '$' + Math.round(totalAnnual / 12).toLocaleString() + ' / month';
+    document.getElementById('res-unreduced').textContent = '$' + Math.round(unreduced).toLocaleString();
+    document.getElementById('res-unreduced-monthly').textContent = '$' + Math.round(unreduced / 12).toLocaleString() + ' / month';
+    document.getElementById('res-replacement').textContent = (replacementRatio * 100).toFixed(1) + '%';
+    document.getElementById('res-unreduced-replacement').textContent = (unreducedReplacement * 100).toFixed(1) + '% unreduced';
+    document.getElementById('res-penalty').textContent = '$' + Math.round(penaltyCost).toLocaleString();
+    document.getElementById('res-penalty-pct').textContent = penaltyCost > 0
+      ? (pctLost * 100).toFixed(1) + '% of pension lost'
+      : 'No penalty at planned age';
+
+    // 10-year projection
+    const projBody = document.getElementById('projection-tbody');
+    projBody.innerHTML = '';
+    let pre2010Idx = pensionPre2010;
+    let post2009Idx = pension2010to2016 + pensionPost2016;
+    for (let yr = 0; yr <= 10; yr++) {
+      if (yr > 0) {
+        pre2010Idx = pre2010Idx * (1 + Math.min(cpi * 0.5, 0.03));
+        post2009Idx = post2009Idx * (1 + Math.min(cpi * 0.25, 0.015));
+      }
+      const total = pre2010Idx + post2009Idx;
+      const tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>' + yr + '</td>' +
+        '<td>' + (retAge + yr) + '</td>' +
+        '<td>$' + Math.round(pre2010Idx).toLocaleString() + '</td>' +
+        '<td>$' + Math.round(post2009Idx).toLocaleString() + '</td>' +
+        '<td>$' + Math.round(total).toLocaleString() + '</td>' +
+        '<td>$' + Math.round(total / 12).toLocaleString() + '</td>';
+      projBody.appendChild(tr);
+    }
+
+    // Draw charts
+    drawServiceChart(pensionPre2010, pension2010to2016, pensionPost2016);
+    drawScenarioChart(totalAnnual, unreduced, retAge);
+  };
+
+  // === CHART: Service Period Breakdown ===
+  function drawServiceChart(pre, mid, post) {
+    const canvas = document.getElementById('chart-service');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, W, H);
+
+    const values = [pre, mid, post];
+    const labels = ['Pre-2010', '2010–2016', 'Post-2016'];
+    const colors = ['#4A9EAF', '#5BC0A0', '#D4A574'];
+    const maxVal = Math.max(...values, 1);
+    const barW = 60;
+    const gap = (W - 60 - barW * 3) / 4;
+    const chartH = H - 70;
+
+    values.forEach((v, i) => {
+      const x = 30 + gap + i * (barW + gap);
+      const barH = (v / maxVal) * (chartH - 20);
+      const y = chartH - barH;
+
+      // Bar with rounded top
+      ctx.fillStyle = colors[i];
+      ctx.beginPath();
+      const r = 6;
+      ctx.moveTo(x, y + r);
+      ctx.arcTo(x, y, x + barW, y, r);
+      ctx.arcTo(x + barW, y, x + barW, y + barH, r);
+      ctx.lineTo(x + barW, chartH);
+      ctx.lineTo(x, chartH);
+      ctx.closePath();
+      ctx.fill();
+
+      // Value on top
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '600 12px "Public Sans", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('$' + Math.round(v).toLocaleString(), x + barW / 2, y - 8);
+
+      // Label below
+      ctx.fillStyle = '#8BAABB';
+      ctx.font = '500 10px "Public Sans", sans-serif';
+      ctx.fillText(labels[i], x + barW / 2, chartH + 18);
+    });
+
+    // Baseline
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(30, chartH);
+    ctx.lineTo(W - 10, chartH);
+    ctx.stroke();
+  }
+
+  // === CHART: Scenario Comparison ===
+  function drawScenarioChart(planned, unreduced, retAge) {
+    const canvas = document.getElementById('chart-scenario');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, W, H);
+
+    const values = [planned, unreduced];
+    const labels = ['Age ' + retAge, 'Age 65'];
+    const colors = ['#4A9EAF', '#5BC0A0'];
+    const maxVal = Math.max(...values, 1);
+    const barW = 80;
+    const chartH = H - 70;
+    const totalW = barW * 2 + 50;
+    const startX = (W - totalW) / 2;
+
+    values.forEach((v, i) => {
+      const x = startX + i * (barW + 50);
+      const barH = (v / maxVal) * (chartH - 20);
+      const y = chartH - barH;
+
+      const r = 6;
+      ctx.fillStyle = colors[i];
+      ctx.beginPath();
+      ctx.moveTo(x, y + r);
+      ctx.arcTo(x, y, x + barW, y, r);
+      ctx.arcTo(x + barW, y, x + barW, y + barH, r);
+      ctx.lineTo(x + barW, chartH);
+      ctx.lineTo(x, chartH);
+      ctx.closePath();
+      ctx.fill();
+
+      // Subtle glow
+      ctx.fillStyle = colors[i] + '15';
+      ctx.fillRect(x - 4, y, barW + 8, chartH - y);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '700 13px "Public Sans", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('$' + Math.round(v).toLocaleString(), x + barW / 2, y - 10);
+
+      ctx.fillStyle = '#8BAABB';
+      ctx.font = '500 11px "Public Sans", sans-serif';
+      ctx.fillText(labels[i], x + barW / 2, chartH + 18);
+
+      // Monthly below
+      ctx.fillStyle = '#5B7F95';
+      ctx.font = '400 10px "Public Sans", sans-serif';
+      ctx.fillText('$' + Math.round(v / 12).toLocaleString() + '/mo', x + barW / 2, chartH + 34);
+    });
+
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(startX - 20, chartH);
+    ctx.lineTo(startX + totalW + 20, chartH);
+    ctx.stroke();
+  }
+
+  // Initial calculation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', calculate);
+  } else {
+    calculate();
+  }
+})();
+  
+  
 </script>
 
 
