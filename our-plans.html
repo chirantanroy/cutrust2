@@ -547,6 +547,59 @@ nav.scrolled .nav-hamburger span {
 }
 .calc-disclaimer svg { flex-shrink: 0; margin-top: 2px; }
 .calc-disclaimer strong { color: var(--warm); }
+  /* === MOBILE RESPONSIVE FIX — add this entire block === */
+
+.calc-inputs,
+.calc-results {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.calc-card {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.calc-label-row {
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.calc-label {
+  word-break: break-word;
+}
+
+.chart-card canvas {
+  max-width: 100%;
+}
+
+.projection-card {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.projection-table-wrap {
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  #pension-calculator-section {
+    padding: 60px 16px;
+  }
+  .calc-card {
+    padding: 20px 16px;
+  }
+  .result-hero-card {
+    padding: 16px 18px;
+  }
+  .chart-card {
+    padding: 16px;
+  }
+  .projection-card {
+    padding: 16px 10px;
+  }
+}
 
 
   
