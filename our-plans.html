@@ -225,6 +225,45 @@ nav.scrolled .nav-hamburger span {
   .calc-container { grid-template-columns: 1fr; }
 }
 
+/* Add these rules to your existing calculator CSS */
+
+#pension-calculator-section {
+  overflow-x: hidden;
+}
+
+#pension-calculator-section canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .calc-container {
+    gap: 24px;
+  }
+  .calc-card {
+    padding: 24px 20px;
+  }
+  .result-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+  .result-hero-amount {
+    font-size: 1.4rem;
+  }
+  .projection-card {
+    padding: 16px 12px;
+  }
+  .projection-table {
+    font-size: 0.72rem;
+  }
+  .projection-table th,
+  .projection-table td {
+    padding: 7px 8px;
+  }
+}
+
 /* Input Card */
 .calc-card {
   background: rgba(255,255,255,0.04);
