@@ -1257,6 +1257,17 @@ nav.scrolled .nav-hamburger span {
 }
 .support-item .email a:hover { color: var(--warm-light); }
 
+  /* Fix overflow so the relocated card isn't clipped */
+.contact {
+  overflow: visible;  /* was: overflow: hidden */
+}
+
+/* Compact + center the standalone General Enquiry card */
+.contact-inner > .contact-card {
+  max-width: 384px;
+  margin: 0 auto;
+}
+
 /* ─── FOOTER ─── */
 footer {
   padding: 48px 48px 32px;
@@ -1791,16 +1802,16 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         <div class="contact-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h4>Billing &amp; Admin Office</h4>
+        <h4>Member Service &amp; Admin Office</h4>
         <address>768 Seymour Street, 11th Floor<br>Vancouver, BC V6B 3K9</address>
       </div>
-      <div class="contact-card reveal delay-4">
+      <!--<div class="contact-card reveal delay-4">
         <div class="contact-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
         <h4>General Enquiry</h4>
         <address><a href="mailto:info@cutrust.com">info@cutrust.com</a></address>
-      </div>
+      </div> -->
     </div>
 
     <div class="contact-divider"></div>
@@ -1848,6 +1859,16 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <div class="contact-card reveal delay-4">
+      <div class="contact-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+      </div>
+      <h4>General Enquiry</h4>
+      <address><a href="mailto:info@cutrust.com">info@cutrust.com</a></address>
     </div>
   </div>
 </section>
