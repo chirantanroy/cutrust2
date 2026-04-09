@@ -170,12 +170,23 @@ nav.scrolled .nav-hamburger span {
 .trustee-card p{font-size:.8rem;color:var(--mist);line-height:1.4;font-weight:400}
 
 /* BENEFITS LIST */
-.benefits-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:40px}
-.benefit-item{display:flex;align-items:center;gap:14px;padding:20px 24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;transition:all .3s}
-.benefit-item:hover{background:rgba(255,255,255,.07);border-color:rgba(212,165,116,.2);transform:translateX(4px)}
-.benefit-item .check{width:32px;height:32px;border-radius:10px;background:rgba(74,158,175,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.benefits-list{display:grid;grid-template-columns:1fr;gap:10px;margin-top:40px}
+.benefit-item{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;transition:border-color .3s,background .3s;cursor:pointer;overflow:hidden}
+.benefit-item:hover{background:rgba(255,255,255,.07);border-color:rgba(212,165,116,.2)}
+.benefit-item.open{background:rgba(255,255,255,.07);border-color:rgba(74,158,175,.4)}
+.benefit-item-header{display:flex;align-items:center;gap:14px;padding:20px 24px}
+.benefit-item .check{width:32px;height:32px;border-radius:10px;background:rgba(74,158,175,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s}
+.benefit-item.open .check{background:rgba(74,158,175,.32)}
 .benefit-item .check svg{width:16px;height:16px;color:var(--accent)}
-.benefit-item span{color:var(--white);font-size:.95rem;font-weight:400}
+.benefit-item span{color:var(--white);font-size:.95rem;font-weight:400;flex:1}
+.benefit-chevron{margin-left:auto;flex-shrink:0;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.benefit-item.open .benefit-chevron{transform:rotate(180deg)}
+.benefit-detail{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1)}
+.benefit-item.open .benefit-detail{max-height:600px}
+.benefit-detail-inner{padding:0 24px 20px 70px;border-top:1px solid rgba(255,255,255,.07)}
+.benefit-detail-inner p{font-size:.875rem;color:var(--mist);line-height:1.75;margin-top:12px}
+.benefit-detail-inner p:last-child{margin-bottom:0}
+.benefit-detail-inner strong{color:var(--accent);font-weight:500}
 
 /* TIMELINE */
 .timeline{margin:48px 0;position:relative;padding-left:40px}
@@ -354,38 +365,112 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     <h2 class="reveal delay-1">Benefits We Offer</h2>
     <div class="benefits-list">
       <div class="benefit-item reveal delay-1">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Life Insurance</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Life Insurance</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p><strong>Basic Life Insurance</strong> provides financial assistance to your spouse, dependent or other beneficiary in the event of your death while you are an active employee. The amount paid out is based on your annual earnings and your age.</p>
+            <p>You do not have to provide medical information to receive this benefit. However, you must complete an enrollment form so that your beneficiary is recorded.</p>
+            <p><strong>Optional Life Insurance</strong> allows you to purchase additional life insurance coverage for yourself. Coverage can be purchased in units of $10,000, up to $500,000. Any coverage is subject to approval from the insurer.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-2">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Accidental Death &amp; Dismemberment</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Accidental Death &amp; Dismemberment</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p><strong>Accidental Death &amp; Dismemberment (AD&amp;D) insurance</strong> provides coverage for loss of, or loss of use of, limbs, eyes, ears and mobility — and for death that is the result of an accident.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-3">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Short-term &amp; Long-term Disability</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Short-term &amp; Long-term Disability</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p>Your disability plan provides coverage if you are unable to work due to an illness or injury that is <strong>not work-related</strong>. If work-related, you are covered under WorkSafeBC. Together these programs replace a portion of your regular earnings.</p>
+            <p><strong>Short-Term Disability (STD):</strong> Benefits begin following the 7-day waiting period and can continue for up to 16 weeks.</p>
+            <p><strong>Long-Term Disability (LTD):</strong> If you are still disabled after the 16-week STD period, you become eligible for LTD benefits.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-4">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Virtual Wellness Benefits</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Virtual Wellness Benefits</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p>An on-demand video streaming platform with <strong>expert-led fitness, nutrition and mindfulness classes</strong> accessible on any personal device, anytime, anywhere.</p>
+            <p>Classes include yoga, strength training, meditation, mental wellness, kids' activities and healthy recipes — all accessible through the online portal.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-1">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Extended Health Care</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Extended Health Care</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p>Provides additional health care protection over and above your Provincial Health Care plan. Your plan member ID card is the only card you need to make claims for prescription drugs and other extended health services.</p>
+            <p><strong>Drug Plan:</strong> New drugs are evaluated and assigned one of three statuses — "covered", "conditional", or "not covered". If conditional, your doctor must complete a pre-authorization form before you are eligible for reimbursement.</p>
+            <p><strong>Out-of-country emergency coverage</strong> is included for up to 60 days per trip, with a maximum benefit of $5,000,000 per claim.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-2">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Vision Care</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Vision Care</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p>Your plan may include coverage for <strong>eye examinations and prescription glasses</strong>, with more coverage available for your children.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-3">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Dental Care</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Dental Care</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p>The dental care plan provides for your and your family's dental needs.</p>
+            <p>All dental care claims are reimbursed in accordance with the current <strong>Provincial Dental Association Fee Guide</strong>. If your dentist charges fees higher than the guide, you will be responsible for paying the excess amount.</p>
+          </div>
+        </div>
       </div>
       <div class="benefit-item reveal delay-4">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <span>Employee &amp; Family Assistance Program</span>
+        <div class="benefit-item-header">
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Employee &amp; Family Assistance Program</span>
+          <svg class="benefit-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8BAABB" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="benefit-detail">
+          <div class="benefit-detail-inner">
+            <p><strong>24/7 access to mental health support</strong>, including: 5 hours of individual counselling, 5 hours of couples counselling and 5 hours of work-life support for each modality (health coaching, life transitions and career coaching), along with unlimited legal and financial consultations.</p>
+            <p><strong>Cognitive Behavioural Therapy (CBT)</strong> is one of the most effective forms of therapy. The digital platform includes interactive learning modules, tools and coaching to help develop positive coping strategies to reduce anxiety and depression.</p>
+            <p><strong>Substance Use Management</strong> focuses on harm reduction and abstinence. This confidential digital platform includes a dedicated care team specializing in substance use to provide personalized support, accountability and practical tools.</p>
+          </div>
+        </div>
       </div>
-      <p>and many more... </p>
+      <p style="color:rgba(139,170,187,.45);font-size:.88rem;margin-top:8px">and many more... </p>
     </div>
   </div>
 </div>
@@ -451,6 +536,15 @@ if (hamburger && navLinks) {
   });
 }
 
+
+// Benefit accordion
+document.querySelectorAll('.benefit-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.benefit-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
 </script>
 </body>
 </html>
