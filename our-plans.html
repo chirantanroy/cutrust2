@@ -1002,6 +1002,17 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </div>
           </div>
 
+         <!-- Highest Average Earnings -->
+          <div class="calc-field">
+            <div class="calc-label-row">
+              <label class="calc-label">Highest Avg Earnings (best 5 yr in last 10)</label>
+              <span class="calc-value" id="val-earnings">$85,000</span>
+            </div>
+            <input type="range" class="calc-slider warm" id="slider-earnings" min="30000" max="250000" value="85000" step="1000" oninput="calculate()">
+            <div class="calc-range-labels"><span>$30k</span><span>$250k</span></div>
+          </div>
+
+          
           <!-- Years of Service: Pre-2010 -->
           <div class="calc-field">
             <div class="calc-label-row">
@@ -1042,15 +1053,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             <div class="calc-range-labels"><span>55</span><span>71</span></div>
           </div>
 
-          <!-- Highest Average Earnings -->
-          <div class="calc-field">
-            <div class="calc-label-row">
-              <label class="calc-label">Highest Avg Earnings (best 5 yr in last 10)</label>
-              <span class="calc-value" id="val-earnings">$85,000</span>
-            </div>
-            <input type="range" class="calc-slider warm" id="slider-earnings" min="30000" max="250000" value="85000" step="1000" oninput="calculate()">
-            <div class="calc-range-labels"><span>$30k</span><span>$250k</span></div>
-          </div>
+         
 
           <!-- Trustee Consent -->
           <div class="calc-field">
