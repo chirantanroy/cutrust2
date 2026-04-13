@@ -42,7 +42,7 @@ nav.scrolled .nav-cta{background:var(--warm);color:var(--deep);border-color:var(
 .nav-links a:hover{color:var(--warm-light)}
 .nav-cta{padding:10px 28px;border-radius:50px;background:var(--warm);border:1.5px solid var(--warm);color:var(--deep);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .35s;text-decoration:none;letter-spacing:.5px}
 .nav-cta:hover{background:var(--deep);color:var(--white);transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,58,75,.25)}
-/* ─── EMPLOYER PORTAL (outline variant) ─── */
+/* âââ EMPLOYER PORTAL (outline variant) âââ */
 .nav-cta-outline {
   background: transparent;
   border: 1.5px solid var(--warm-light);
@@ -64,7 +64,7 @@ nav.scrolled .nav-cta-outline:hover {
   color: var(--deep);
 }
 
-/* ─── HAMBURGER BUTTON ─── */
+/* âââ HAMBURGER BUTTON âââ */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -121,6 +121,9 @@ nav.scrolled .nav-hamburger span {
 .content-section.dark h2{color:var(--white)}
 .content-section p{font-size:1.02rem;color:var(--text-muted);line-height:1.8;font-weight:300;margin-bottom:16px;max-width:800px}
 .content-section.dark p{color:var(--mist)}
+.content-section.dark>div>h3,.content-section.dark>div>h4{color:var(--white)}
+.content-section.dark h4+.two-col{margin-top:8px}
+.content-section.dark h4+.two-col .highlight-box-dark{margin-top:12px}
 .content-section.alt{background:var(--white)}
 
 /* CARDS */
@@ -554,7 +557,7 @@ nav.scrolled .nav-hamburger span {
 }
 .calc-disclaimer svg { flex-shrink: 0; margin-top: 2px; }
 .calc-disclaimer strong { color: var(--warm); }
-  /* === MOBILE RESPONSIVE FIX — add this entire block === */
+  /* === MOBILE RESPONSIVE FIX â add this entire block === */
 
 .calc-inputs,
 .calc-results {
@@ -816,20 +819,39 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     </div>
 
     <!-- Funded Status -->
-    <h3 class="reveal delay-2" style="font-family:'Public Sans',sans-serif;font-size:1.5rem;color:var(--white);margin:0 0 28px">Going-Concern Funded Status (including PfAD)</h3>
+    <h3 class="reveal delay-2" style="font-family:'Public Sans',sans-serif;font-size:1.5rem;margin:0 0 32px;color:var(--white)">Funding Health</h3>
+    <p class="reveal delay-2" style="color:var(--mist);font-size:0.95rem;line-height:1.7;font-weight:300;max-width:720px">Going-concern measures whether the Plan can meet its obligations assuming it continues to operate indefinitely, while solvency measures whether the Plan could settle all obligations if it were wound up on the valuation date.</p>
+
+    <h4 class="reveal delay-2" style="color:var(--white);font-family:'Public Sans',sans-serif;font-size:1.15rem;margin-top:32px;margin-bottom:0">Going-Concern Funded Status (including PfAD)</h4>
     <div class="two-col" style="margin-bottom:0">
       <div class="reveal delay-3">
         <div class="highlight-box-dark">
           <h3>1.75% Division</h3>
-          <p style="margin-bottom:8px"><strong style="color:var(--white)">108%</strong> smoothed assets</p>
-          <p><strong style="color:var(--white)">110%</strong> market value assets</p>
+          <p style="margin-bottom:8px"><strong>108%</strong> smoothed assets</p>
+          <p><strong>110%</strong> market value assets</p>
         </div>
       </div>
       <div class="reveal delay-4">
         <div class="highlight-box-dark">
           <h3>1.2% Division</h3>
-          <p style="margin-bottom:8px"><strong style="color:var(--white)">117%</strong> smoothed assets</p>
-          <p><strong style="color:var(--white)">119%</strong> market value assets</p>
+          <p style="margin-bottom:8px"><strong>117%</strong> smoothed assets</p>
+          <p><strong>119%</strong> market value assets</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="reveal delay-2" style="color:var(--white);font-family:'Public Sans',sans-serif;font-size:1.15rem;margin-top:16px;margin-bottom:0">Estimated Solvency</h4>
+    <div class="two-col" style="margin-bottom:0">
+      <div class="reveal delay-3">
+        <div class="highlight-box-dark">
+          <h3>1.75% Division</h3>
+          <p><strong>95%</strong> solvency ratio</p>
+        </div>
+      </div>
+      <div class="reveal delay-4">
+        <div class="highlight-box-dark">
+          <h3>1.2% Division</h3>
+          <p><strong>102%</strong> solvency ratio</p>
         </div>
       </div>
     </div>
@@ -980,30 +1002,30 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </div>
           </div>
 
-          <!-- Years of Service — Pre-2010 -->
+          <!-- Years of Service â Pre-2010 -->
           <div class="calc-field">
             <div class="calc-label-row">
-              <label class="calc-label">Years of Service — Pre-2010</label>
+              <label class="calc-label">Years of Service â Pre-2010</label>
               <span class="calc-value" id="val-pre2010">8</span>
             </div>
             <input type="range" class="calc-slider" id="slider-pre2010" min="0" max="35" value="8" step="1" oninput="calculate()">
             <div class="calc-range-labels"><span>0</span><span>35</span></div>
           </div>
 
-          <!-- Years of Service — 2010 to 2016 -->
+          <!-- Years of Service â 2010 to 2016 -->
           <div class="calc-field">
             <div class="calc-label-row">
-              <label class="calc-label">Years of Service — 2010 to 2016</label>
+              <label class="calc-label">Years of Service â 2010 to 2016</label>
               <span class="calc-value" id="val-2010to2016">6</span>
             </div>
             <input type="range" class="calc-slider" id="slider-2010to2016" min="0" max="7" value="7" step="1" oninput="calculate()">
             <div class="calc-range-labels"><span>0</span><span>7</span></div>
           </div>
 
-          <!-- Years of Service — Post-2016 -->
+          <!-- Years of Service â Post-2016 -->
           <div class="calc-field">
             <div class="calc-label-row">
-              <label class="calc-label">Years of Service — Post-2016</label>
+              <label class="calc-label">Years of Service â Post-2016</label>
               <span class="calc-value" id="val-post2016">10</span>
             </div>
             <input type="range" class="calc-slider" id="slider-post2016" min="0" max="35" value="10" step="1" oninput="calculate()">
@@ -1171,7 +1193,7 @@ const cObs = new IntersectionObserver(e => e.forEach(en => {
 counters.forEach(c => cObs.observe(c));
 document.querySelectorAll('a[href^="#"]').forEach(l => l.addEventListener('click', e => {const t=document.querySelector(l.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
 
-// ─── Hamburger Menu Toggle ───
+// âââ Hamburger Menu Toggle âââ
 const hamburger = document.querySelector('.nav-hamburger');
 const navLinks = document.querySelector('.nav-links');
 if (hamburger && navLinks) {
@@ -1325,7 +1347,7 @@ if (hamburger && navLinks) {
     ctx.clearRect(0, 0, W, H);
 
     const values = [pre, mid, post];
-    const labels = ['Pre-2010', '2010–2016', 'Post-2016'];
+    const labels = ['Pre-2010', '2010â2016', 'Post-2016'];
     const colors = ['#4A9EAF', '#5BC0A0', '#D4A574'];
     const maxVal = Math.max(...values, 1);
     const barW = 60;
