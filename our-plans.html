@@ -708,9 +708,9 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
 /* BAR CHARTS */
 .bar-row{display:flex;align-items:center;gap:8px;height:24px}
 .bar-label{width:40px;font-size:.78rem;color:var(--text-muted);text-align:right;flex-shrink:0;font-weight:500}
-.bar-track{flex:1;height:16px;background:rgba(91,127,149,.08);border-radius:8px;overflow:hidden}
-.bar-fill{height:100%;background:var(--steel);border-radius:8px;min-width:2px;transition:width 1s cubic-bezier(.22,1,.36,1)}
-.bar-val{width:32px;font-size:.75rem;color:var(--text-muted);font-weight:500}
+.bar-track{flex:1;height:16px;background:rgba(91,127,149,.08);border-radius:8px;overflow:visible;margin-right:32px}
+.bar-fill{height:100%;background:var(--steel);border-radius:8px;min-width:2px;transition:width 1s cubic-bezier(.22,1,.36,1);position:relative}
+.bar-val{position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%);font-size:.75rem;color:var(--text-muted);font-weight:500;white-space:nowrap}
 @media(max-width:900px){
   div[style*="grid-template-columns:240px 1fr 1fr"]{grid-template-columns:1fr!important;gap:32px!important}
 }
@@ -889,18 +889,18 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       <div>
         <h4 style="font-size:.85rem;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-align:center">No. of active members by age</h4>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="bar-row"><span class="bar-label">&lt;20</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><span class="bar-val">5</span></div>
-          <div class="bar-row"><span class="bar-label">20-24</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="bar-val">30</span></div>
-          <div class="bar-row"><span class="bar-label">25-29</span><div class="bar-track"><div class="bar-fill" style="width:17%"></div></div><span class="bar-val">100</span></div>
-          <div class="bar-row"><span class="bar-label">30-34</span><div class="bar-track"><div class="bar-fill" style="width:33%"></div></div><span class="bar-val">200</span></div>
-          <div class="bar-row"><span class="bar-label">35-39</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><span class="bar-val">300</span></div>
-          <div class="bar-row"><span class="bar-label">40-44</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-val">400</span></div>
-          <div class="bar-row"><span class="bar-label">45-49</span><div class="bar-track"><div class="bar-fill" style="width:63%"></div></div><span class="bar-val">380</span></div>
-          <div class="bar-row"><span class="bar-label">50-54</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bar-val">450</span></div>
-          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div><span class="bar-val">520</span></div>
-          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:42%"></div></div><span class="bar-val">250</span></div>
-          <div class="bar-row"><span class="bar-label">65-68</span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><span class="bar-val">50</span></div>
-          <div class="bar-row"><span class="bar-label">69-71</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div><span class="bar-val">5</span></div>
+          <div class="bar-row"><span class="bar-label">&lt;20</span><div class="bar-track"><div class="bar-fill" style="width:1%"><span class="bar-val">5</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">20-24</span><div class="bar-track"><div class="bar-fill" style="width:5%"><span class="bar-val">30</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">25-29</span><div class="bar-track"><div class="bar-fill" style="width:17%"><span class="bar-val">100</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">30-34</span><div class="bar-track"><div class="bar-fill" style="width:33%"><span class="bar-val">200</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">35-39</span><div class="bar-track"><div class="bar-fill" style="width:50%"><span class="bar-val">300</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">40-44</span><div class="bar-track"><div class="bar-fill" style="width:67%"><span class="bar-val">400</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">45-49</span><div class="bar-track"><div class="bar-fill" style="width:63%"><span class="bar-val">380</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">50-54</span><div class="bar-track"><div class="bar-fill" style="width:75%"><span class="bar-val">450</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:87%"><span class="bar-val">520</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:42%"><span class="bar-val">250</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">65-68</span><div class="bar-track"><div class="bar-fill" style="width:8%"><span class="bar-val">50</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">69-71</span><div class="bar-track"><div class="bar-fill" style="width:1%"><span class="bar-val">5</span></div></div></div>
         </div>
       </div>
 
@@ -908,14 +908,14 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       <div>
         <h4 style="font-size:.85rem;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-align:center">No. of retirees by age</h4>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="bar-val">30</span></div>
-          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div><span class="bar-val">200</span></div>
-          <div class="bar-row"><span class="bar-label">65-69</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">550</span></div>
-          <div class="bar-row"><span class="bar-label">70-74</span><div class="bar-track"><div class="bar-fill" style="width:91%"></div></div><span class="bar-val">500</span></div>
-          <div class="bar-row"><span class="bar-label">75-79</span><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div><span class="bar-val">350</span></div>
-          <div class="bar-row"><span class="bar-label">80-84</span><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div><span class="bar-val">200</span></div>
-          <div class="bar-row"><span class="bar-label">85-89</span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><span class="bar-val">60</span></div>
-          <div class="bar-row"><span class="bar-label">90+</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span class="bar-val">20</span></div>
+          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:5%"><span class="bar-val">30</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:36%"><span class="bar-val">200</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">65-69</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">550</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">70-74</span><div class="bar-track"><div class="bar-fill" style="width:91%"><span class="bar-val">500</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">75-79</span><div class="bar-track"><div class="bar-fill" style="width:64%"><span class="bar-val">350</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">80-84</span><div class="bar-track"><div class="bar-fill" style="width:36%"><span class="bar-val">200</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">85-89</span><div class="bar-track"><div class="bar-fill" style="width:11%"><span class="bar-val">60</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">90+</span><div class="bar-track"><div class="bar-fill" style="width:4%"><span class="bar-val">20</span></div></div></div>
         </div>
       </div>
     </div>
@@ -944,13 +944,13 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       <div>
         <h4 style="font-size:.85rem;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-align:center">No. of active members by age</h4>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="bar-row"><span class="bar-label">40-44</span><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div><span class="bar-val">1</span></div>
-          <div class="bar-row"><span class="bar-label">45-49</span><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><span class="bar-val">2</span></div>
-          <div class="bar-row"><span class="bar-label">50-54</span><div class="bar-track"><div class="bar-fill" style="width:57%"></div></div><span class="bar-val">4</span></div>
-          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7</span></div>
-          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">7</span></div>
-          <div class="bar-row"><span class="bar-label">65-68</span><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div><span class="bar-val">1</span></div>
-          <div class="bar-row"><span class="bar-label">69-71</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-val">0</span></div>
+          <div class="bar-row"><span class="bar-label">40-44</span><div class="bar-track"><div class="bar-fill" style="width:14%"><span class="bar-val">1</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">45-49</span><div class="bar-track"><div class="bar-fill" style="width:29%"><span class="bar-val">2</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">50-54</span><div class="bar-track"><div class="bar-fill" style="width:57%"><span class="bar-val">4</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">7</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">7</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">65-68</span><div class="bar-track"><div class="bar-fill" style="width:14%"><span class="bar-val">1</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">69-71</span><div class="bar-track"><div class="bar-fill" style="width:0%"><span class="bar-val">0</span></div></div></div>
         </div>
       </div>
 
@@ -958,14 +958,14 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       <div>
         <h4 style="font-size:.85rem;font-weight:500;color:var(--text-muted);margin-bottom:16px;text-align:center">No. of retirees by age</h4>
         <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span class="bar-val">1</span></div>
-          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:43%"></div></div><span class="bar-val">12</span></div>
-          <div class="bar-row"><span class="bar-label">65-69</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">28</span></div>
-          <div class="bar-row"><span class="bar-label">70-74</span><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div><span class="bar-val">22</span></div>
-          <div class="bar-row"><span class="bar-label">75-79</span><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div><span class="bar-val">18</span></div>
-          <div class="bar-row"><span class="bar-label">80-84</span><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div><span class="bar-val">8</span></div>
-          <div class="bar-row"><span class="bar-label">85-89</span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><span class="bar-val">3</span></div>
-          <div class="bar-row"><span class="bar-label">90+</span><div class="bar-track"><div class="bar-fill" style="width:4%"></div></div><span class="bar-val">1</span></div>
+          <div class="bar-row"><span class="bar-label">55-59</span><div class="bar-track"><div class="bar-fill" style="width:4%"><span class="bar-val">1</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">60-64</span><div class="bar-track"><div class="bar-fill" style="width:43%"><span class="bar-val">12</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">65-69</span><div class="bar-track"><div class="bar-fill" style="width:100%"><span class="bar-val">28</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">70-74</span><div class="bar-track"><div class="bar-fill" style="width:79%"><span class="bar-val">22</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">75-79</span><div class="bar-track"><div class="bar-fill" style="width:64%"><span class="bar-val">18</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">80-84</span><div class="bar-track"><div class="bar-fill" style="width:29%"><span class="bar-val">8</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">85-89</span><div class="bar-track"><div class="bar-fill" style="width:11%"><span class="bar-val">3</span></div></div></div>
+          <div class="bar-row"><span class="bar-label">90+</span><div class="bar-track"><div class="bar-fill" style="width:4%"><span class="bar-val">1</span></div></div></div>
         </div>
       </div>
     </div>
@@ -1002,10 +1002,10 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </div>
           </div>
 
-          <!-- Years of Service: Pre-2010 -->
+          <!-- Years of Service â Pre-2010 -->
           <div class="calc-field">
             <div class="calc-label-row">
-              <label class="calc-label">Years of Service: Pre-2010</label>
+              <label class="calc-label">Years of Service â Pre-2010</label>
               <span class="calc-value" id="val-pre2010">8</span>
             </div>
             <input type="range" class="calc-slider" id="slider-pre2010" min="0" max="35" value="8" step="1" oninput="calculate()">
