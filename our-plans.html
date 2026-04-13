@@ -42,7 +42,7 @@ nav.scrolled .nav-cta{background:var(--warm);color:var(--deep);border-color:var(
 .nav-links a:hover{color:var(--warm-light)}
 .nav-cta{padding:10px 28px;border-radius:50px;background:var(--warm);border:1.5px solid var(--warm);color:var(--deep);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .35s;text-decoration:none;letter-spacing:.5px}
 .nav-cta:hover{background:var(--deep);color:var(--white);transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,58,75,.25)}
-/* âââ EMPLOYER PORTAL (outline variant) âââ */
+/* ─── EMPLOYER PORTAL (outline variant) ─── */
 .nav-cta-outline {
   background: transparent;
   border: 1.5px solid var(--warm-light);
@@ -64,7 +64,7 @@ nav.scrolled .nav-cta-outline:hover {
   color: var(--deep);
 }
 
-/* âââ HAMBURGER BUTTON âââ */
+/* ─── HAMBURGER BUTTON ─── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -557,7 +557,7 @@ nav.scrolled .nav-hamburger span {
 }
 .calc-disclaimer svg { flex-shrink: 0; margin-top: 2px; }
 .calc-disclaimer strong { color: var(--warm); }
-  /* === MOBILE RESPONSIVE FIX â add this entire block === */
+  /* === MOBILE RESPONSIVE FIX ─ add this entire block === */
 
 .calc-inputs,
 .calc-results {
@@ -1193,7 +1193,7 @@ const cObs = new IntersectionObserver(e => e.forEach(en => {
 counters.forEach(c => cObs.observe(c));
 document.querySelectorAll('a[href^="#"]').forEach(l => l.addEventListener('click', e => {const t=document.querySelector(l.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
 
-// âââ Hamburger Menu Toggle âââ
+// ─── Hamburger Menu Toggle ───
 const hamburger = document.querySelector('.nav-hamburger');
 const navLinks = document.querySelector('.nav-links');
 if (hamburger && navLinks) {
