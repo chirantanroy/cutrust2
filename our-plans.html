@@ -623,6 +623,20 @@ nav.scrolled .nav-hamburger span {
 }
 .calc-disclaimer svg { flex-shrink: 0; margin-top: 2px; }
 .calc-disclaimer strong { color: var(--warm); }
+.chart-total-label {
+  text-align: center;
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mist);
+  margin-top: 8px;
+  letter-spacing: 0.2px;
+}
+.chart-total-label span {
+  color: #6DD4E8;
+  font-weight: 700;
+  font-size: 1rem;
+}
   /* === MOBILE RESPONSIVE FIX ─ add this entire block === */
 
 .calc-inputs,
@@ -1177,16 +1191,6 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
 
          
 
-          <!-- Trustee Consent -->
-          <div class="calc-field">
-            <label class="calc-label">Trustee Consent for Early Retirement?</label>
-            <div class="calc-toggle-group">
-              <button class="calc-toggle active" data-value="Yes" onclick="setConsent(this)">Yes</button>
-              <button class="calc-toggle" data-value="No" onclick="setConsent(this)">No</button>
-            </div>
-             <p class="calc-field-note"> This is for indication only. Consent reduces the early penalty to 6%/yr or 3%/yr. Without consent, actual reductions may be higher (actuarial basis) and is not shown.</p>
-          </div>
-
           <!-- CPI -->
           <div class="calc-field">
             <div class="calc-label-row">
@@ -1231,6 +1235,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
           <div class="chart-card">
             <h4 class="chart-title">Pension by Service Period</h4>
             <canvas id="chart-service" width="320" height="220"></canvas>
+            <div id="chart-service-total" class="chart-total-label"></div>
           </div>
           <div class="chart-card">
             <h4 class="chart-title">Planned Age vs. Unreduced</h4>
@@ -1241,7 +1246,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         <!-- 10-Year Projection -->
         <div class="projection-card">
           <h4 class="chart-title" style="margin-bottom:4px;">10-Year Post-Retirement Projection</h4>
-          <p class="projection-note">Pre-2010: 50% CPI (max 3%) &nbsp;|&nbsp; Post-2009: surplus-dependent (modeled at 25% CPI)</p>
+          <p class="projection-note">Both Pre-2010 and Post-2009 service indexed at 50% CPI (max 3%). Post-2009 indexing is subject to change based on plan surplus decisions.</p>
           <div class="projection-table-wrap">
             <table class="projection-table" id="projection-table">
               <thead>
@@ -1257,7 +1262,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         <!-- Disclaimer -->
         <div class="calc-disclaimer">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warm)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span><strong>Disclaimer:</strong> Estimates only. Actual amounts depend on final plan calculations, CRA limits at retirement, trustee surplus decisions, and individual circumstances. Contact CU Trust for official estimates.</span>
+          <span><strong>Disclaimer:</strong> Estimates only. This calculation assumes an actuarial reduction of 6% per year for early retirement. Actual reduction may vary based on trustee consent and changes in actuarial rate. Post-2009 indexing shown is illustrative and subject to change based on plan surplus decisions. Actual amounts depend on final plan calculations, CRA limits at retirement, trustee surplus decisions, and individual circumstances. Contact CU Trust for official estimates.</span>
         </div>
 
       </div>
@@ -1343,19 +1348,11 @@ if (hamburger && navLinks) {
 (function() {
   // === STATE ===
   let division = 1.75;
-  let trusteeConsent = 'Yes';
 
   window.setDivision = function(btn) {
     btn.parentElement.querySelectorAll('.calc-toggle').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     division = parseFloat(btn.dataset.value);
-    calculate();
-  };
-
-  window.setConsent = function(btn) {
-    btn.parentElement.querySelectorAll('.calc-toggle').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    trusteeConsent = btn.dataset.value;
     calculate();
   };
 
@@ -1387,14 +1384,10 @@ if (hamburger && navLinks) {
     const nra2010to2016 = division === 1.75 ? 62 : 65;
     const nraPost2016 = 65;
 
-    // Early Retirement Penalties
+    // Early Retirement Penalties (flat 6% actuarial reduction)
     let penaltyPre2010 = 0;
     if (retAge < nraPre2010) {
-      if (trusteeConsent === 'Yes' && totalService >= 10) {
-        penaltyPre2010 = (nraPre2010 - retAge) * 0.03;
-      } else {
-        penaltyPre2010 = (nraPre2010 - retAge) * 0.06;
-      }
+      penaltyPre2010 = (nraPre2010 - retAge) * 0.06;
     }
 
     let penalty2010to2016 = 0;
@@ -1440,7 +1433,7 @@ if (hamburger && navLinks) {
     for (let yr = 0; yr <= 10; yr++) {
       if (yr > 0) {
         pre2010Idx = pre2010Idx * (1 + Math.min(cpi * 0.5, 0.03));
-        post2009Idx = post2009Idx * (1 + Math.min(cpi * 0.25, 0.015));
+        post2009Idx = post2009Idx * (1 + Math.min(cpi * 0.5, 0.03));
       }
       const total = pre2010Idx + post2009Idx;
       const tr = document.createElement('tr');
@@ -1457,6 +1450,9 @@ if (hamburger && navLinks) {
     // Draw charts
     drawServiceChart(pensionPre2010, pension2010to2016, pensionPost2016);
     drawScenarioChart(totalAnnual, unreduced, retAge);
+
+    // Update service chart total
+    document.getElementById('chart-service-total').innerHTML = 'Total: <span>$' + Math.round(totalAnnual).toLocaleString() + '/yr</span> &nbsp;($' + Math.round(totalAnnual / 12).toLocaleString() + '/mo)';
   };
 
   // === CHART: Service Period Breakdown ===
