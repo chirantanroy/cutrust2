@@ -218,6 +218,71 @@ nav.scrolled .nav-hamburger span {
 .funded-table tr:last-child td{border-bottom:none}
 .funded-table .highlight{font-weight:700;color:var(--deep);font-family:'Public Sans',sans-serif;font-size:1.2rem}
 
+  .funding-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.funding-stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.funding-stat-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 165, 116, 0.25);
+  transform: translateY(-3px);
+}
+.funding-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4A9EAF, #5BC0A0);
+  border-radius: 16px 16px 0 0;
+}
+.funding-stat-card.warm-accent::before {
+  background: linear-gradient(90deg, #D4A574, #E8C49A);
+}
+.funding-stat-division-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 10px;
+  display: inline-block;
+  background: rgba(255,255,255,0.06);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.funding-stat-number {
+  font-family: "Public Sans", sans-serif;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--white);
+  margin: 8px 0 4px;
+  letter-spacing: -1px;
+}
+.funding-stat-metric {
+  font-size: 0.75rem;
+  color: var(--mist);
+  font-weight: 400;
+  margin-top: 8px;
+}
+.funding-stat-sub {
+  font-size: 0.65rem;
+  color: rgba(139, 170, 187, 0.6);
+  margin-top: 4px;
+}
+
 /* === PENSION CALCULATOR === */
 .calc-container {
   display: grid;
@@ -855,7 +920,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
           <p><strong>102%</strong> 1.2% Division</p>
         </div>
       </div>
-    </div>-->
+    </div>
 
     <div class="projection-card reveal delay-3">
   <div class="projection-table-wrap">
@@ -881,8 +946,36 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       </tbody>
     </table>
   </div>
-</div>
+</div>-->
 
+    <div class="projection-card reveal delay-3">
+  <div class="funding-stats-grid">
+    <div class="funding-stat-card">
+      <div class="funding-stat-division-label">1.75% Division</div>
+      <div class="funding-stat-number">120%</div>
+      <div class="funding-stat-metric">Going-Concern Funded Status</div>
+      <div class="funding-stat-sub">including PfAD</div>
+    </div>
+    <div class="funding-stat-card warm-accent">
+      <div class="funding-stat-division-label">1.75% Division</div>
+      <div class="funding-stat-number">130%</div>
+      <div class="funding-stat-metric">Solvency Ratio</div>
+      <div class="funding-stat-sub">estimated</div>
+    </div>
+    <div class="funding-stat-card">
+      <div class="funding-stat-division-label">1.2% Division</div>
+      <div class="funding-stat-number">130%</div>
+      <div class="funding-stat-metric">Going-Concern Funded Status</div>
+      <div class="funding-stat-sub">including PfAD</div>
+    </div>
+    <div class="funding-stat-card warm-accent">
+      <div class="funding-stat-division-label">1.2% Division</div>
+      <div class="funding-stat-number">145%</div>
+      <div class="funding-stat-metric">Solvency Ratio</div>
+      <div class="funding-stat-sub">estimated</div>
+    </div>
+  </div>
+</div>
     
   </div>
 </div>
