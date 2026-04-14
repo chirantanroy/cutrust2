@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seniors' Corner | CUtrust — Credit Union Pension & Benefits Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #1B3A4B;
+  --teal: #3D6B7E;
+  --steel: #5B7F95;
+  --mist: #8BAABB;
+  --ice: #E8EFF4;
+  --frost: #F2F6F9;
+  --white: #FFFFFF;
+  --warm: #D4A574;
+  --warm-light: #E8C9A8;
+  --accent: #4A9EAF;
+  --text-dark: #1A2E3B;
+  --text-muted: #5A7A8A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Public Sans', sans-serif;
+  color: var(--text-dark);
+  background: var(--frost);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── UTILITY ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 48px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(27, 58, 75, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(91, 127, 149, 0.1);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(27, 58, 75, 0.92);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+}
+nav.scrolled .nav-links a { color: var(--white); }
+nav.scrolled .nav-links a:hover { color: var(--warm-light); }
+nav.scrolled .nav-cta {
+  background: var(--warm);
+  color: var(--deep);
+  border-color: var(--warm);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.nav-logo:hover { opacity: 0.85; }
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+}
+.nav-logo-text {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: color 0.3s;
+  letter-spacing: 0.3px;
+}
+.nav-links a:hover { color: var(--warm-light); }
+
+.nav-cta {
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--warm);
+  border: 1.5px solid var(--warm);
+  color: var(--deep);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.nav-cta:hover {
+  background: var(--deep);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(27, 58, 75, 0.25);
+}
+.nav-cta-outline {
+  background: transparent;
+  border: 1.5px solid var(--warm-light);
+  color: var(--white);
+}
+.nav-cta-outline:hover {
+  background: var(--warm);
+  color: var(--deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(27, 58, 75, 0.25);
+}
+nav.scrolled .nav-cta-outline {
+  border-color: var(--warm-light);
+  color: var(--white);
+  background: transparent;
+}
+nav.scrolled .nav-cta-outline:hover {
+  background: var(--warm);
+  color: var(--deep);
+}
+
+/* NAV DROPDOWN */
+.nav-dropdown{position:relative;display:flex;align-items:center}
+.nav-dropdown-trigger{font-size:.92rem;font-weight:500;color:var(--white);letter-spacing:.3px;cursor:default;display:flex;align-items:center;gap:5px;transition:color .3s;user-select:none;padding:8px 0}
+.nav-dropdown-trigger svg{transition:transform .3s}
+.nav-dropdown:hover .nav-dropdown-trigger{color:var(--warm-light)}
+.nav-dropdown:hover .nav-dropdown-trigger svg{transform:rotate(180deg)}
+nav.scrolled .nav-dropdown-trigger{color:var(--white)}
+nav.scrolled .nav-dropdown:hover .nav-dropdown-trigger{color:var(--warm-light)}
+.nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:180px;background:var(--deep);border:1px solid rgba(255,255,255,.08);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.3);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transition:all .3s cubic-bezier(.22,1,.36,1)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;font-size:.9rem;font-weight:500;color:var(--mist);text-decoration:none;transition:all .2s;letter-spacing:.2px}
+.nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:var(--warm-light)}
+
+/* ─── HAMBURGER BUTTON ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1100;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; }
+.nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ─── PAGE HERO (Inner Pages) ─── */
+.page-hero {
+  padding: 140px 48px 80px;
+  background: linear-gradient(165deg, var(--deep) 0%, #234A5E 50%, var(--teal) 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,165,116,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-slow 20s ease-in-out infinite;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-slow 15s ease-in-out infinite reverse;
+}
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.02); }
+  66% { transform: translate(-20px, 15px) scale(0.98); }
+}
+.page-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.page-hero .hero-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  background: rgba(212,165,116,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  border: 1px solid rgba(212,165,116,0.2);
+}
+.page-hero .hero-icon svg {
+  width: 40px;
+  height: 40px;
+  color: var(--warm);
+}
+.page-hero h1 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  color: var(--white);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.page-hero p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--mist);
+  max-width: 620px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ─── BREADCRUMB ─── */
+.breadcrumb {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 48px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.breadcrumb a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.breadcrumb a:hover { color: var(--warm); }
+.breadcrumb span { color: var(--mist); }
+
+/* ─── SECTION STYLES ─── */
+.section-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--warm);
+  margin-bottom: 16px;
+}
+
+.content-section {
+  padding: 100px 48px;
+  position: relative;
+}
+.content-section:nth-child(odd) {
+  background: var(--frost);
+}
+.content-section:nth-child(even) {
+  background: var(--white);
+}
+.content-section .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.content-section h2 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--deep);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.content-section .section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 48px;
+  max-width: 680px;
+  line-height: 1.75;
+}
+
+/* ─── CARD GRID ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+.info-card {
+  background: var(--white);
+  border: 1px solid rgba(91,127,149,0.08);
+  border-radius: 20px;
+  padding: 40px 32px;
+  transition: all 0.5s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
+}
+.info-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(61,107,126,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.info-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212,165,116,0.25);
+  box-shadow: 0 20px 50px rgba(27,58,75,0.08);
+}
+.info-card:hover::before { opacity: 1; }
+.info-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(212,165,116,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.info-card-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--warm);
+}
+.info-card h3 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 1.25rem;
+  color: var(--deep);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+.info-card p, .info-card ul {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.info-card ul {
+  margin: 12px 0 0 0;
+  padding-left: 20px;
+}
+.info-card li {
+  margin-bottom: 8px;
+}
+.info-card a {
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.info-card a:hover { color: var(--warm); }
+
+/* ─── DARK SECTION ─── */
+.dark-section {
+  background: var(--deep) !important;
+  position: relative;
+  overflow: hidden;
+}
+.dark-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(61,107,126,0.15), transparent);
+  pointer-events: none;
+}
+.dark-section h2 {
+  color: var(--white);
+}
+.dark-section .section-subtitle {
+  color: var(--mist);
+}
+.dark-section .info-card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+.dark-section .info-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(212,165,116,0.25);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+.dark-section .info-card h3 {
+  color: var(--white);
+}
+.dark-section .info-card p,
+.dark-section .info-card li {
+  color: var(--mist);
+}
+.dark-section .info-card a {
+  color: var(--warm-light);
+}
+.dark-section .info-card a:hover { color: var(--warm); }
+
+/* ─── INDEXING TABLE ─── */
+.indexing-table-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(91,127,149,0.1);
+  background: var(--white);
+}
+.indexing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.indexing-table thead th {
+  background: var(--deep);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  text-align: left;
+}
+.indexing-table tbody td {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--ice);
+  color: var(--text-dark);
+}
+.indexing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.indexing-table tbody tr:hover {
+  background: rgba(61,107,126,0.03);
+}
+.indexing-table .highlight-val {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+/* ─── TWO-COLUMN LAYOUT ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.two-col-text h3 {
+  font-size: 1.5rem;
+  color: var(--deep);
+  margin-bottom: 16px;
+}
+.two-col-text p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+/* ─── CALLOUT BOX ─── */
+.callout-box {
+  padding: 28px 32px;
+  background: rgba(74,158,175,0.06);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  margin: 28px 0;
+}
+.callout-box p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+.callout-box strong {
+  color: var(--deep);
+}
+
+/* ─── RESOURCE LINKS ─── */
+.resource-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.resource-link-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ice);
+}
+.resource-link-list li:last-child {
+  border-bottom: none;
+}
+.resource-link-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--teal);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+.resource-link-list a:hover {
+  color: var(--warm);
+  gap: 18px;
+}
+.resource-link-list a svg {
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.resource-link-list a:hover svg {
+  transform: translateX(4px);
+}
+
+/* ─── CONTACT BANNER ─── */
+.contact-banner {
+  padding: 80px 48px;
+  background: var(--deep);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-banner::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.contact-banner h2 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.contact-banner p {
+  color: var(--mist);
+  font-weight: 300;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-banner .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--warm);
+  color: var(--deep);
+  border: none;
+  border-radius: 60px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(.22,1,.36,1);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+.contact-banner .btn-primary:hover {
+  background: var(--white);
+  color: var(--deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+}
+
+/* ─── QUICK NAV ─── */
+.quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+.quick-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.3s;
+}
+.quick-nav a:hover {
+  background: rgba(212,165,116,0.15);
+  border-color: var(--warm);
+  color: var(--warm-light);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 48px 48px 32px;
+  background: #0F252F;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+.footer-logo-img {
+  height: 30px;
+  width: auto;
+  opacity: 0.9;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--mist);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--warm-light); }
+.footer-social a {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  align-items: center;
+  justify-content: center;
+  color: var(--mist);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.footer-social a:hover {
+  background: rgba(212,165,116,0.15);
+  border-color: var(--warm);
+  color: var(--warm);
+}
+.footer-bottom {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+  color: rgba(139,170,187,0.5);
+  font-size: 0.8rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { gap: 20px; }
+  .page-hero { padding: 120px 24px 60px; }
+  .content-section { padding: 60px 24px; }
+  .two-col { grid-template-columns: 1fr; gap: 32px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .breadcrumb { padding: 16px 24px 0; }
+  section { padding-left: 24px !important; padding-right: 24px !important; }
+}
+@media(max-width:640px){
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none !important;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: 0 8px 32px rgba(27,58,75,0.12);
+    padding: 16px 24px;
+    gap: 0 !important;
+    z-index: 1050;
+  }
+  .nav-links.nav-open { display: flex !important; }
+  .nav-links a, .nav-dropdown-trigger {
+    padding: 14px 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid var(--ice);
+    color: var(--text-dark) !important;
+    font-size: 1rem;
+  }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 0 0 16px !important;
+    pointer-events: auto !important;
+  }
+  .nav-cta, .nav-cta-outline {
+    text-align: center !important;
+    margin-top: 12px !important;
+    border-bottom: none !important;
+  }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .quick-nav { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-text">CUtrust</span>
+  </a>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <div class="nav-dropdown">
+      <span class="nav-dropdown-trigger">Our Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      <div class="nav-dropdown-menu">
+        <a href="our-plans.html">Pension</a>
+        <a href="our-benefits-plan.html">Benefits</a>
+      </div>
+    </div>
+    <a href="employers.html">Employers</a>
+    <a href="resources.html">Resources</a>
+    <a href="seniors-corner.html" style="color:var(--warm-light);">Seniors' Corner</a>
+    <a href="about.html">About</a>
+    <a href="https://cutadmin.hroffice.com/Excalibur_CUBT/Admin/Standard/Security?ReturnUrl=%2FExcalibur_CUBT%2FAdmin%2FStandard%2Fwf%2FStandardAjaxPage%2FmssLifeworksHome" class="nav-cta nav-cta-outline" target="_blank" rel="noopener noreferrer">Employer Portal</a>
+    <a href="https://cutrust.com/" class="nav-cta" target="_blank" rel="noopener noreferrer">Member Portal</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 14l-2 7"/><path d="M12 14l2 7"/></svg>
+    </div>
+    <h1>Seniors' Corner</h1>
+    <p>A dedicated resource hub for our retired members of the DB Pension Plan — everything you need to know about your pension payments, benefits, and thriving in retirement.</p>
+    <div class="quick-nav">
+      <a href="#payments">Pension Payments</a>
+      <a href="#indexing">Pension Increases</a>
+      <a href="#account">Your Account</a>
+      <a href="#life-changes">Life Changes</a>
+      <a href="#wellness">Wellness</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <span>Seniors' Corner</span>
+</div>
+
+<!-- SECTION: Pension Payment Information -->
+<section class="content-section" id="payments">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Your Pension</div>
+    <h2 class="reveal delay-1">Pension Payment Information</h2>
+    <p class="section-subtitle reveal delay-2">Understanding how and when your pension payments are processed ensures you can plan your finances with confidence.</p>
+
+    <div class="card-grid">
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>Payment Schedule</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pension payments are typically deposited on a monthly basis. Payments are processed on the last business day of each month and arrive in your bank account within 1–2 business days thereafter.</p>
+        <div class="callout-box">
+          <p><strong>Note:</strong> Lorem ipsum dolor sit amet — if a payment date falls on a weekend or statutory holiday, the payment will be processed on the preceding business day.</p>
+        </div>
+      </div>
+
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4h-4z"/></svg>
+        </div>
+        <h3>Who Makes Your Payments</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Your pension payments are administered and distributed by our custodian, <strong>RBC Investor & Treasury Services</strong>. All direct deposits to your bank account are processed through RBC's secure payment system.</p>
+        <p style="margin-top:12px;">If you notice any discrepancies or delays in your pension payment, please contact CUtrust's pension support line first.</p>
+      </div>
+
+      <div class="info-card reveal delay-4">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </div>
+        <h3>Direct Deposit Setup</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. All pension payments are made via direct deposit to your designated Canadian bank account. To set up or change your banking information, please complete and submit the appropriate form to the CUtrust office.</p>
+        <p style="margin-top:12px;">We recommend keeping your banking details current to avoid any interruptions to your monthly pension income.</p>
+      </div>
+
+      <div class="info-card reveal delay-5">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Tax Slips &amp; T4A Information</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. T4A tax slips for your pension income are issued annually by the end of February. These slips can be accessed through the Member Portal or will be mailed to your address on file.</p>
+        <p style="margin-top:12px;">If you require a replacement T4A or have questions about your tax reporting, please reach out to our pension support team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Pension Indexing History -->
+<section class="content-section dark-section" id="indexing">
+  <div class="section-inner">
+    <div class="section-label reveal">Pension Increases</div>
+    <h2 class="reveal delay-1">History of Pension Indexing</h2>
+    <p class="section-subtitle reveal delay-2">The Board of Trustees periodically reviews pension payments and may approve increases (indexing) to help retirees keep pace with the cost of living.</p>
+
+    <div class="two-col reveal delay-3" style="margin-bottom: 48px;">
+      <div class="two-col-text">
+        <h3 style="color:var(--white);">How Indexing Works</h3>
+        <p style="color:var(--mist);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pension indexing adjustments are determined by the Board of Trustees based on the plan's financial health, investment performance, and actuarial valuations. Increases are typically expressed as a percentage applied to your base pension amount.</p>
+        <p style="color:var(--mist);">While indexing is not guaranteed, the Trust has a strong history of providing regular adjustments to support our retired members' purchasing power over time.</p>
+      </div>
+      <div>
+        <div class="indexing-table-wrapper">
+          <table class="indexing-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Indexing Rate</th>
+                <th>Effective Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2025</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2025</td></tr>
+              <tr><td>2024</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2024</td></tr>
+              <tr><td>2023</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2023</td></tr>
+              <tr><td>2022</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2022</td></tr>
+              <tr><td>2021</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2021</td></tr>
+              <tr><td>2020</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2020</td></tr>
+              <tr><td>2019</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2019</td></tr>
+              <tr><td>2018</td><td class="highlight-val">Lorem ipsum</td><td>January 1, 2018</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Managing Your Account -->
+<section class="content-section" id="account">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Stay Up to Date</div>
+    <h2 class="reveal delay-1">Managing Your Account</h2>
+    <p class="section-subtitle reveal delay-2">Keep your personal information current to ensure uninterrupted pension payments and timely communications.</p>
+
+    <div class="card-grid">
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Change of Address</h3>
+        <p>Moving to a new home? It's important to notify CUtrust of any address changes to ensure you continue to receive important correspondence, including tax slips and annual pension statements.</p>
+        <p style="margin-top:12px;">You can update your address by:</p>
+        <ul>
+          <li>Logging into the <a href="https://cutrust.com/" target="_blank">Member Portal</a></li>
+          <li>Calling our pension support line at <strong>1.844.451.9698</strong></li>
+          <li>Emailing <a href="mailto:pensions@cutrust.com">pensions@cutrust.com</a></li>
+        </ul>
+      </div>
+
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>Banking Information Updates</h3>
+        <p>If you change your bank account, it's essential to update your banking details promptly to avoid any disruption to your pension deposits.</p>
+        <p style="margin-top:12px;">To update your banking information:</p>
+        <ul>
+          <li>Complete a new Direct Deposit Authorization form</li>
+          <li>Attach a void cheque or official bank letter</li>
+          <li>Submit the form to the CUtrust office</li>
+        </ul>
+        <div class="callout-box">
+          <p><strong>Important:</strong> Please allow up to one full payment cycle for banking changes to take effect. We recommend submitting updates at least 30 days before your next expected payment.</p>
+        </div>
+      </div>
+
+      <div class="info-card reveal delay-4">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Income Tax Withholding</h3>
+        <p>You may request to adjust the amount of income tax withheld from your monthly pension payment. By default, tax is deducted based on CRA guidelines.</p>
+        <p style="margin-top:12px;">To request a change, submit a completed <strong>TD1 form</strong> (Federal) and <strong>TD1BC form</strong> (Provincial) to CUtrust. Changes generally take effect within one pay cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Life Changes -->
+<section class="content-section" id="life-changes">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Important Notifications</div>
+    <h2 class="reveal delay-1">Reporting Life Changes</h2>
+    <p class="section-subtitle reveal delay-2">Certain life events can affect your pension benefits. It's crucial to inform CUtrust of these changes as soon as possible.</p>
+
+    <div class="card-grid">
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Marital Status Changes</h3>
+        <p>Marriage, separation, divorce, or the death of a spouse can significantly impact your pension benefits, including survivor benefits and beneficiary designations.</p>
+        <p style="margin-top:12px;">Please notify CUtrust immediately when any marital status change occurs. You may need to provide:</p>
+        <ul>
+          <li>Marriage certificate or legal separation/divorce documents</li>
+          <li>Updated beneficiary designation forms</li>
+          <li>Spousal consent documentation (if applicable)</li>
+        </ul>
+      </div>
+
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Beneficiary Updates</h3>
+        <p>Your beneficiary designation determines who will receive benefits in the event of your passing. It is important to review your beneficiary information periodically, especially after major life events.</p>
+        <p style="margin-top:12px;">Contact CUtrust to request a Beneficiary Designation Change form. Ensure all forms are signed, witnessed, and submitted to the pension office for processing.</p>
+      </div>
+
+      <div class="info-card reveal delay-4">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Proof of Life / Pension Continuance</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. CUtrust may periodically require retirees to confirm their continued eligibility for pension payments through a Proof of Life verification.</p>
+        <p style="margin-top:12px;">This process helps protect the integrity of the pension plan and ensures benefits are distributed correctly. Please respond promptly to any verification requests received by mail or email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Mental Health & Wellness -->
+<section class="content-section dark-section" id="wellness">
+  <div class="section-inner">
+    <div class="section-label reveal">Your Well-Being</div>
+    <h2 class="reveal delay-1">Wellness in Retirement</h2>
+    <p class="section-subtitle reveal delay-2">Retirement is a significant life transition. Taking care of your mental health and staying connected are key to a fulfilling retirement.</p>
+
+    <div class="card-grid">
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 0 0-6.364 0z"/></svg>
+        </div>
+        <h3>Mental Health Support</h3>
+        <p>Transitioning to retirement can bring unexpected emotional challenges. It's perfectly normal to experience feelings of loss, anxiety, or a shift in identity after leaving the workforce.</p>
+        <ul>
+          <li><a href="https://www.crisiscentre.bc.ca/" target="_blank" rel="noopener">BC Crisis Centre</a> — 24/7 helpline: 1-800-784-2433</li>
+          <li><a href="https://www.heretohelp.bc.ca/" target="_blank" rel="noopener">HereToHelp BC</a> — Mental health and substance use information</li>
+          <li><a href="https://bouncebackbc.ca/" target="_blank" rel="noopener">BounceBack BC</a> — Free guided self-help for adults 15+</li>
+          <li><a href="https://www.canada.ca/en/public-health/services/mental-health-services.html" target="_blank" rel="noopener">Government of Canada Mental Health Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h3>Staying Physically Active</h3>
+        <p>Regular physical activity is one of the most important things you can do for your health as you age. Even moderate exercise can improve mood, energy, and overall well-being.</p>
+        <ul>
+          <li><a href="https://www.participaction.com/older-adults/" target="_blank" rel="noopener">ParticipACTION — Guidelines for Older Adults</a></li>
+          <li>Local community centres often offer <strong>senior-specific fitness classes</strong>, including yoga, tai chi, swimming, and walking groups</li>
+          <li>BC Recreation and Parks Association programs for seniors</li>
+        </ul>
+      </div>
+
+      <div class="info-card reveal delay-4">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Social Connection &amp; Volunteering</h3>
+        <p>Staying socially engaged is crucial for mental well-being. Retirement is a wonderful time to explore new interests, connect with your community, and give back.</p>
+        <ul>
+          <li><a href="https://www.volunteer.ca/" target="_blank" rel="noopener">Volunteer Canada</a> — Find volunteer opportunities near you</li>
+          <li>Local seniors' centres and community groups</li>
+          <li><a href="https://www.meetup.com/" target="_blank" rel="noopener">Meetup</a> — Join groups based on hobbies and interests</li>
+          <li>University of the Third Age (U3A) — Lifelong learning programs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Additional Resources -->
+<section class="content-section" id="resources">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Helpful Links</div>
+    <h2 class="reveal delay-1">Resources for Retirees</h2>
+    <p class="section-subtitle reveal delay-2">A collection of helpful resources covering financial planning, government benefits, healthcare, and seniors' services in British Columbia.</p>
+
+    <div class="two-col">
+      <div class="reveal delay-2">
+        <h3 style="margin-bottom:24px; font-size:1.25rem;">Government Benefits &amp; Services</h3>
+        <ul class="resource-link-list">
+          <li>
+            <a href="https://www.canada.ca/en/services/benefits/publicpensions/cpp.html" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Canada Pension Plan (CPP) — Official Information
+            </a>
+          </li>
+          <li>
+            <a href="https://www.canada.ca/en/services/benefits/publicpensions/cpp/old-age-security.html" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Old Age Security (OAS) — Eligibility &amp; Benefits
+            </a>
+          </li>
+          <li>
+            <a href="https://www2.gov.bc.ca/gov/content/family-social-supports/seniors" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              BC Government — Programs &amp; Services for Seniors
+            </a>
+          </li>
+          <li>
+            <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/pension-income-splitting.html" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Pension Income Splitting — CRA Guidelines
+            </a>
+          </li>
+          <li>
+            <a href="https://www.canada.ca/en/services/benefits/publicpensions/cpp/retirement-income-calculator.html" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Canadian Retirement Income Calculator
+            </a>
+          </li>
+          <li>
+            <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/segments/tax-credits-deductions-persons-disabilities/disability-tax-credit.html" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Disability Tax Credit — Eligibility
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal delay-3">
+        <h3 style="margin-bottom:24px; font-size:1.25rem;">Health &amp; Seniors' Services (BC)</h3>
+        <ul class="resource-link-list">
+          <li>
+            <a href="https://www.healthlinkbc.ca/" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              HealthLink BC — Call 8-1-1 for Health Advice
+            </a>
+          </li>
+          <li>
+            <a href="https://www2.gov.bc.ca/gov/content/health/health-drug-coverage/pharmacare-for-bc-residents" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              BC PharmaCare — Drug Coverage for BC Residents
+            </a>
+          </li>
+          <li>
+            <a href="https://www2.gov.bc.ca/gov/content/health/accessing-health-care/home-community-care" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Home and Community Care — In-Home Support
+            </a>
+          </li>
+          <li>
+            <a href="https://www.seniorsadvocatebc.ca/" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              BC Seniors Advocate — Independent Advocacy
+            </a>
+          </li>
+          <li>
+            <a href="https://seniorsfirstbc.ca/" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Seniors First BC — Legal &amp; Advocacy Support
+            </a>
+          </li>
+          <li>
+            <a href="https://www.antifraudcentre-centreantifraude.ca/index-eng.htm" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              Canadian Anti-Fraud Centre — Protect Yourself from Scams
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: Contact -->
+<section class="contact-banner" id="contact">
+  <div style="max-width:700px;margin:0 auto;position:relative;z-index:2;">
+    <div class="section-label reveal">Get Help</div>
+    <h2 class="reveal delay-1">Need Assistance?</h2>
+    <p class="reveal delay-2">Our pension support team is here to help retired members with any questions about payments, account changes, or plan benefits.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;" class="reveal delay-3">
+      <a href="tel:18444519698" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 1.844.451.9698
+      </a>
+      <a href="mailto:pensions@cutrust.com" class="btn-primary" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:var(--white);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        pensions@cutrust.com
+      </a>
+    </div>
+    <p class="reveal delay-4" style="margin-top:28px;font-size:0.88rem;color:rgba(139,170,187,0.7);">CUtrust Management Office: 908-1166 Alberni St., Vancouver, BC V6E 3Z3</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><a href="index.html" class="nav-logo-text" style="color:var(--mist);font-size:1.1rem;text-decoration:none;">CUtrust</a></div>
+    <div class="footer-links">
+      <a href="index.html#contact">Contact</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy</a>
+      <a href="resources.html">Resources</a>
+      <a href="seniors-corner.html">Seniors' Corner</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/cutrustbc/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Credit Union Pension &amp; Benefits Trust. All rights reserved.
+  </div>
+</footer>
+
+<script>
+// ─── Scroll Reveal ───
+const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// ─── Nav Scroll ───
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── Smooth Nav Links ───
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ─── Hamburger Menu Toggle ───
+const hamburger = document.querySelector('.nav-hamburger');
+const navLinks = document.querySelector('.nav-links');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('nav-open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('nav-open');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('nav-open');
+    }
+  });
+}
+</script>
+
+</body>
+</html>
