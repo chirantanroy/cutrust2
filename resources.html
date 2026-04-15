@@ -1684,7 +1684,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       <h2 class="reveal delay-1">Managing Your Account</h2>
       <button
         class="toggle-btn"
-        aria-expanded="true"
+        aria-expanded="false"
         aria-controls="account-content"
         onclick="
           const content = document.getElementById('account-content');
@@ -1703,9 +1703,9 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
           transition:all 0.2s ease; white-space:nowrap;
         "
       >
-        <span class="toggle-label">Hide</span>
+        <span class="toggle-label">Show</span>
         <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          style="width:14px; height:14px; transition:transform 0.3s ease;">
+          style="width:14px; height:14px; transition:transform 0.3s ease; transform:rotate(-90deg);">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
       </button>
@@ -1714,8 +1714,8 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       id="account-content"
       style="
         overflow:hidden;
-        max-height:2000px;
-        opacity:1;
+        max-height:0px;
+        opacity:0;
         transition:max-height 0.4s ease, opacity 0.3s ease;
       "
     >
