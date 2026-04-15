@@ -1256,6 +1256,393 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   .results-info{padding:0 24px 16px}
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   SENIORS-CORNER COMPONENT LIBRARY — Import for resources.html
+   ═══════════════════════════════════════════════════════════════════
+   
+   NAMING NOTES:
+   Classes prefixed with "sc-" have been renamed to avoid conflicts 
+   with existing styles in resources.html:
+   
+   RENAMED (conflict exists):
+     .content-section        → .sc-section
+     .content-section h2     → .sc-section h2
+     .section-subtitle       → .sc-subtitle
+     .two-col                → .sc-two-col
+     .two-col-text           → .sc-two-col-text
+   
+   KEPT AS-IS (no conflict):
+     .card-grid, .info-card (and children)
+     .dark-section (resources uses .content-section.dark — different)
+     .callout-box (resources uses .highlight-box — different)
+     .indexing-table-wrapper, .indexing-table
+     .resource-link-list
+     .contact-banner (resources uses .cta-banner — different)
+     .breadcrumb
+     .delay-6
+   
+   USAGE: When building new sections in resources.html, use
+   <section class="sc-section"> with <div class="section-inner"> inside.
+   ═══════════════════════════════════════════════════════════════════ */
+
+
+/* ─── TRANSITION DELAY ─── */
+.delay-6 { transition-delay: 0.6s; }
+
+
+/* ─── BREADCRUMB ─── */
+.breadcrumb {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 48px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.breadcrumb a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.breadcrumb a:hover { color: var(--warm); }
+.breadcrumb span { color: var(--mist); }
+
+
+/* ─── SECTION WRAPPER (renamed from .content-section) ─── */
+.sc-section {
+  padding: 100px 48px;
+  position: relative;
+}
+.sc-section:nth-child(odd) {
+  background: var(--frost);
+}
+.sc-section:nth-child(even) {
+  background: var(--white);
+}
+.sc-section .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.sc-section h2 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--deep);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.sc-section .sc-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 48px;
+  max-width: 680px;
+  line-height: 1.75;
+}
+
+
+/* ─── CARD GRID ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+.info-card {
+  background: var(--white);
+  border: 1px solid rgba(91,127,149,0.08);
+  border-radius: 20px;
+  padding: 40px 32px;
+  transition: all 0.5s cubic-bezier(.22,1,.36,1);
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
+}
+.info-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(61,107,126,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.info-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212,165,116,0.25);
+  box-shadow: 0 20px 50px rgba(27,58,75,0.08);
+}
+.info-card:hover::before { opacity: 1; }
+.info-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(212,165,116,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.info-card-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--warm);
+}
+.info-card h3 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 1.25rem;
+  color: var(--deep);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+.info-card p, .info-card ul {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.info-card ul {
+  margin: 12px 0 0 0;
+  padding-left: 20px;
+}
+.info-card li {
+  margin-bottom: 8px;
+}
+.info-card a {
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.info-card a:hover { color: var(--warm); }
+
+
+/* ─── DARK SECTION ─── */
+.dark-section {
+  background: var(--deep) !important;
+  position: relative;
+  overflow: hidden;
+}
+.dark-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(61,107,126,0.15), transparent);
+  pointer-events: none;
+}
+.dark-section h2 {
+  color: var(--white);
+}
+.dark-section .sc-subtitle {
+  color: var(--mist);
+}
+.dark-section .info-card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+.dark-section .info-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(212,165,116,0.25);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+.dark-section .info-card h3 {
+  color: var(--white);
+}
+.dark-section .info-card p,
+.dark-section .info-card li {
+  color: var(--mist);
+}
+.dark-section .info-card a {
+  color: var(--warm-light);
+}
+.dark-section .info-card a:hover { color: var(--warm); }
+
+
+/* ─── INDEXING TABLE ─── */
+.indexing-table-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(91,127,149,0.1);
+  background: var(--white);
+}
+.indexing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.indexing-table thead th {
+  background: var(--deep);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  text-align: left;
+}
+.indexing-table tbody td {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--ice);
+  color: var(--text-dark);
+}
+.indexing-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.indexing-table tbody tr:hover {
+  background: rgba(61,107,126,0.03);
+}
+.indexing-table .highlight-val {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+
+/* ─── TWO-COLUMN LAYOUT (renamed from .two-col) ─── */
+.sc-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.sc-two-col-text h3 {
+  font-size: 1.5rem;
+  color: var(--deep);
+  margin-bottom: 16px;
+}
+.sc-two-col-text p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+
+/* ─── CALLOUT BOX ─── */
+.callout-box {
+  padding: 28px 32px;
+  background: rgba(74,158,175,0.06);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  margin: 28px 0;
+}
+.callout-box p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+.callout-box strong {
+  color: var(--deep);
+}
+
+
+/* ─── RESOURCE LINKS ─── */
+.resource-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.resource-link-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ice);
+}
+.resource-link-list li:last-child {
+  border-bottom: none;
+}
+.resource-link-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--teal);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+.resource-link-list a:hover {
+  color: var(--warm);
+  gap: 18px;
+}
+.resource-link-list a svg {
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.resource-link-list a:hover svg {
+  transform: translateX(4px);
+}
+
+
+/* ─── CONTACT BANNER ─── */
+.contact-banner {
+  padding: 80px 48px;
+  background: var(--deep);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-banner::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.contact-banner h2 {
+  font-family: 'Public Sans', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.contact-banner p {
+  color: var(--mist);
+  font-weight: 300;
+  font-size: 1.05rem;
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-banner .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  background: var(--warm);
+  color: var(--deep);
+  border: none;
+  border-radius: 60px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(.22,1,.36,1);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+.contact-banner .btn-primary:hover {
+  background: var(--white);
+  color: var(--deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+}
+
+
+/* ─── RESPONSIVE (max-width: 900px) ─── */
+@media (max-width: 900px) {
+  .sc-section { padding: 60px 24px; }
+  .sc-two-col { grid-template-columns: 1fr; gap: 32px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .breadcrumb { padding: 16px 24px 0; }
+}
+  
+  
 </style>
 </head>
 <body>
@@ -1288,6 +1675,58 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   </div>
 </div>
 
+
+<!-- SECTION: Managing Your Account -->
+<section class="sc-section" id="account">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Stay Up to Date</div>
+    <h2 class="reveal delay-1">Managing Your Account</h2>
+    <p class="section-subtitle reveal delay-2">Keep your personal information current to ensure uninterrupted pension payments and timely communications.</p>
+
+    <div class="card-grid">
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Change of Address</h3>
+        <p>Moving to a new home? It's important to notify CUtrust of any address changes to ensure you continue to receive important correspondence, including tax slips and annual pension statements.</p>
+        <p style="margin-top:12px;">You can update your address by contacting our <a href="#contact">Pension Support Team</a>.</p>
+        
+      </div>
+
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>Banking Information Updates</h3>
+        <p>If you change your bank account, it's essential to update your banking details promptly to avoid any disruption to your pension deposits.</p>
+        <p style="margin-top:12px;">To update your banking information:</p>
+        <ul>
+          <li>Complete a new Direct Deposit Authorization form</li>
+          <li>Attach a void cheque or official bank letter</li>
+          <li>Submit the form to our <a href="#contact">Pension Support Team</a></li>
+        </ul>
+        
+      </div>
+
+      <div class="info-card reveal delay-4">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>Income Tax Withholding</h3>
+        <p>You may request to adjust the amount of income tax withheld from your monthly pension payment. By default, tax is deducted based on CRA guidelines.</p>
+        <p style="margin-top:12px;">To request a change, submit a completed <strong>TD1 form</strong> (Federal) and <strong>TD1BC form</strong> (Provincial) to CUtrust <a href="#contact">Pension Support Team</a>. Changes generally take effect within one pay cycle.</p>
+      </div>
+    </div>
+
+        <div class="callout-box">
+          <p><strong>Important:</strong> Please allow up to one full payment cycle for banking changes to take effect. We recommend submitting updates at least 30 days before your next expected payment.</p>
+        </div>
+    
+  </div>
+</section>
+
+  
 <!-- ═══ FILTERS ═══ -->
 <div class="resources-filters" id="filters">
   <div class="filter-group">
