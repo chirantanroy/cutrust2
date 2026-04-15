@@ -1763,6 +1763,91 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   <div class="section-inner">
     <div class="section-label reveal" style="color:var(--steel);">Plan-it Wealth</div>
     <h2 class="reveal delay-1">Pension & Financial Reources</h2>
+
+    <!-- SECTION: What's in a plan? -->
+<section class="content-section" id="planoverview">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Know about your plan</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">What's in a plan?</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="account-content"
+        onclick="
+          const content = document.getElementById('account-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+    <div
+      id="account-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+        transition:max-height 0.4s ease, opacity 0.3s ease;
+      "
+    >
+      <p class="sc-subtitle reveal delay-2">Keep your personal information current to ensure uninterrupted pension payments and timely communications.</p>
+      <div class="card-grid">
+        <div class="info-card reveal delay-2">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Change of Address</h3>
+          <p>Moving to a new home? It's important to notify CUtrust of any address changes to ensure you continue to receive important correspondence, including tax slips and annual pension statements.</p>
+          <p style="margin-top:12px;">You can update your address by contacting our <a href="#contact">Pension Support Team</a>.</p>
+        </div>
+        <div class="info-card reveal delay-3">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3>Banking Information Updates</h3>
+          <p>If you change your bank account, it's essential to update your banking details promptly to avoid any disruption to your pension deposits.</p>
+          <p style="margin-top:12px;">To update your banking information:</p>
+          <ul>
+            <li>Complete a new Direct Deposit Authorization form</li>
+            <li>Attach a void cheque or official bank letter</li>
+            <li>Submit the form to our <a href="#contact">Pension Support Team</a></li>
+          </ul>
+        </div>
+        <div class="info-card reveal delay-4">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h3>Income Tax Withholding</h3>
+          <p>You may request to adjust the amount of income tax withheld from your monthly pension payment. By default, tax is deducted based on CRA guidelines.</p>
+          <p style="margin-top:12px;">To request a change, submit a completed <strong>TD1 form</strong> (Federal) and <strong>TD1BC form</strong> (Provincial) to CUtrust <a href="#contact">Pension Support Team</a>. Changes generally take effect within one pay cycle.</p>
+        </div>
+      </div>
+      <div class="callout-box">
+        <p><strong>Important:</strong> Please allow up to one full payment cycle for banking changes to take effect. We recommend submitting updates at least 30 days before your next expected payment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    
   </div>
 </section>
   
