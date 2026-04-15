@@ -1773,9 +1773,9 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       <button
         class="toggle-btn"
         aria-expanded="false"
-        aria-controls="account-content"
+        aria-controls="planoverview-content"
         onclick="
-          const content = document.getElementById('account-content');
+          const content = document.getElementById('planoverview-content');
           const expanded = this.getAttribute('aria-expanded') === 'true';
           this.setAttribute('aria-expanded', !expanded);
           this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
@@ -1799,7 +1799,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       </button>
     </div>
     <div
-      id="account-content"
+      id="planoverview"
       style="
         overflow:hidden;
         max-height:0px;
