@@ -2194,6 +2194,292 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   </div><!-- /.section-inner -->
 </section>
 
+
+<!-- SECTION: Government Benefits -->
+<section class="content-section" id="governmentbenefits">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Planning for Retirement</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">Government Benefits</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="governmentbenefits-content"
+        onclick="
+          const content = document.getElementById('governmentbenefits-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="governmentbenefits-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+      margin-top:24px;
+        transition:max-height 0.4s ease, opacity 0.3s ease;">
+
+      <p class="sc-subtitle reveal delay-2">Your CUtrust pension works alongside two federal government programs — CPP and OAS. Understanding all three together gives you the full picture of your retirement income.</p>
+
+      <div class="card-grid">
+
+        <!-- Card 1: Canada Pension Plan (CPP) -->
+        <div class="info-card reveal delay-2">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Canada Pension Plan (CPP)</h3>
+          <p>CPP is a mandatory contributory program — throughout your working life, you and your employer each contribute a percentage of your earnings into the plan. At retirement, you receive a monthly benefit based on how much you contributed and for how long.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>When can I start?</strong><br>
+              You can begin CPP as early as age 60 or as late as age 70. Starting before 65 reduces your benefit; starting after 65 increases it.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>How much will I get?</strong><br>
+              The maximum CPP retirement pension in 2025 is approximately $1,364/month at age 65, but most people receive less based on their contribution history. Log in to <a href="https://www.canada.ca/en/employment-social-development/services/my-account.html" target="_blank" rel="noopener">My Service Canada Account</a> to see your personal estimate.
+            </li>
+            <li>
+              <strong>CPP2 — the enhanced CPP</strong><br>
+              Since 2019, CPP contributions have been gradually increasing under CPP Enhancement. If you've been working and contributing since 2019, you'll receive a higher CPP benefit than earlier generations at the same earnings level.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Old Age Security (OAS) -->
+        <div class="info-card reveal delay-3">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M6 20v-2a6 6 0 0 1 12 0v2"/>
+              <path d="M2 20h20"/>
+            </svg>
+          </div>
+          <h3>Old Age Security (OAS)</h3>
+          <p>OAS is a flat monthly benefit paid by the federal government to most Canadians aged 65 and older. Unlike CPP, OAS is not based on your work history — it's based on how long you've lived in Canada after age 18.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Eligibility</strong><br>
+              You must be 65 or older and have lived in Canada for at least 10 years after age 18. A full OAS pension requires 40 years of Canadian residency; partial pensions are prorated for fewer years.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>How much is it?</strong><br>
+              The full OAS pension is approximately $727/month at age 65 (2025 rates). Amounts are adjusted quarterly for inflation. If your annual income exceeds approximately $90,997, a portion of OAS is clawed back.
+            </li>
+            <li>
+              <strong>Deferring OAS to age 70</strong><br>
+              You can delay OAS by up to 5 years past age 65. Each month of deferral increases your benefit by 0.6%, meaning deferring to age 70 results in a benefit 36% higher — permanently.
+            </li>
+          </ul>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Service Canada will typically enroll you automatically at 65. Confirm your status through <a href="https://www.canada.ca/en/employment-social-development/services/my-account.html" target="_blank" rel="noopener">My Service Canada Account</a>.</p>
+        </div>
+
+        <!-- Card 3: When Should I Start CPP and OAS? -->
+        <div class="info-card reveal delay-4">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3>When Should I Start CPP and OAS?</h3>
+          <p>The timing of your government benefits is one of the most consequential decisions you'll make at retirement. There is no single right answer — it depends on your health, other income sources, and how long you expect to live.</p>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin:16px 0;">
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Take CPP Early (Before 65)</div>
+              <div style="font-size:0.88rem; color:var(--deep);">Reduced by 0.6%/month before age 65 (up to 36% less at 60). Makes sense if you need income now, have health concerns, or have a shorter life expectancy.</div>
+            </div>
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Take CPP at 65 (Standard)</div>
+              <div style="font-size:0.88rem; color:var(--deep);">The baseline amount. A straightforward choice if you're retiring around 65 and your CUtrust pension covers most of your income needs.</div>
+            </div>
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Defer CPP/OAS to 70</div>
+              <div style="font-size:0.88rem; color:var(--deep);">Increased by 0.7%/month after 65 (up to 42% more at 70 for CPP; 36% more for OAS). Ideal if you're in good health, have other income in your mid-60s, and want to maximize longevity protection.</div>
+            </div>
+          </div>
+
+          <p style="font-size:0.88rem; color:var(--steel); font-style:italic;">If your CUtrust pension comfortably covers your expenses in your early retirement years, deferring CPP and OAS to 70 often results in significantly higher lifetime income.</p>
+        </div>
+
+      </div><!-- /.card-grid -->
+
+      <!--<div class="callout-box">
+        <p><strong>Useful resource:</strong> The Government of Canada's <a href="https://www.canada.ca/en/services/benefits/publicpensions/cpp/retirement-income-calculator.html" target="_blank" rel="noopener">Canadian Retirement Income Calculator</a> lets you model your combined CPP, OAS, and personal savings income side by side — a helpful complement to the CUtrust pension calculator.</p>
+      </div>-->
+
+    </div><!-- /#governmentbenefits-content -->
+  </div><!-- /.section-inner -->
+</section>
+
+
+<!-- SECTION: Personal Savings & Tax-Sheltered Plans -->
+<section class="content-section" id="personalsavings">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Planning for Retirement</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">Personal Savings &amp; Tax-Sheltered Plans</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="personalsavings-content"
+        onclick="
+          const content = document.getElementById('personalsavings-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="personalsavings-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+        transition:max-height 0.4s ease, opacity 0.3s ease;">
+
+      <p class="sc-subtitle reveal delay-2">Your CUtrust pension and government benefits form a strong foundation — but personal savings give you flexibility and control over your retirement income.</p>
+
+      <div class="card-grid">
+
+        <!-- Card 1: RRSP -->
+        <div class="info-card reveal delay-2">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>Registered Retirement Savings Plan (RRSP)</h3>
+          <p>An RRSP is a personal savings account that allows you to invest money on a tax-deferred basis. Contributions reduce your taxable income today, and your investments grow tax-free until withdrawal — making it a powerful long-term savings tool.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Contribution room</strong><br>
+              Your annual RRSP limit is 18% of your prior year's earned income, up to the CRA maximum — minus your Pension Adjustment (PA). Because you are a DB pension member, your PA will reduce your available RRSP room significantly. Check your most recent Notice of Assessment for your exact limit.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>The Pension Adjustment (PA)</strong><br>
+              Every year, CUtrust reports a PA to the CRA on your behalf. This reflects the value of the pension benefit you earned that year and reduces your RRSP room to prevent double tax-sheltering. The stronger your DB pension, the smaller your RRSP room — by design.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>Deadline</strong><br>
+              RRSP contributions for a given tax year must be made by March 1 of the following year.
+            </li>
+            <li>
+              <strong>Converting at age 71</strong><br>
+              You must convert your RRSP to a Registered Retirement Income Fund (RRIF) by December 31 of the year you turn 71. Minimum annual withdrawals are then required, and are taxable as income.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: TFSA -->
+        <div class="info-card reveal delay-3">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Tax-Free Savings Account (TFSA)</h3>
+          <p>A TFSA lets you invest money that has already been taxed — and all growth and withdrawals are completely tax-free. Unlike an RRSP, contributions do not reduce your taxable income, but you'll never pay tax on what you earn inside a TFSA.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Contribution room</strong><br>
+              The annual TFSA contribution limit is set by the federal government each year (currently $7,000 for 2025). Unused room accumulates from year to year, and room is restored when you make withdrawals — you can re-contribute in a future year.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>No Pension Adjustment impact</strong><br>
+              Your TFSA room is not affected by your DB pension or PA. This makes the TFSA particularly valuable for pension members whose RRSP room is reduced.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>No mandatory withdrawals</strong><br>
+              Unlike an RRSP/RRIF, there is no age at which you must convert or withdraw from a TFSA. It can continue to grow throughout retirement.
+            </li>
+            <li>
+              <strong>Flexibility</strong><br>
+              TFSA withdrawals can be taken at any time for any reason, with no tax consequences — useful for supplementing income in early retirement or covering unexpected expenses.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 3: RRSP vs TFSA — Which Is Right For You? -->
+        <div class="info-card reveal delay-4">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="12" y1="2" x2="12" y2="22"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>RRSP vs. TFSA — Which Is Right For You?</h3>
+          <p>As a pension member, your RRSP room is already reduced by your PA — so the choice between RRSP and TFSA is especially important. Here's a simple way to think about it:</p>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin:16px 0;">
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Favour RRSP if…</div>
+              <div style="font-size:0.88rem; color:var(--deep);">You are in a high tax bracket now and expect to be in a lower bracket in retirement. The upfront tax deduction has the most value when your current income is high.</div>
+            </div>
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Favour TFSA if…</div>
+              <div style="font-size:0.88rem; color:var(--deep);">Your RRSP room is limited due to your PA, your tax bracket is similar now and in retirement, or you want withdrawal flexibility without affecting OAS or GIS eligibility.</div>
+            </div>
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">For most pension members…</div>
+              <div style="font-size:0.88rem; color:var(--deep);">Maximize your (limited) RRSP room first for the tax deduction, then direct remaining savings into your TFSA. Both accounts working together give you tax diversity in retirement.</div>
+            </div>
+          </div>
+
+          <p style="font-size:0.88rem; color:var(--steel); font-style:italic;">A financial advisor can help you model the right balance based on your specific income, tax situation, and retirement timeline.</p>
+        </div>
+
+      </div><!-- /.card-grid -->
+
+      <div class="callout-box">
+        <p><strong>Check your numbers:</strong> Your RRSP contribution room is printed on your CRA Notice of Assessment each year. You can also view it anytime through <a href="https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-individuals/account-individuals.html" target="_blank" rel="noopener">My CRA Account</a> — the same place you'll find your TFSA room and contribution history.</p>
+      </div>
+
+    </div><!-- /#personalsavings-content -->
+  </div><!-- /.section-inner -->
+</section>
     
     
   </div>
