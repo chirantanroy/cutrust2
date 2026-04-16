@@ -1812,6 +1812,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         overflow:hidden;
         max-height:0px;
         opacity:0;
+      margin-top:24px;
         transition:max-height 0.4s ease, opacity 0.3s ease;">
 
       <p class="sc-subtitle reveal delay-2">Understanding your plan type is the first step to planning your retirement with confidence.</p>
@@ -1946,6 +1947,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         overflow:hidden;
         max-height:0px;
         opacity:0;
+      margin-top:24px;
         transition:max-height 0.4s ease, opacity 0.3s ease;">
 
       <p class="sc-subtitle reveal delay-2">There are several ways to increase your pension benefit beyond your regular contributions — it's worth knowing your options early.</p>
@@ -1978,7 +1980,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
               In many cases, you can fund a service purchase using existing RRSP funds on a tax-sheltered basis — without triggering RRSP withdrawal tax.
             </li>
           </ul>
-          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="#contact">plan administrator</a> to request a service purchase estimate and confirm your eligibility.</p>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="index.html#contact">member service center</a> to request a service purchase estimate and confirm your eligibility.</p>
         </div>
 
         <!-- Card 2: Leaves of Absence -->
@@ -2007,7 +2009,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
               For unpaid or personal leaves, pension accrual typically stops unless you elect to purchase that service at a later date. Notify CUtrust before your leave begins to understand your options.
             </li>
           </ul>
-          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Notify your <a href="#contact">plan administrator</a> as early as possible before a planned leave — options may be time-sensitive.</p>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Notify your <a href="index.html#contact">member service center</a> as early as possible before a planned leave — options may be time-sensitive.</p>
         </div>
 
         <!-- Card 3: Transferring Pension Credits -->
@@ -2036,7 +2038,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
               Pension-to-pension transfers are generally tax-sheltered, meaning no immediate tax is triggered on the transferred amount.
             </li>
           </ul>
-          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="#contact">plan administrator</a> to find out if your prior plan is eligible and to request a transfer estimate.</p>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="index.html#contact">member service center</a> to find out if your prior plan is eligible and to request a transfer estimate.</p>
         </div>
 
       </div><!-- /.card-grid -->
@@ -2049,7 +2051,147 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   </div><!-- /.section-inner -->
 </section>
 
+<!-- SECTION: Retirement Readiness -->
+<section class="content-section" id="retirementreadiness">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Planning for Retirement</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">Retirement Readiness</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="retirementreadiness-content"
+        onclick="
+          const content = document.getElementById('retirementreadiness-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
 
+    <div id="retirementreadiness-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+      margin-top:24px;
+        transition:max-height 0.4s ease, opacity 0.3s ease;">
+
+      <p class="sc-subtitle reveal delay-2">Retirement looks different for everyone — but the members who arrive most prepared are the ones who started thinking about it early.</p>
+
+      <div class="card-grid">
+
+        <!-- Card 1: Know Where You Stand -->
+        <div class="info-card reveal delay-2">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3>Know Where You Stand</h3>
+          <p>Before you can plan for retirement, you need a clear picture of what you're working with. Your retirement income will likely come from several sources — and your CUtrust pension is just one piece of the puzzle.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Your CUtrust Pension</strong><br>
+              Check your most recent annual pension statement for your projected benefit at your Normal Retirement Age. You can also use the <a href="#calculator">DB Pension Calculator</a> to model different retirement ages and scenarios.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>Canada Pension Plan (CPP)</strong><br>
+              Log in to your <a href="https://www.canada.ca/en/employment-social-development/services/my-account.html" target="_blank" rel="noopener">My Service Canada Account</a> to view your CPP Statement of Contributions and get an estimate of your monthly CPP benefit at age 60, 65, or 70.
+            </li>
+            <li>
+              <strong>Old Age Security (OAS)</strong><br>
+              OAS is a flat monthly benefit available to most Canadians at age 65 (or deferred to 70 for a higher amount). Your My Service Canada Account will confirm your eligibility and estimated amount.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Estimate Your Retirement Income -->
+        <div class="info-card reveal delay-3">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Estimate Your Retirement Income</h3>
+          <p>A complete retirement income picture adds up all guaranteed and personal sources. For most CUtrust members, the three pillars look like this:</p>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin:16px 0;">
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Pillar 1 — Your CUtrust Pension</div>
+              <div style="font-size:0.88rem; color:var(--steel);">A guaranteed monthly amount for life, based on your service and earnings. Use the pension calculator to get your estimate.</div>
+            </div>
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Pillar 2 — CPP &amp; OAS</div>
+              <div style="font-size:0.88rem; color:var(--steel);">Government benefits that supplement your pension. Together, CPP and OAS can add anywhere from $1,200 to $2,500+ per month depending on your history and start age.</div>
+            </div>
+            <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Pillar 3 — Personal Savings</div>
+              <div style="font-size:0.88rem; color:var(--steel);">RRSPs, TFSAs, non-registered investments, and any other assets you've built up over your career.</div>
+            </div>
+          </div>
+
+          <p style="font-size:0.9rem; color:var(--steel);">Adding these three together — and comparing to your estimated monthly expenses in retirement — will tell you whether you're on track.</p>
+        </div>
+
+        <!-- Card 3: Your Retirement Planning Timeline -->
+        <div class="info-card reveal delay-4">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3>Your Retirement Planning Timeline</h3>
+          <p>Retirement planning isn't a single event — it's a series of steps taken over time. Here's a general guide to what you should be thinking about at each stage.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>10+ Years Out</strong><br>
+              Confirm your plan division and Normal Retirement Age. Review your annual pension statement. Maximize RRSP and TFSA contributions. Consider purchasing past service while costs are lower.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>5 Years Out</strong><br>
+              Request a formal pension estimate from CUtrust. Log in to My Service Canada to review CPP projections. Start modeling your total retirement income against expected expenses. Review beneficiary designations.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>1–2 Years Out</strong><br>
+              Submit your pension application to CUtrust — ideally 6 months before your intended retirement date. Decide when to start CPP and OAS. Confirm your pension payment option (single life vs. joint &amp; survivor). Review your will and powers of attorney.
+            </li>
+            <li>
+              <strong>At Retirement</strong><br>
+              Confirm your first pension payment date and amount. Set up appropriate tax withholdings on your pension. Notify your benefits administrator of any coverage changes.
+            </li>
+          </ul>
+        </div>
+
+      </div><!-- /.card-grid -->
+
+      <div class="callout-box">
+        <p><strong>Ready to run the numbers?</strong> Use the <a href="our-plans.html#calculator">DB Pension Calculator</a> to model your estimated monthly pension under different retirement ages and scenarios — including the impact of early retirement and Trustee Consent.</p>
+      </div>
+
+    </div><!-- /#retirementreadiness-content -->
+  </div><!-- /.section-inner -->
+</section>
 
     
     
