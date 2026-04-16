@@ -2480,6 +2480,200 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     </div><!-- /#personalsavings-content -->
   </div><!-- /.section-inner -->
 </section>
+
+
+<!-- SECTION: Retiring -->
+<section class="content-section" id="retiring">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Your Pension Plan</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">Retiring</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="retiring-content"
+        onclick="
+          const content = document.getElementById('retiring-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="retiring-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+        transition:max-height 0.4s ease, opacity 0.3s ease;">
+
+      <p class="sc-subtitle reveal delay-2">Retiring is one of the most significant financial decisions you'll make. Understanding your options — and the timing — helps you get it right the first time.</p>
+
+      <!-- Horizontal card stack -->
+      <div style="display:flex; flex-direction:column; gap:1.25rem; margin-top:2rem;">
+
+        <!-- Row 1: Normal Retirement Age -->
+        <div class="info-card reveal delay-2"
+          style="display:flex; flex-direction:row; align-items:flex-start; gap:1.75rem;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem; flex-shrink:0; width:160px;">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <div style="font-family:'DM Serif Display', serif; color:var(--deep); font-size:1rem; text-align:center; line-height:1.3;">Normal Retirement Age</div>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <p style="margin-bottom:12px;">Your Normal Retirement Age (NRA) is the age at which you can retire and receive your full, unreduced pension. Your NRA depends on your plan division.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <div style="flex:1; min-width:180px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:6px;">1.75% Division</div>
+                <div style="font-size:0.88rem; color:var(--deep); line-height:1.7;">
+                  NRA 1 — Age <strong>60</strong><br>
+                  NRA 2 — Age <strong>62</strong><br>
+                  NRA 3 — Age <strong>65</strong>
+                </div>
+              </div>
+              <div style="flex:1; min-width:180px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:6px;">1.20% Division</div>
+                <div style="font-size:0.88rem; color:var(--deep); line-height:1.7;">
+                  NRA 1 — Age <strong>62</strong><br>
+                  NRA 2 — Age <strong>65</strong><br>
+                  NRA 3 — Age <strong>65</strong>
+                </div>
+              </div>
+            </div>
+            <p style="margin-top:12px; font-size:0.88rem; color:var(--steel); font-style:italic;">Check your annual pension statement or <a href="#contact">contact your plan administrator</a> to confirm which NRA applies to you.</p>
+          </div>
+        </div>
+
+        <!-- Row 2: Early Retirement -->
+        <div class="info-card reveal delay-3"
+          style="display:flex; flex-direction:row; align-items:flex-start; gap:1.75rem;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem; flex-shrink:0; width:160px;">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="8 12 12 8 16 12"/>
+                <line x1="12" y1="16" x2="12" y2="8"/>
+              </svg>
+            </div>
+            <div style="font-family:'DM Serif Display', serif; color:var(--deep); font-size:1rem; text-align:center; line-height:1.3;">Early Retirement</div>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <p style="margin-bottom:12px;">You may be eligible to retire before your NRA — but your pension will be actuarially reduced to reflect the longer period over which it will be paid.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <div style="flex:1; min-width:180px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Standard Reduction</div>
+                <div style="font-size:0.88rem; color:var(--deep);">Your pension is reduced by <strong>6% for each year</strong> (0.5%/month) before your NRA. This reduction is permanent.</div>
+              </div>
+              <div style="flex:1; min-width:180px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">With Trustee Consent</div>
+                <div style="font-size:0.88rem; color:var(--deep);">The reduction on pre-2010 service is lowered to <strong>3% per year</strong> — a meaningful difference if you have significant early service.</div>
+              </div>
+            </div>
+            <p style="margin-top:12px; font-size:0.88rem; color:var(--steel);">Use the <a href="our-plans.html#calculator">DB Pension Calculator</a> to compare your estimated pension at different retirement ages, with and without Trustee Consent.</p>
+          </div>
+        </div>
+
+        <!-- Row 3: Trustee Consent -->
+        <div class="info-card reveal delay-3"
+          style="display:flex; flex-direction:row; align-items:flex-start; gap:1.75rem;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem; flex-shrink:0; width:160px;">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div style="font-family:'DM Serif Display', serif; color:var(--deep); font-size:1rem; text-align:center; line-height:1.3;">Trustee Consent</div>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <p style="margin-bottom:12px;">Trustee Consent is a special provision that reduces the early retirement penalty on your pre-2010 service from 6% per year to 3% per year. It can make a significant difference to your monthly pension.</p>
+            <ul style="margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+              <li style="padding-left:1rem; border-left:3px solid var(--accent); font-size:0.93rem; color:var(--steel);">
+                <strong style="color:var(--deep); display:block; margin-bottom:2px;">Eligibility</strong>
+                You must be retiring before your NRA <em>and</em> have at least <strong>10 years of total credited service</strong>. Both conditions must be met.
+              </li>
+              <li style="padding-left:1rem; border-left:3px solid var(--accent); font-size:0.93rem; color:var(--steel);">
+                <strong style="color:var(--deep); display:block; margin-bottom:2px;">What it affects</strong>
+                Trustee Consent only applies to service earned <strong>before 2010</strong>. Post-2010 service is still reduced at 6%/year when retiring early.
+              </li>
+              <li style="padding-left:1rem; border-left:3px solid var(--accent); font-size:0.93rem; color:var(--steel);">
+                <strong style="color:var(--deep); display:block; margin-bottom:2px;">It is not automatic</strong>
+                Trustee Consent must be requested as part of your pension application. <a href="#contact">Contact your plan administrator</a> well before your intended retirement date.
+              </li>
+              <li style="padding-left:1rem; border-left:3px solid var(--accent); font-size:0.93rem; color:var(--steel);">
+                <strong style="color:var(--deep); display:block; margin-bottom:2px;">CRA Maximum</strong>
+                The CRA caps the maximum annual pension at <strong>$3,610.67 per year of service</strong>. This rarely affects members with typical service and earnings but may apply to higher earners with long service.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row 4: Pension Payment Options & Applying -->
+        <div class="info-card reveal delay-4"
+          style="display:flex; flex-direction:row; align-items:flex-start; gap:1.75rem;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:0.75rem; flex-shrink:0; width:160px;">
+            <div class="info-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/>
+                <line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <div style="font-family:'DM Serif Display', serif; color:var(--deep); font-size:1rem; text-align:center; line-height:1.3;">Payment Options &amp; Applying</div>
+          </div>
+          <div style="flex:1; min-width:0;">
+            <p style="margin-bottom:12px;">When you apply for your pension, you will choose how your benefit is paid. <strong>This decision is permanent</strong> and cannot be changed after your first payment is issued.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+              <div style="flex:1; min-width:160px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Single Life</div>
+                <div style="font-size:0.88rem; color:var(--deep);">Highest monthly amount, paid for your lifetime only. Payments stop at your death.</div>
+              </div>
+              <div style="flex:1; min-width:160px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Joint &amp; Survivor</div>
+                <div style="font-size:0.88rem; color:var(--deep);">Reduced monthly amount, with a continuing payment (60%, 75%, or 100%) to your spouse after your death.</div>
+              </div>
+              <div style="flex:1; min-width:160px; background:var(--mist); border-radius:8px; padding:12px 14px;">
+                <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Guarantee Period</div>
+                <div style="font-size:0.88rem; color:var(--deep);">Payments continue to your estate for a set term (e.g., 5 or 10 years) if you die shortly after retirement.</div>
+              </div>
+            </div>
+            <p style="font-size:0.88rem; color:var(--steel);">Submit your pension application at least <strong>6 months before</strong> your intended retirement date. <a href="#contact">Contact your plan administrator</a> to request a retirement package and formal pension estimate.</p>
+          </div>
+        </div>
+
+      </div><!-- /horizontal card stack -->
+
+      <div class="callout-box" style="margin-top:2rem;">
+        <p><strong>Before you decide:</strong> Use the <a href="our-plans.html#calculator">DB Pension Calculator</a> to model your estimated monthly pension at different retirement ages, with and without Trustee Consent. A formal pension estimate from CUtrust will confirm the exact figures for your application.</p>
+      </div>
+
+    </div><!-- /#retiring-content -->
+  </div><!-- /.section-inner -->
+</section>
     
     
   </div>
