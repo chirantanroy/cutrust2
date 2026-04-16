@@ -991,6 +991,142 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     </div>
   </div>
 </div>
+
+<!-- ===== PLAN ASSET MOVEMENT: WATERFALL CHART ===== -->
+<h3 class="reveal delay-2">Plan Asset Movement: 2024</h3>
+<p class="reveal delay-2 highlight-box">Tracking how plan assets grew from <strong>$1.09B at the start of 2024</strong> to <strong>$1.24B at year-end</strong> — showing all income sources and expenditures for the year.</p>
+<div class="reveal delay-3" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <div id="waterfall-chart-wrap" style="min-width:600px;"></div>
+</div>
+<script>
+(function() {
+  // ====================================================
+  // EASILY EDITABLE DATA — update these figures each year
+  // ====================================================
+  var CHART = {
+    openingLabel: "Opening\nBalance",
+    openingYear:  "Dec 31, 2023",
+    openingValue: 1091644484,         // <-- update this
+
+    closingLabel: "Closing\nBalance",
+    closingYear:  "Dec 31, 2024",
+    closingValue: 1242869946,         // <-- update this
+
+    items: [
+      // Positive values = income, negative = expense
+      { label: "Investment\nEarnings",        value:  150657503 },
+      { label: "Employer\nContrib.",           value:   30978711 },
+      { label: "Employee\nContrib.",           value:   19401425 },
+      { label: "Past Service\nContrib.",       value:    1012407 },
+      { label: "Benefit\nPayments",            value:  -43282746 },
+      { label: "Inv. Mgmt\nFees",              value:   -5229578 },
+      { label: "Other\nExpenses",              value:   -2312260 },
+    ],
+
+    yFloor: 950000000,  // Y-axis floor — lower if opening value ever drops below this
+    yPad:   0.10        // Fractional padding above the highest bar
+  };
+  // ====================================================
+
+  var running = CHART.openingValue;
+  var bars = [];
+  bars.push({ label: CHART.openingLabel, sublabel: CHART.openingYear, type: 'base',
+              base: CHART.yFloor, value: CHART.openingValue - CHART.yFloor,
+              runningTotal: CHART.openingValue });
+  CHART.items.forEach(function(item) {
+    bars.push({ label: item.label, sublabel: '',
+                type: item.value >= 0 ? 'income' : 'expense',
+                base: running, value: item.value, runningTotal: running + item.value });
+    running += item.value;
+  });
+  bars.push({ label: CHART.closingLabel, sublabel: CHART.closingYear, type: 'base',
+              base: CHART.yFloor, value: CHART.closingValue - CHART.yFloor,
+              runningTotal: CHART.closingValue });
+
+  var W=800, H=460, ML=72, MR=20, MT=45, MB=92, CW=W-ML-MR, CH=H-MT-MB;
+  var yMax_data = Math.max.apply(null, bars.map(function(b){ return b.runningTotal; }));
+  var yRange = yMax_data - CHART.yFloor;
+  var yMin = CHART.yFloor;
+  var yMax = Math.ceil((yMax_data + yRange * CHART.yPad) / 50000000) * 50000000;
+  var yScale = function(v){ return MT + CH - CH*(v-yMin)/(yMax-yMin); };
+
+  var n = bars.length;
+  var barW = Math.floor(CW/n*0.52);
+  var barSpacing = CW/n;
+  var barX = function(i){ return ML + i*barSpacing + (barSpacing-barW)/2; };
+
+  var COL = { base:'#3D6B7E', income:'#4A9EAF', expense:'#D4A574',
+              grid:'rgba(255,255,255,0.07)', text:'rgba(255,255,255,0.92)',
+              muted:'rgba(255,255,255,0.50)', conn:'rgba(255,255,255,0.22)',
+              axis:'rgba(255,255,255,0.18)' };
+
+  var fmtAbs = function(v){
+    var a=Math.abs(v);
+    return a>=1e9?'$'+(a/1e9).toFixed(3)+'B':'$'+(a/1e6).toFixed(1)+'M';
+  };
+  var fmtDelta = function(v){
+    return (v>=0?'+':'\u2212')+'$'+(Math.abs(v)/1e6).toFixed(1)+'M';
+  };
+
+  var s = '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">';
+
+  // Gridlines
+  for(var g=0;g<=6;g++){
+    var gv=yMin+(yMax-yMin)*g/6, gy=yScale(gv);
+    s+='<line x1="'+ML+'" y1="'+gy+'" x2="'+(W-MR)+'" y2="'+gy+'" stroke="'+COL.grid+'" stroke-width="1"/>';
+    s+='<text x="'+(ML-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+COL.muted
+      +'" font-size="10" font-family="\'Public Sans\',sans-serif">$'+Math.round(gv/1e6)+'M</text>';
+  }
+  // Axes
+  s+='<line x1="'+ML+'" y1="'+MT+'" x2="'+ML+'" y2="'+(MT+CH)+'" stroke="'+COL.axis+'" stroke-width="1"/>';
+  s+='<line x1="'+ML+'" y1="'+(MT+CH)+'" x2="'+(W-MR)+'" y2="'+(MT+CH)+'" stroke="'+COL.axis+'" stroke-width="1"/>';
+
+  // Connector dashes
+  for(var i=0;i<n-1;i++){
+    var cy=yScale(bars[i].runningTotal), cx1=barX(i)+barW, cx2=barX(i+1);
+    s+='<line x1="'+cx1+'" y1="'+cy+'" x2="'+cx2+'" y2="'+cy
+      +'" stroke="'+COL.conn+'" stroke-width="1.5" stroke-dasharray="4,3"/>';
+  }
+
+  // Bars + labels
+  bars.forEach(function(bar,i){
+    var top=Math.max(bar.base,bar.base+bar.value), bot=Math.min(bar.base,bar.base+bar.value);
+    var bx=barX(i), by=yScale(top), bh=Math.max(yScale(bot)-yScale(top),3);
+    var col=COL[bar.type];
+    s+='<rect x="'+bx+'" y="'+by+'" width="'+barW+'" height="'+bh+'" fill="'+col+'" rx="3" opacity="0.92"/>';
+    s+='<rect x="'+bx+'" y="'+by+'" width="'+barW+'" height="2" fill="rgba(255,255,255,0.22)" rx="1"/>';
+
+    var lv = bar.type==='base' ? fmtAbs(bar.runningTotal) : fmtDelta(bar.value);
+    var ly = by-8; if(ly<MT+12) ly=by+14;
+    s+='<text x="'+(bx+barW/2)+'" y="'+ly+'" text-anchor="middle" fill="'+COL.text
+      +'" font-size="9.5" font-weight="600" font-family="\'Public Sans\',sans-serif">'+lv+'</text>';
+
+    bar.label.split('\n').forEach(function(line,li){
+      s+='<text x="'+(bx+barW/2)+'" y="'+(MT+CH+16+li*13)+'" text-anchor="middle" fill="'
+        +(li===0?COL.text:COL.muted)+'" font-size="'+(li===0?'10':'9')+'" font-weight="'
+        +(li===0?'500':'400')+'" font-family="\'Public Sans\',sans-serif">'+line+'</text>';
+    });
+    if(bar.sublabel){
+      s+='<text x="'+(bx+barW/2)+'" y="'+(MT+CH+42)+'" text-anchor="middle" fill="'
+        +COL.muted+'" font-size="8.5" font-family="\'Public Sans\',sans-serif">'+bar.sublabel+'</text>';
+    }
+  });
+
+  // Legend
+  [{c:COL.base,t:'Opening / Closing Balance'},{c:COL.income,t:'Income'},{c:COL.expense,t:'Expenses'}]
+    .forEach(function(li,idx){
+      var lx = ML+10 + idx*220;
+      s+='<rect x="'+lx+'" y="'+(H-18)+'" width="10" height="10" fill="'+li.c+'" rx="2"/>';
+      s+='<text x="'+(lx+14)+'" y="'+(H-8)+'" fill="'+COL.muted+'" font-size="10" font-family="\'Public Sans\',sans-serif">'+li.t+'</text>';
+    });
+
+  s+='</svg>';
+
+  var wrap = document.getElementById('waterfall-chart-wrap');
+  if(wrap) wrap.innerHTML = s;
+})();
+</script>
+
     
   </div>
 </div>
