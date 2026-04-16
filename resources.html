@@ -1906,6 +1906,152 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
 </section>
 
 
+<!-- SECTION: Growing Your Pension -->
+<section class="content-section" id="growyourpension">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Your Pension Plan</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">Growing Your Pension</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="growyourpension-content"
+        onclick="
+          const content = document.getElementById('growyourpension-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="growyourpension-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+        transition:max-height 0.4s ease, opacity 0.3s ease;">
+
+      <p class="sc-subtitle reveal delay-2">There are several ways to increase your pension benefit beyond your regular contributions — it's worth knowing your options early.</p>
+
+      <div class="card-grid">
+
+        <!-- Card 1: Purchasing Past Service -->
+        <div class="info-card reveal delay-2">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 8 12 12 14 14"/>
+              <line x1="12" y1="2" x2="12" y2="4"/>
+            </svg>
+          </div>
+          <h3>Purchasing Past Service</h3>
+          <p>If you have periods of eligible past service that were not previously pensionable — such as time worked before joining the plan, a prior period of part-time employment, or a past leave of absence — you may be able to purchase that service and have it count toward your pension benefit.</p>
+          <p style="margin-top:12px;">Each year of purchased service increases your credited service total, which directly increases your pension at retirement using the plan formula.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Cost</strong><br>
+              The purchase cost is actuarially determined based on your age, salary, and the type of service being purchased. Costs generally rise the longer you wait.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>Payment options</strong><br>
+              You may be able to pay in a lump sum or through payroll deductions over a set period.
+            </li>
+            <li>
+              <strong>RRSP transfers</strong><br>
+              In many cases, you can fund a service purchase using existing RRSP funds on a tax-sheltered basis — without triggering RRSP withdrawal tax.
+            </li>
+          </ul>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="#contact">plan administrator</a> to request a service purchase estimate and confirm your eligibility.</p>
+        </div>
+
+        <!-- Card 2: Leaves of Absence -->
+        <div class="info-card reveal delay-3">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <h3>Leaves of Absence &amp; Your Pension</h3>
+          <p>Taking time away from work — whether for parental leave, medical reasons, or a personal leave — can affect your pension accrual. Understanding your options helps you protect your benefit.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Maternity &amp; Parental Leave</strong><br>
+              You may continue to accrue pension credit during maternity and parental leave. In many cases, both your contributions and your employer's contributions continue based on your regular earnings. Confirm the rules that apply to your plan division with your administrator.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>Long-Term Disability Leave</strong><br>
+              If you are receiving LTD benefits, your pension contributions may be waived — meaning you continue to accrue credited service without making contributions out of pocket, depending on your plan provisions.
+            </li>
+            <li>
+              <strong>Other Approved Leaves</strong><br>
+              For unpaid or personal leaves, pension accrual typically stops unless you elect to purchase that service at a later date. Notify CUtrust before your leave begins to understand your options.
+            </li>
+          </ul>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Notify your <a href="#contact">plan administrator</a> as early as possible before a planned leave — options may be time-sensitive.</p>
+        </div>
+
+        <!-- Card 3: Transferring Pension Credits -->
+        <div class="info-card reveal delay-4">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="17 1 21 5 17 9"/>
+              <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+              <polyline points="7 23 3 19 7 15"/>
+              <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+            </svg>
+          </div>
+          <h3>Transferring Pension Credits</h3>
+          <p>If you were previously a member of another registered pension plan before joining CUtrust, you may be eligible to transfer that pension credit into your CUtrust plan — consolidating your retirement savings in one place and boosting your credited service.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Eligibility</strong><br>
+              Transfers are subject to reciprocal agreements between the two pension plans and must generally be initiated within a set timeframe after joining CUtrust.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>What transfers</strong><br>
+              The commuted value of your prior pension benefit is transferred into CUtrust and converted into credited service under your current plan division.
+            </li>
+            <li>
+              <strong>Tax treatment</strong><br>
+              Pension-to-pension transfers are generally tax-sheltered, meaning no immediate tax is triggered on the transferred amount.
+            </li>
+          </ul>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="#contact">plan administrator</a> to find out if your prior plan is eligible and to request a transfer estimate.</p>
+        </div>
+
+      </div><!-- /.card-grid -->
+
+      <div class="callout-box">
+        <p><strong>Tip:</strong> Service purchases and pension transfers tend to cost more the longer you wait — your age and salary both affect the calculation. If you think you may have eligible past service, it's worth requesting an estimate sooner rather than later.</p>
+      </div>
+
+    </div><!-- /#growyourpension-content -->
+  </div><!-- /.section-inner -->
+</section>
+
+
+
+    
     
   </div>
 </section>
