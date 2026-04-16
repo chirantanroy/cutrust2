@@ -2539,7 +2539,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </svg>
           </div>
           <h3>Normal Retirement Age</h3>
-          <p>Your Normal Retirement Age (NRA) is the age at which you can retire and receive your full, unreduced pension. Your NRA depends on your plan division.</p>
+          <p>For DB Plan members, Your Normal Retirement Age (NRA) is the age at which you can retire and receive your full, unreduced pension. Your NRA depends on your plan division.</p>
 
           <div style="display:flex; flex-direction:column; gap:10px; margin:16px 0;">
             <div style="background:var(--mist); border-radius:8px; padding:12px 14px;">
@@ -2573,7 +2573,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </svg>
           </div>
           <h3>Early Retirement</h3>
-          <p>You may be eligible to retire before your NRA — but your pension will be actuarially reduced to reflect the longer period over which it will be paid. Understanding the reduction helps you make an informed decision.</p>
+          <p>If you are a defined benefit pension plan member, you may be eligible to retire before your NRA — but your pension will be actuarially reduced to reflect the longer period over which it will be paid. Understanding the reduction helps you make an informed decision.</p>
 
           <ul style="margin-top:12px;">
             <li style="margin-bottom:10px;">
@@ -2600,7 +2600,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </svg>
           </div>
           <h3>Trustee Consent</h3>
-          <p>Trustee Consent is a special provision that reduces the early retirement penalty on your pre-2010 service from 6% per year to 3% per year. It can make a significant difference to your monthly pension if you plan to retire before your NRA.</p>
+          <p>For DB plan members, trustee Consent is a special provision that reduces the early retirement penalty on your pre-2010 service from 6% per year to 3% per year. It can make a significant difference to your monthly pension if you plan to retire before your NRA.</p>
           <ul style="margin-top:12px;">
             <li style="margin-bottom:10px;">
               <strong>Eligibility</strong><br>
@@ -2612,7 +2612,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
             </li>
             <li style="margin-bottom:10px;">
               <strong>It is not automatic</strong><br>
-              Trustee Consent must be requested as part of your pension application. Contact your <a href="#contact">plan administrator</a> well before your intended retirement date to confirm eligibility and initiate the process.
+              Trustee Consent must be requested as part of your pension application. Contact your <a href="index.html#contact">plan administrator</a> well before your intended retirement date to confirm eligibility and initiate the process.
             </li>
             <li>
               <strong>CRA Maximum</strong><br>
@@ -2651,18 +2651,164 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
               Submit your pension application to CUtrust at least <strong>6 months before</strong> your intended retirement date. Your application package will include your payment option election, banking information, and tax withholding preferences.
             </li>
           </ul>
-          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="#contact">plan administrator</a> to request a retirement package and get a formal pension estimate before making your payment option decision.</p>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">Contact your <a href="index.html#contact">plan administrator</a> to request a retirement package and get a formal pension estimate before making your payment option decision.</p>
+        </div>
+
+      </div><!-- /.card-grid -->
+
+    </div><!-- /#retiring-content -->
+  </div><!-- /.section-inner -->
+</section>
+
+
+<!-- SECTION: Estate Planning -->
+<section class="content-section" id="estateplanning">
+  <div class="section-inner">
+    <div class="section-label reveal" style="color:var(--steel);">Financial Wellness</div>
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <h2 class="reveal delay-1">Estate Planning</h2>
+      <button
+        class="toggle-btn"
+        aria-expanded="false"
+        aria-controls="estateplanning-content"
+        onclick="
+          const content = document.getElementById('estateplanning-content');
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          this.querySelector('.toggle-label').textContent = expanded ? 'Show' : 'Hide';
+          this.querySelector('.toggle-icon').style.transform = expanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+          content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
+          content.style.opacity = expanded ? '0' : '1';
+        "
+        style="
+          display:inline-flex; align-items:center; gap:6px;
+          background:transparent; border:1.5px solid var(--steel);
+          color:var(--steel); border-radius:20px; padding:10px 20px;
+          font-size:1rem; font-weight:500; cursor:pointer;
+          transition:all 0.2s ease; white-space:nowrap;
+        "
+      >
+        <span class="toggle-label">Show</span>
+        <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:18px; height:18px; transition:transform 0.3s ease; transform:rotate(-90deg);">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="estateplanning-content"
+      style="
+        overflow:hidden;
+        max-height:0px;
+        opacity:0;
+        transition:max-height 0.4s ease, opacity 0.3s ease;">
+
+      <p class="sc-subtitle reveal delay-2">Estate planning isn't just for the wealthy — it's how you make sure your pension, your assets, and your wishes are protected for the people who matter most.</p>
+
+      <div class="card-grid">
+
+        <!-- Card 1: Your Will & Why It Matters -->
+        <div class="info-card reveal delay-2">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3>Your Will &amp; Why It Matters</h3>
+          <p>A will is a legal document that sets out how your assets should be distributed after your death. Without one, BC's intestacy laws determine who receives your estate — which may not reflect your wishes.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>What a will covers</strong><br>
+              Property, bank accounts, investments, personal belongings, and the care of any dependent children. It also names an executor — the person responsible for carrying out your wishes.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>What a will does not cover</strong><br>
+              Assets that pass by beneficiary designation — including your pension death benefit, life insurance, and registered accounts (RRSPs, TFSAs) — are not governed by your will. These go directly to your named beneficiary, regardless of what your will says.
+            </li>
+            <li>
+              <strong>Keeping your will current</strong><br>
+              Review your will after any major life event: marriage, divorce, the birth of a child, a death in the family, or a significant change in assets. An outdated will can cause serious complications for your estate.
+            </li>
+          </ul>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">A wills and estates lawyer can prepare a will tailored to your situation. Many offer flat-fee packages for straightforward estates.</p>
+        </div>
+
+        <!-- Card 2: Beneficiary Designations -->
+        <div class="info-card reveal delay-3">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Beneficiary Designations</h3>
+          <p>Your beneficiary designation is one of the most important — and most overlooked — documents in your financial life. It determines who receives your pension death benefit and other registered assets directly, outside of your will and estate.</p>
+          <ul style="margin-top:12px;">
+            <li style="margin-bottom:10px;">
+              <strong>Pension death benefit</strong><br>
+              If you die before or after retirement, a death benefit may be payable from the plan. Your named beneficiary receives this directly — quickly and without going through probate. If no beneficiary is named, the benefit forms part of your estate and may be subject to delays and fees.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>Life insurance &amp; registered accounts</strong><br>
+              Your group life insurance and any RRSPs or TFSAs also pass by beneficiary designation. Ensure the names and percentages are current across all accounts.
+            </li>
+            <li style="margin-bottom:10px;">
+              <strong>Designating a minor</strong><br>
+              If you name a minor child as beneficiary, a trustee must be appointed to manage the funds until the child reaches adulthood. Consider naming a trusted adult or setting up a trust instead.
+            </li>
+            <li>
+              <strong>Keeping designations updated</strong><br>
+              Marriage, separation, divorce, and death of a beneficiary are all triggers to review and update your designations. A former spouse remaining as beneficiary is one of the most common — and costly — estate planning mistakes.
+            </li>
+          </ul>
+          <p style="margin-top:12px; font-style:italic; font-size:0.9rem; color:var(--steel);">To update your CUtrust pension beneficiary, complete a <a href="#contact">Beneficiary Designation form</a> and submit it to the plan administrator.</p>
+        </div>
+
+        <!-- Card 3: Powers of Attorney & Representation Agreements -->
+        <div class="info-card reveal delay-4">
+          <div class="info-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <h3>Powers of Attorney &amp; Representation Agreements</h3>
+          <p>A will only takes effect after death. Powers of attorney and representation agreements protect you while you are alive — if you become incapacitated or unable to make decisions for yourself.</p>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin:16px 0;">
+            <div style="background:rgba(61,107,126,0.08); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Enduring Power of Attorney (EPOA)</div>
+              <div style="font-size:0.88rem; color:var(--deep);">Authorises a trusted person to manage your financial and legal affairs — including your bank accounts, property, and pension matters — if you lose capacity. Without an EPOA, a court application may be required to manage your affairs, which is costly and time-consuming.</div>
+            </div>
+            <div style="background:rgba(61,107,126,0.08); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">Representation Agreement</div>
+              <div style="font-size:0.88rem; color:var(--deep);">Specific to BC, this document authorises someone to make personal care and health care decisions on your behalf — including medical treatment, living arrangements, and end-of-life decisions — if you are unable to do so yourself.</div>
+            </div>
+            <div style="background:rgba(61,107,126,0.08); border-radius:8px; padding:12px 14px;">
+              <div style="font-weight:600; color:var(--deep); font-size:0.9rem; margin-bottom:4px;">When to put these in place</div>
+              <div style="font-size:0.88rem; color:var(--deep);">These documents can only be signed while you have legal capacity — you cannot put them in place after incapacity occurs. It is never too early to have them prepared.</div>
+            </div>
+          </div>
+
+          <p style="font-size:0.88rem; color:var(--steel); font-style:italic;">BC's <a href="https://www.nidus.ca" target="_blank" rel="noopener">Nidus Personal Planning Resource Centre</a> offers plain-language guides and standard-form kits for representation agreements.</p>
         </div>
 
       </div><!-- /.card-grid -->
 
       <div class="callout-box">
-        <p><strong>Before you decide:</strong> Use the <a href="our-plans.html#calculator">DB Pension Calculator</a> to model your estimated monthly pension at different retirement ages, with and without Trustee Consent. A formal pension estimate from CUtrust will confirm the exact figures for your application.</p>
+        <p><strong>When to review your estate plan:</strong> Marriage or divorce, birth or adoption of a child, death of a beneficiary or executor, a major change in assets, moving to a new province, or any time more than 3–5 years have passed since your last review. Your beneficiary designations at CUtrust can be updated at any time — contact the <a href="#contact">plan administrator</a> to request the form.</p>
       </div>
 
-    </div><!-- /#retiring-content -->
+    </div><!-- /#estateplanning-content -->
   </div><!-- /.section-inner -->
 </section>
+
     
     
   </div>
