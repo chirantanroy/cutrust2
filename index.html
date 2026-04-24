@@ -816,7 +816,6 @@ nav.scrolled .nav-hamburger span {
   animation:lipulse 1.5s ease-in-out infinite;
   display:inline-block; flex-shrink:0;
 }
-/* Authentic LinkedIn button style */
 .li-follow-btn {
   display:inline-flex; align-items:center; gap:9px;
   padding:10px 20px; background:#0A66C2; border-radius:6px;
@@ -825,11 +824,18 @@ nav.scrolled .nav-hamburger span {
   align-self:flex-start; margin-top:8px; transition:background 0.2s ease;
 }
 .li-follow-btn:hover { background:#004182; }
-.li-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.li-slider-outer { overflow:hidden; }
+.li-slider-track {
+  display:flex; gap:24px;
+  transition:transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  will-change:transform;
+}
 .li-card {
+  flex:0 0 calc(33.333% - 16px); min-width:0;
   background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
   border-radius:20px; overflow:hidden; display:flex; flex-direction:column;
-  transition:0.4s cubic-bezier(0.22,1,0.36,1); text-decoration:none;
+  transition:background 0.4s,border-color 0.4s,transform 0.4s,box-shadow 0.4s;
+  text-decoration:none;
 }
 .li-card:hover {
   background:rgba(255,255,255,0.08); border-color:rgba(212,165,116,0.25);
@@ -848,8 +854,8 @@ nav.scrolled .nav-hamburger span {
   flex-shrink:0; background:#fff;
 }
 .li-card-avatar img {
-  width:100%; height:100%; object-fit:contain;
-  display:block; padding:4px; box-sizing:border-box;
+  width:100%; height:100%; object-fit:contain; display:block;
+  padding:4px; box-sizing:border-box;
 }
 .li-card-meta { flex:1; min-width:0; }
 .li-card-name {
@@ -882,6 +888,30 @@ nav.scrolled .nav-hamburger span {
   display:flex; align-items:center; gap:4px; transition:color 0.2s;
 }
 .li-card-readmore:hover { color:#E8C9A8; }
+.li-slider-nav {
+  display:flex; align-items:center; justify-content:center;
+  gap:20px; margin-top:36px;
+}
+.li-arrow {
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.6);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.3s ease;
+  font-size:1.1rem; line-height:1; padding:0;
+}
+.li-arrow:hover:not(:disabled) {
+  background:rgba(212,165,116,0.15);
+  border-color:rgba(212,165,116,0.4); color:#D4A574;
+}
+.li-arrow:disabled { opacity:0.3; cursor:not-allowed; }
+.li-dots { display:flex; gap:8px; align-items:center; }
+.li-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,0.2); border:none;
+  cursor:pointer; transition:all 0.3s ease; padding:0;
+}
+.li-dot.active { background:#D4A574; width:24px; border-radius:4px; }
 .li-skeleton {
   background:linear-gradient(90deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.08) 50%,rgba(255,255,255,0.04) 100%);
   background-size:1000px 100%; animation:li-shimmer 1.5s infinite; border-radius:8px;
@@ -892,9 +922,8 @@ nav.scrolled .nav-hamburger span {
 }
 .li-powered a { color:rgba(255,255,255,0.2); text-decoration:none; }
 .li-powered a:hover { color:rgba(255,255,255,0.4); }
-@media(max-width:900px) { .li-grid { grid-template-columns:repeat(2,1fr); } }
-@media(max-width:600px) { .li-grid { grid-template-columns:1fr; } }
-
+@media(max-width:900px) { .li-card { flex:0 0 calc(50% - 12px); } }
+@media(max-width:600px) { .li-card { flex:0 0 100%; } }
 
   
 /* ─── PLANS ─── */
@@ -1775,6 +1804,8 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   </div>
 </section>-->
 
+
+
 <section id="updates" class="updates">
 
   <div class="li-widget-header reveal">
@@ -1795,36 +1826,44 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     </a>
   </div>
 
-  <div class="li-grid" id="liGrid">
-    <div class="li-card">
-      <div class="li-skeleton" style="height:180px;border-radius:20px 20px 0 0;"></div>
-      <div style="padding:14px 16px;">
-        <div class="li-skeleton" style="height:14px;width:60%;margin-bottom:10px;"></div>
-        <div class="li-skeleton" style="height:12px;width:100%;margin-bottom:6px;"></div>
-        <div class="li-skeleton" style="height:12px;width:85%;"></div>
+  <div class="li-slider-outer">
+    <div class="li-slider-track" id="liTrack">
+      <div class="li-card">
+        <div class="li-skeleton" style="height:180px;border-radius:20px 20px 0 0;"></div>
+        <div style="padding:14px 16px;">
+          <div class="li-skeleton" style="height:14px;width:60%;margin-bottom:10px;"></div>
+          <div class="li-skeleton" style="height:12px;width:100%;margin-bottom:6px;"></div>
+          <div class="li-skeleton" style="height:12px;width:85%;"></div>
+        </div>
       </div>
-    </div>
-    <div class="li-card">
-      <div class="li-skeleton" style="height:180px;border-radius:20px 20px 0 0;"></div>
-      <div style="padding:14px 16px;">
-        <div class="li-skeleton" style="height:14px;width:60%;margin-bottom:10px;"></div>
-        <div class="li-skeleton" style="height:12px;width:100%;margin-bottom:6px;"></div>
-        <div class="li-skeleton" style="height:12px;width:85%;"></div>
+      <div class="li-card">
+        <div class="li-skeleton" style="height:180px;border-radius:20px 20px 0 0;"></div>
+        <div style="padding:14px 16px;">
+          <div class="li-skeleton" style="height:14px;width:60%;margin-bottom:10px;"></div>
+          <div class="li-skeleton" style="height:12px;width:100%;margin-bottom:6px;"></div>
+          <div class="li-skeleton" style="height:12px;width:85%;"></div>
+        </div>
       </div>
-    </div>
-    <div class="li-card">
-      <div class="li-skeleton" style="height:180px;border-radius:20px 20px 0 0;"></div>
-      <div style="padding:14px 16px;">
-        <div class="li-skeleton" style="height:14px;width:60%;margin-bottom:10px;"></div>
-        <div class="li-skeleton" style="height:12px;width:100%;margin-bottom:6px;"></div>
-        <div class="li-skeleton" style="height:12px;width:85%;"></div>
+      <div class="li-card">
+        <div class="li-skeleton" style="height:180px;border-radius:20px 20px 0 0;"></div>
+        <div style="padding:14px 16px;">
+          <div class="li-skeleton" style="height:14px;width:60%;margin-bottom:10px;"></div>
+          <div class="li-skeleton" style="height:12px;width:100%;margin-bottom:6px;"></div>
+          <div class="li-skeleton" style="height:12px;width:85%;"></div>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="li-slider-nav">
+    <button class="li-arrow" id="liPrev" disabled>&#8592;</button>
+    <div class="li-dots" id="liDots"></div>
+    <button class="li-arrow" id="liNext">&#8594;</button>
+  </div>
+
   <div class="li-powered">Powered by <a href="https://curator.io" target="_blank">Curator.io</a></div>
 
-</section>
+</section>  
   
 
 <!-- PLANS -->
@@ -2459,24 +2498,65 @@ var typingInterval = setInterval(function() {
 
 
 // LinkedIn Feed
- <script>
+<script>
 (function () {
   var FEED_ID = '011ec7b4-2226-495d-b2df-4ef5a28ab0cb';
-
-  /* Brand logo — pulled directly from the nav logo already on the page */
   var brandLogo = (document.querySelector('img.nav-logo-img.nav-logo-dark') || {}).src || '';
+  var current = 0;
+  var posts = [];
 
-  var GLOBE = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="rgba(255,255,255,0.4)"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zm5-4.5c-.4 1-.6 2.1-.7 3.3H3.2A5.1 5.1 0 016.5 3.5zm-3.3 4.8h2.6c0 1.1.3 2.2.7 3.2a5.1 5.1 0 01-3.3-3.2zm4.1 3.5c-.5-1-.8-2.2-.8-3.5h3c0 1.3-.3 2.5-.8 3.5-.2.4-.3.5-.7.5s-.5-.1-.7-.5zm.7-8.3c.4 0 .5.1.7.5.5 1 .8 2.2.8 3.5h-3c0-1.3.3-2.5.8-3.5.2-.4.3-.5.7-.5zm2.3.5a5.1 5.1 0 013.3 3.3h-2.6c-.1-1.2-.3-2.3-.7-3.3zm.7 4.8a5.1 5.1 0 01-3.3 3.2c.4-1 .6-2.1.7-3.2h2.6z"/></svg>';
+  var GLOBE   = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="rgba(255,255,255,0.4)"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zm5-4.5c-.4 1-.6 2.1-.7 3.3H3.2A5.1 5.1 0 016.5 3.5zm-3.3 4.8h2.6c0 1.1.3 2.2.7 3.2a5.1 5.1 0 01-3.3-3.2zm4.1 3.5c-.5-1-.8-2.2-.8-3.5h3c0 1.3-.3 2.5-.8 3.5-.2.4-.3.5-.7.5s-.5-.1-.7-.5zm.7-8.3c.4 0 .5.1.7.5.5 1 .8 2.2.8 3.5h-3c0-1.3.3-2.5.8-3.5.2-.4.3-.5.7-.5zm2.3.5a5.1 5.1 0 013.3 3.3h-2.6c-.1-1.2-.3-2.3-.7-3.3zm.7 4.8a5.1 5.1 0 01-3.3 3.2c.4-1 .6-2.1.7-3.2h2.6z"/></svg>';
   var HEART   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
   var COMMENT = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
   var ARROW   = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
 
-  function timeAgo(dateStr) {
-    var d = Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
-    if (d < 1)   return 'Today';
+  function spv() {
+    return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  }
+  function maxIdx() { return Math.max(0, posts.length - spv()); }
+
+  function buildDots() {
+    var dots = document.getElementById('liDots');
+    if (!dots) return;
+    dots.innerHTML = '';
+    var count = maxIdx() + 1;
+    for (var i = 0; i < count; i++) {
+      var d = document.createElement('button');
+      d.className = 'li-dot' + (i === current ? ' active' : '');
+      d.setAttribute('data-i', i);
+      d.onclick = function () { goTo(parseInt(this.getAttribute('data-i'))); };
+      dots.appendChild(d);
+    }
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, maxIdx()));
+    var track = document.getElementById('liTrack');
+    var cards = track ? track.querySelectorAll('.li-card') : [];
+    if (!cards.length) return;
+    var cardW = cards[0].offsetWidth + 24;
+    track.style.transform = 'translateX(' + (-current * cardW) + 'px)';
+    document.querySelectorAll('.li-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    var prev = document.getElementById('liPrev');
+    var next = document.getElementById('liNext');
+    if (prev) prev.disabled = current === 0;
+    if (next) next.disabled = current >= maxIdx();
+  }
+
+  document.getElementById('liPrev').onclick = function () { goTo(current - 1); };
+  document.getElementById('liNext').onclick = function () { goTo(current + 1); };
+  window.addEventListener('resize', function () {
+    buildDots(); goTo(Math.min(current, maxIdx()));
+  });
+
+  function timeAgo(s) {
+    var d = Math.floor((Date.now() - new Date(s).getTime()) / 86400000);
+    if (d < 1) return 'Today';
     if (d === 1) return '1d ago';
-    if (d < 7)   return d + 'd ago';
-    if (d < 30)  return Math.floor(d / 7) + 'w ago';
+    if (d < 7) return d + 'd ago';
+    if (d < 30) return Math.floor(d / 7) + 'w ago';
     return Math.floor(d / 30) + 'mo ago';
   }
 
@@ -2485,22 +2565,18 @@ var typingInterval = setInterval(function() {
   }
 
   function buildCard(post) {
-    /* Direct post URL — urn:li:activity confirmed working */
     var postUrl = 'https://www.linkedin.com/feed/update/urn:li:activity:' + post.source_identifier + '/';
-
     var imgHtml = (post.image_large || post.image)
       ? '<div class="li-card-img-wrap"><img src="' + (post.image_large || post.image) + '" alt="" loading="lazy"></div>'
       : '<div class="li-card-img-placeholder"></div>';
-
-    var avatarHtml = brandLogo
+    var avatar = brandLogo
       ? '<div class="li-card-avatar"><img src="' + brandLogo + '" alt="CUtrust"></div>'
       : '<div class="li-card-avatar" style="display:flex;align-items:center;justify-content:center;font-family:\'Public Sans\',sans-serif;font-size:10px;font-weight:700;color:#3D6B7E;">CU</div>';
-
     return '<a class="li-card" href="' + postUrl + '" target="_blank" rel="noopener">'
       + imgHtml
       + '<div class="li-card-body">'
         + '<div class="li-card-header">'
-          + avatarHtml
+          + avatar
           + '<div class="li-card-meta">'
             + '<div class="li-card-name">' + esc(post.user_full_name) + '</div>'
             + '<div class="li-card-sub">' + timeAgo(post.source_created_at) + ' ' + GLOBE + '</div>'
@@ -2521,18 +2597,20 @@ var typingInterval = setInterval(function() {
   fetch('https://api.curator.io/v1/feeds/' + FEED_ID + '/posts?limit=6')
     .then(function (r) { return r.json(); })
     .then(function (data) {
-      var grid = document.getElementById('liGrid');
-      if (!grid) return;
-      var posts = data.posts || [];
+      var track = document.getElementById('liTrack');
+      if (!track) return;
+      posts = data.posts || [];
       if (!posts.length) {
-        grid.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:\'Public Sans\',sans-serif;">No posts yet.</p>';
+        track.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:\'Public Sans\',sans-serif;padding:40px 0;">No posts yet.</p>';
         return;
       }
-      grid.innerHTML = posts.map(buildCard).join('');
+      track.innerHTML = posts.map(buildCard).join('');
+      buildDots();
+      goTo(0);
     })
     .catch(function () {
-      var grid = document.getElementById('liGrid');
-      if (grid) grid.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:\'Public Sans\',sans-serif;">Could not load posts.</p>';
+      var track = document.getElementById('liTrack');
+      if (track) track.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:\'Public Sans\',sans-serif;padding:40px 0;">Could not load posts.</p>';
     });
 })();
 </script> 
