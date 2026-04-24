@@ -786,6 +786,100 @@ nav.scrolled .nav-hamburger span {
   }
 }
 
+
+/* ════════════════════════════════════════════
+   LinkedIn Feed Section — CUtrust Theme
+   ════════════════════════════════════════════ */
+@keyframes lipulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Curator feed background reset */
+#curator-feed-default-feed-layout,
+.crt-feed,
+.crt-feed-scroll {
+  background: transparent !important;
+}
+
+/* Cards */
+.crt-post {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  transition: 0.4s cubic-bezier(0.22,1,0.36,1) !important;
+}
+.crt-post:hover {
+  background: rgba(255,255,255,0.08) !important;
+  border-color: rgba(212,165,116,0.25) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35) !important;
+}
+
+/* Post name */
+.crt-post-fullname a {
+  color: #ffffff !important;
+  font-family: 'Public Sans', sans-serif !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+.crt-post-fullname a:hover { color: #D4A574 !important; }
+
+/* Post text */
+.crt-post-text {
+  color: rgba(255,255,255,0.75) !important;
+  font-family: 'Public Sans', sans-serif !important;
+  font-size: 0.85rem !important;
+  line-height: 1.65 !important;
+}
+
+/* Read more */
+.crt-post-read-more-button {
+  color: #D4A574 !important;
+  font-family: 'Public Sans', sans-serif !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+.crt-post-read-more-button:hover { color: #E8C9A8 !important; }
+
+/* Date */
+.crt-post-date { color: rgba(255,255,255,0.4) !important; }
+
+/* Footer / share bar */
+.crt-post-text-footer {
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+.crt-share-button {
+  color: rgba(255,255,255,0.4) !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: 'Public Sans', sans-serif !important;
+  border-radius: 8px !important;
+  transition: all 0.25s !important;
+  cursor: pointer !important;
+}
+.crt-share-button:hover {
+  background: rgba(255,255,255,0.07) !important;
+  color: rgba(255,255,255,0.85) !important;
+}
+
+/* "Powered by Curator.io" */
+.crt-logo.crt-tag {
+  color: rgba(255,255,255,0.2) !important;
+  font-size: 0.7rem !important;
+  text-decoration: none !important;
+  display: block !important;
+  text-align: right !important;
+  margin-top: 12px !important;
+}
+.crt-logo.crt-tag:hover { color: rgba(255,255,255,0.4) !important; }
+
+
+
+  
 /* ─── PLANS ─── */
 .plans {
   padding: 120px 48px;
@@ -1553,7 +1647,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   </div>
 </section>
 
-<!-- UPDATES -->
+<!-- UPDATES
 <section class="updates" id="updates">
   <div class="section-label reveal">Latest Updates</div>
   <h2 class="reveal delay-1">What's New</h2>
@@ -1567,11 +1661,11 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
        3. Update the href to point to the blog post HTML file
        4. Update the thumbnail image, category tag, title, and excerpt
        5. Keep slides in reverse-chronological order (newest first)
-       ══════════════════════════════════════════════════════════════ -->
+       ══════════════════════════════════════════════════════════════ 
   <div class="news-slider-wrapper reveal delay-2">
     <div class="news-slider" id="newsSlider">
 
-      <!-- SLIDE 1 (newest) -->
+      <!-- SLIDE 1 (newest) 
       <div class="news-slide">
         <div class="news-card">
           <div class="news-card-img">
@@ -1586,7 +1680,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         </div>
       </div>
 
-      <!-- SLIDE 2 -->
+      <!-- SLIDE 2
       <div class="news-slide">
         <div class="news-card">
           <div class="news-card-img">
@@ -1601,7 +1695,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         </div>
       </div>
 
-      <!-- SLIDE 3 -->
+      <!-- SLIDE 3
       <div class="news-slide">
         <div class="news-card">
           <div class="news-card-img">
@@ -1616,7 +1710,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         </div>
       </div>
 
-      <!-- SLIDE 4 -->
+      <!-- SLIDE 4
       <div class="news-slide">
         <div class="news-card">
           <div class="news-card-img">
@@ -1631,7 +1725,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         </div>
       </div>
 
-      <!-- SLIDE 5 (oldest) -->
+      <!-- SLIDE 5 (oldest)
       <div class="news-slide">
         <div class="news-card">
           <div class="news-card-img">
@@ -1646,10 +1740,10 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
         </div>
       </div>
 
-    </div><!-- /.news-slider -->
-  </div><!-- /.news-slider-wrapper -->
+    </div><!-- /.news-slider
+  </div><!-- /.news-slider-wrapper
 
-  <!-- Slider Navigation -->
+  <!-- Slider Navigation
   <div class="slider-nav">
     <div class="slider-dots" id="sliderDots"></div>
     <a href="resources.html" class="slider-viewall">View all posts <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
@@ -1662,7 +1756,44 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
       </button>
     </div>
   </div>
+</section>-->
+
+<section id="updates" class="updates">
+
+  <!-- Section Header -->
+  <div class="reveal" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:48px;">
+
+    <div>
+      <!-- Live badge -->
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(10,102,194,0.12);border:1px solid rgba(10,102,194,0.25);border-radius:20px;padding:4px 14px;font-family:'Public Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5BB8E8;margin-bottom:14px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#0A66C2;animation:lipulse 1.5s ease-in-out infinite;display:inline-block;flex-shrink:0;"></span>
+        LinkedIn Feed
+      </div>
+      <div class="section-label">LATEST FROM LINKEDIN</div>
+      <h2>What's New</h2>
+    </div>
+
+    <!-- Follow button — white LinkedIn icon, visible on dark bg -->
+    <a href="https://www.linkedin.com/company/cutrustbc/"
+       target="_blank"
+       rel="noopener"
+       style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:rgba(10,102,194,0.15);border:1.5px solid rgba(10,102,194,0.4);border-radius:40px;color:#ffffff;font-family:'Public Sans',sans-serif;font-size:0.9rem;font-weight:600;text-decoration:none;align-self:flex-start;margin-top:8px;transition:all 0.3s ease;">
+      <!-- LinkedIn icon in white so it's visible on the dark background -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 10 1.78 1.78 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+      </svg>
+      Follow on LinkedIn
+    </a>
+
+  </div>
+
+  <!-- Curator Live Feed -->
+  <div id="curator-feed-default-feed-layout">
+    <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a>
+  </div>
+
 </section>
+  
 
 <!-- PLANS -->
 <section class="plans" id="plans">
@@ -2292,6 +2423,17 @@ var typingInterval = setInterval(function() {
   sendBtn.addEventListener('click', function() { sendChatMessage(); });
 })();
 </script>
+
+<!-- Curator LinkedIn Feed Script -->
+<script type="text/javascript">
+(function(){
+  var i,e,d=document,s="script";
+  i=d.createElement("script");i.async=1;i.charset="UTF-8";
+  i.src="https://cdn.curator.io/published/011ec7b4-2226-495d-b2df-4ef5a28ab0cb.js";
+  e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i,e);
+})();
+</script>
+  
 
 </body>
 </html>
