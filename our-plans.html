@@ -218,10 +218,54 @@ nav.scrolled .nav-hamburger span {
 .funded-table tr:last-child td{border-bottom:none}
 .funded-table .highlight{font-weight:700;color:var(--deep);font-family:'Public Sans',sans-serif;font-size:1.2rem}
 
-  .funding-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.funding-stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.funding-division-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.funding-row-divlabel {
+  flex: 0 0 160px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 28px;
+  border-right: 2px solid rgba(255, 255, 255, 0.18);
+  align-self: stretch;
+}
+
+.funding-row-divname {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: right;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.funding-row-divname span {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.funding-row-cards {
+  display: flex;
   gap: 16px;
+  flex: 1;
+}
+
+.funding-row-cards .funding-stat-card {
+  flex: 1;
 }
 
 .funding-stat-card {
@@ -965,31 +1009,44 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
 
     <div class="projection-card reveal delay-3">
   <div class="funding-stats-grid">
-    <div class="funding-stat-card">
-      <div class="funding-stat-division-label">1.75% Division</div>
-      <div class="funding-stat-number">120%</div>
-      <div class="funding-stat-metric">Estimated Going-Concern Funded Status</div>
-      <div class="funding-stat-sub">including PfAD</div>
+
+  <!-- 1.75% Division Row -->
+  <div class="funding-division-row">
+    <div class="funding-row-divlabel">
+      <div class="funding-row-divname">1.75%<br><span>Division</span></div>
     </div>
-    <div class="funding-stat-card warm-accent">
-      <div class="funding-stat-division-label">1.75% Division</div>
-      <div class="funding-stat-number">130%</div>
-      <div class="funding-stat-metric">Estimated Solvency Ratio</div>
-      <!--<div class="funding-stat-sub">estimated</div>-->
-    </div>
-    <div class="funding-stat-card">
-      <div class="funding-stat-division-label">1.2% Division</div>
-      <div class="funding-stat-number">130%</div>
-      <div class="funding-stat-metric">Estimated Going-Concern Funded Status</div>
-      <div class="funding-stat-sub">including PfAD</div>
-    </div>
-    <div class="funding-stat-card warm-accent">
-      <div class="funding-stat-division-label">1.2% Division</div>
-      <div class="funding-stat-number">145%</div>
-      <div class="funding-stat-metric">Estimated Solvency Ratio</div>
-      <!--<div class="funding-stat-sub">estimated</div>-->
+    <div class="funding-row-cards">
+      <div class="funding-stat-card">
+        <div class="funding-stat-number">120%</div>
+        <div class="funding-stat-metric">Estimated Going-Concern Funded Status</div>
+        <div class="funding-stat-sub">including PfAD</div>
+      </div>
+      <div class="funding-stat-card warm-accent">
+        <div class="funding-stat-number">130%</div>
+        <div class="funding-stat-metric">Estimated Solvency Ratio</div>
+      </div>
     </div>
   </div>
+
+  <!-- 1.2% Division Row -->
+  <div class="funding-division-row">
+    <div class="funding-row-divlabel">
+      <div class="funding-row-divname">1.2%<br><span>Division</span></div>
+    </div>
+    <div class="funding-row-cards">
+      <div class="funding-stat-card">
+        <div class="funding-stat-number">130%</div>
+        <div class="funding-stat-metric">Estimated Going-Concern Funded Status</div>
+        <div class="funding-stat-sub">including PfAD</div>
+      </div>
+      <div class="funding-stat-card warm-accent">
+        <div class="funding-stat-number">145%</div>
+        <div class="funding-stat-metric">Estimated Solvency Ratio</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 </div>
 
 <!-- ===== PLAN ASSET MOVEMENT: WATERFALL CHART ===== -->
