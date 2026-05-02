@@ -1352,6 +1352,23 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 28px;
 }
+
+/* 3-card sections: fixed 3-column */
+#planoverview .card-grid,
+#growyourpension .card-grid,
+#retirementreadiness .card-grid,
+#governmentbenefits .card-grid,
+#personalsavings .card-grid,
+#estateplanning .card-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 4-card sections: 2×2 grid — no orphaned card */
+#account .card-grid,
+#retiring .card-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+  
 .info-card {
   background: var(--white);
   border: 1px solid rgba(91,127,149,0.08);
