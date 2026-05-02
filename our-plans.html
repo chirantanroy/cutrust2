@@ -327,6 +327,55 @@ nav.scrolled .nav-hamburger span {
   margin-top: 4px;
 }
 
+@media (max-width: 640px) {
+
+  /* 1. Stack each division row vertically */
+  .funding-division-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  /* 2. Division label becomes a top header bar, not a left sidebar */
+  .funding-row-divlabel {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-bottom: 6px;
+    border-right: none;                              /* remove vertical bar */
+    border-bottom: 2px solid rgba(255,255,255,0.18); /* add horizontal bar */
+    align-self: auto;
+  }
+
+  /* 3. Align division name text to the left */
+  .funding-row-divname {
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  /* 4. Stack the two stat cards vertically, each full-width */
+  .funding-row-cards {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .funding-row-cards .funding-stat-card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  /* 5. Tighten padding on cards */
+  .funding-stat-card {
+    padding: 20px 18px;
+  }
+
+  /* 6. Scale down the large % number so it fits comfortably */
+  .funding-stat-number {
+    font-size: 2.6rem !important;
+  }
+}
+
+  
 /* === PENSION CALCULATOR === */
 .calc-container {
   display: grid;
