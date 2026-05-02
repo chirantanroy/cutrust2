@@ -1221,6 +1221,12 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   max-width: 720px;
 }
 
+.content-section { padding: 28px 48px; }
+.content-section.dark { padding: 28px 48px; }
+/* And remove the duplicate side padding from the dark inner .section-inner */
+.content-section.dark .section-inner { padding: 0; margin: 0 auto; }
+
+
   
 /* Sub-headings — slightly smaller */
 #Pension-resource .section-inner > div > h2 {
@@ -1353,14 +1359,9 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
 }
 
 
-/* ─── CARD GRID ─── */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 28px;
-}
+/* In your <style> block, REPLACE the existing .card-grid rule: */
 
-/* 3-card sections: fixed 3-column */
+/* 3-card sections → stay 3-column */
 #planoverview .card-grid,
 #growyourpension .card-grid,
 #retirementreadiness .card-grid,
@@ -1370,10 +1371,29 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* 4-card sections: 2×2 grid — no orphaned card */
+/* 4-card sections → 2×2 balanced grid, no orphan */
 #account .card-grid,
 #retiring .card-grid {
   grid-template-columns: repeat(2, 1fr);
+}
+
+/* Tablet: all go 2-col */
+@media (max-width: 960px) {
+  #planoverview .card-grid,
+  #growyourpension .card-grid,
+  #retirementreadiness .card-grid,
+  #governmentbenefits .card-grid,
+  #personalsavings .card-grid,
+  #estateplanning .card-grid,
+  #account .card-grid,
+  #retiring .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1-col */
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr !important; }
 }
   
 .info-card {
@@ -1700,6 +1720,62 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
   }
 }
 
+/* Health benefit cards — lower the min so they stack sooner */
+[id$="-content"] > div {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Wellbeats/Perkopolis — currently has NO mobile override */
+#wellbeatsperks-content > div {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Force single column at mobile */
+@media (max-width: 640px) {
+  [id$="-content"] > div,
+  #wellbeatsperks-content > div,
+  .wb-fitness-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Health accordion open/close transition states */
+[id$="-content"].health-open {
+  display: block !important;
+  overflow: hidden !important;
+  max-height: 5000px !important;
+  opacity: 1 !important;
+  transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+[id$="-content"].health-closing {
+  display: block !important;
+  overflow: hidden !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  transition: max-height 0.45s cubic-bezier(0.55, 0, 0.45, 1),
+              opacity 0.3s cubic-bezier(0.55, 0, 0.45, 1) !important;
+}
+
+/* Card stagger reveal (matching WEALTH's .reveal animation) */
+.health-card-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.health-card-reveal.health-card-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+.health-card-reveal:nth-child(1) { transition-delay: 0.05s; }
+.health-card-reveal:nth-child(2) { transition-delay: 0.12s; }
+.health-card-reveal:nth-child(3) { transition-delay: 0.19s; }
+.health-card-reveal:nth-child(4) { transition-delay: 0.26s; }
+.health-card-reveal:nth-child(5) { transition-delay: 0.33s; }
+.health-card-reveal:nth-child(6) { transition-delay: 0.40s; }
+  
   
 </style>
 </head>
@@ -3580,14 +3656,68 @@ if (hamburger && navLinks) {
 }
 
 // ─── PLAN-IT HEALTH accordion toggles ───
-document.querySelectorAll('#Health-resource .health-toggle-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const contentDiv = this.closest('section').querySelector('[id$="-content"]');
-    if (contentDiv) {
-      const isHidden = contentDiv.classList.contains('hidden');
-      contentDiv.classList.toggle('hidden');
-      this.textContent = isHidden ? 'Hide ›' : 'Show ›';
+// Add reveal animation classes to health benefit cards
+document.querySelectorAll('[id$="-content"]').forEach(function(content) {
+  var section = content.closest('section');
+  if (!section || !section.querySelector('.health-toggle-btn')) return;
+  var grid = content.querySelector('div');
+  if (!grid) return;
+  Array.from(grid.children).forEach(function(card) {
+    if (card.tagName === 'DIV') card.classList.add('health-card-reveal');
+  });
+});
+
+document.querySelectorAll('.health-toggle-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var section = btn.closest('section');
+    if (!section) return;
+    var content = document.getElementById(section.id + '-content');
+    if (!content) return;
+
+    if (content.classList.contains('hidden')) {
+      // OPEN: prep collapsed state, then animate open
+      content.classList.remove('hidden');
+      content.style.maxHeight = '0';
+      content.style.opacity = '0';
+      content.style.overflow = 'hidden';
+      content.style.display = 'block';
+      void content.offsetHeight; // force reflow
+      content.classList.add('health-open');
+      btn.textContent = 'Hide ›';
+      // Stagger card reveals
+      setTimeout(function() {
+        content.querySelectorAll('.health-card-reveal').forEach(function(c, i) {
+          setTimeout(function() { c.classList.add('health-card-visible'); }, i * 75 + 100);
+        });
+      }, 80);
+    } else {
+      // CLOSE: animate closed, then fully hide
+      content.classList.remove('health-open');
+      content.classList.add('health-closing');
+      btn.textContent = 'Show ›';
+      content.querySelectorAll('.health-card-reveal').forEach(function(c) {
+        c.classList.remove('health-card-visible');
+      });
+      setTimeout(function() {
+        content.classList.add('hidden');
+        content.classList.remove('health-closing');
+        content.style.maxHeight = content.style.opacity = content.style.overflow = '';
+      }, 500);
     }
+  });
+});
+
+
+// In the health toggle button click handler, after content becomes visible:
+const cards = contentDiv.querySelectorAll(':scope > div > div');
+cards.forEach((card, i) => {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(30px)';
+  card.style.transition = `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.12}s,
+                            transform 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 0.12}s`;
+  requestAnimationFrame(() => {
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
   });
 });
 
