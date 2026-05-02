@@ -3548,6 +3548,19 @@ if (hamburger && navLinks) {
   });
 }
 
+// ─── PLAN-IT HEALTH accordion toggles ───
+document.querySelectorAll('#Health-resource .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const contentDiv = this.closest('section').querySelector('[id$="-content"]');
+    if (contentDiv) {
+      const isHidden = contentDiv.classList.contains('hidden');
+      contentDiv.classList.toggle('hidden');
+      this.textContent = isHidden ? 'Hide ›' : 'Show ›';
+    }
+  });
+});
+
+  
 // ═══ RESOURCES FILTERING ═══
 (function() {
   const categoryBtns = document.querySelectorAll('.filter-btn[data-category]');
