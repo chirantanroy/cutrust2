@@ -1,1 +1,31 @@
-
+{
+  "posts": [
+    {
+      "source_identifier": "7456063092502978560",
+      "source_created_at": "2026-05-03T10:00:00.000000Z",
+      "user_full_name": "Credit Union Pension & Benefits Trust",
+      "text": "Do you know what kind of pension plan you have?\n\nA study by IG Wealth Management found that 1 in 4 Canadians with an employer pension doesn't know whether it's a Defined Benefit or Defined Contribution plan. And that difference matters a lot when you're planning for retirement.\n\nHere's a simple breakdown:\n🔵 Defined Benefit (DB) — Your employer promises you a set monthly income in retirement, regardless of market conditions. You know exactly what you'll receive.\n🟢 Defined Contribution (DC) — You and your employer both contribute to your account, but your retirement income depends on how those investments perform over time.\n\nOur ask this week: Pull out your latest pension statement and take 10 minutes to review it. Look for your plan type, your contribution rate (if applicable), and your projected benefit or account balance.\n\nHave questions about your CU Trust pension? Reach out to us directly at pensions@cutrust.com.\n\n💬 Did you know what type of pension you had before reading this?\n#RetirementPlanning #EmployeeBenefits #PensionAwareness #WorkplaceWellness #PersonalFinance",
+      "image": "/images/posts/Picture5.jpg",
+      "likes": 1,
+      "comments": 0
+    },
+    {
+      "source_identifier": "7452421581005410304",
+      "source_created_at": "2026-04-21T22:01:55.000000Z",
+      "user_full_name": "Credit Union Pension & Benefits Trust",
+      "text": "This week marks Canadian Fertility Awareness Week (April 19–25) — a reminder that reproductive health and hormonal wellbeing are an integral part of overall quality of life. For many employees and their partners, questions around fertility and family planning can bring both hope and uncertainty, and often intersect with stress, mental health, and day-to-day well-being. These are quiet realities that shape how people show up at work. At CU Trust, we believe a strong benefits plan should meet members where they are in life. Through our Family Building Benefits, eligible plan members and their families have access to support for fertility planning and related needs. To our participating credit union employers: thank you for making these benefits available to your teams. Supportive, inclusive coverage helps our sector continue to lead with care. #CanadianFertilityAwarenessWeek #EmployeeBenefits #CreditUnions #WorkplaceWellbeing",
+      "image": "/images/posts/Picture4.png",
+      "likes": 1,
+      "comments": 0
+    },
+    {
+      "source_identifier": "7450941917757915136",
+      "source_created_at": "2026-04-17T22:01:55.000000Z",
+      "user_full_name": "Credit Union Pension & Benefits Trust",
+      "text": "We are back — and this time, we're making it count. 👋 The CU Trust LinkedIn page has a fresh purpose: to be a simple, reliable resource for the credit union community we serve. Throughout the year, you can expect us to share: ✅ Bite-sized wellness tips for employees 📋 Benefits reminders and seasonal health prompts 💡 Helpful updates for HR and plan administrators 🤝 Insights to help your teams get more from their plans We work behind the scenes so that credit union employees and their families have access to the benefits and pension security they deserve. This page is our way of staying connected — and making that support a little more visible. Whether you're an employer group, a plan member, or just curious about what good workplace benefits look like — we're glad you're here. Follow along, and feel free to share with anyone in the credit union community who'd find this useful.",
+      "image": "/images/posts/Picture3.png",
+      "likes": 4,
+      "comments": 0
+    }
+  ]
+}
