@@ -2508,7 +2508,7 @@ var typingInterval = setInterval(function() {
 // LinkedIn Feed
 <script>
 (function () {
-  var FEED_ID = '011ec7b4-2226-495d-b2df-4ef5a28ab0cb';
+ 
   var brandLogo = (document.querySelector('img.nav-logo-img.nav-logo-dark') || {}).src || '';
   var current = 0;
   var posts = [];
@@ -2602,7 +2602,7 @@ var typingInterval = setInterval(function() {
     + '</a>';
   }
 
-  fetch('https://api.curator.io/v1/feeds/' + FEED_ID + '/posts?limit=6')
+  fetch('/linkedin-posts.json')
     .then(function (r) { return r.json(); })
     .then(function (data) {
       var track = document.getElementById('liTrack');
