@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | CUtrust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #1B3A4B; --teal: #3D6B7E; --steel: #5B7F95; --mist: #8BAABB;
+  --ice: #E8EFF4; --frost: #F2F6F9; --white: #FFFFFF;
+  --warm: #D4A574; --warm-light: #E8C9A8; --accent: #4A9EAF;
+  --text-dark: #1A2E3B; --text-muted: #5A7A8A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Public Sans',sans-serif;color:var(--text-dark);background:var(--frost);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}.delay-5{transition-delay:.5s}.delay-6{transition-delay:.6s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(27,58,75,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(91,127,149,.1);box-shadow:0 4px 30px rgba(0,0,0,.12);transition:all .4s}
+nav.scrolled{background:rgba(27,58,75,.92);backdrop-filter:blur(20px);box-shadow:0 4px 30px rgba(0,0,0,.12)}
+nav.scrolled .nav-links a{color:var(--white)}
+nav.scrolled .nav-links a:hover{color:var(--warm-light)}
+nav.scrolled .nav-cta{background:var(--warm);color:var(--deep);border-color:var(--warm)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;transition:opacity .3s}
+.nav-logo:hover{opacity:.85}
+.nav-logo-img{height:32px;width:auto}
+.nav-logo-dark{display:none}
+.nav-logo-light{display:block}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{text-decoration:none;font-size:.92rem;font-weight:500;color:var(--white);transition:color .3s;letter-spacing:.3px}
+.nav-links a:hover{color:var(--warm-light)}
+.nav-cta{padding:10px 28px;border-radius:50px;background:var(--warm);border:1.5px solid var(--warm);color:var(--deep);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .35s;text-decoration:none;letter-spacing:.5px}
+.nav-cta:hover{background:var(--deep);color:var(--white);transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,58,75,.25)}
+.nav-cta-outline{background:transparent;border:1.5px solid var(--warm-light);color:var(--white)}
+.nav-cta-outline:hover{background:var(--warm);color:var(--deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,58,75,.25)}
+nav.scrolled .nav-cta-outline{border-color:var(--warm-light);color:var(--white);background:transparent}
+nav.scrolled .nav-cta-outline:hover{background:var(--warm);color:var(--deep)}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1100}
+.nav-hamburger span{display:block;width:24px;height:2.5px;background:var(--white);border-radius:2px;transition:all 0.3s ease}
+nav.scrolled .nav-hamburger span{background:var(--white)}
+.nav-hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-hamburger.active span:nth-child(2){opacity:0}
+.nav-hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.nav-dropdown{position:relative;display:flex;align-items:center}
+.nav-dropdown-trigger{font-size:.92rem;font-weight:500;color:var(--white);letter-spacing:.3px;cursor:default;display:flex;align-items:center;gap:5px;transition:color .3s;user-select:none;padding:8px 0}
+.nav-dropdown-trigger svg{transition:transform .3s}
+.nav-dropdown:hover .nav-dropdown-trigger{color:var(--warm-light)}
+.nav-dropdown:hover .nav-dropdown-trigger svg{transform:rotate(180deg)}
+nav.scrolled .nav-dropdown-trigger{color:var(--white)}
+nav.scrolled .nav-dropdown:hover .nav-dropdown-trigger{color:var(--warm-light)}
+.nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:180px;background:var(--deep);border:1px solid rgba(255,255,255,.08);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.3);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transition:all .3s cubic-bezier(.22,1,.36,1)}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;font-size:.9rem;font-weight:500;color:var(--mist);text-decoration:none;transition:all .2s;letter-spacing:.2px}
+.nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:var(--warm-light)}
+nav.scrolled .nav-dropdown-menu{background:var(--deep);border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+nav.scrolled .nav-dropdown-menu a{color:var(--mist)}
+nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:var(--warm-light)}
+
+/* PAGE HERO */
+.page-hero{padding:160px 48px 80px;background:linear-gradient(165deg,var(--frost) 0%,var(--ice) 40%,#D5E3EC 100%);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-20%;right:-15%;width:500px;height:500px;background:radial-gradient(circle,rgba(61,107,126,.08) 0%,transparent 70%);border-radius:50%}
+.page-hero-inner{max-width:900px}
+.page-hero .section-label{color:var(--steel)}
+.page-hero h1{font-family:'Public Sans',sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);color:var(--deep);letter-spacing:-1px;margin-bottom:20px;line-height:1.15}
+.page-hero h1 em{font-style:italic;color:var(--steel)}
+.page-hero p{font-size:1.1rem;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:720px}
+
+/* SECTIONS */
+.section-label{font-size:.78rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--warm);margin-bottom:16px}
+.content-section{padding:80px 48px;max-width:1200px;margin:0 auto}
+.content-section.dark{background:var(--deep);max-width:100%;padding:80px 48px}
+.content-section.dark .section-inner{max-width:1200px;margin:0 auto}
+.content-section h2{font-family:'Public Sans',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--deep);margin-bottom:20px;letter-spacing:-.5px}
+.content-section.dark h2{color:var(--white)}
+.content-section p{font-size:1.02rem;color:var(--text-muted);line-height:1.8;font-weight:300;margin-bottom:16px;max-width:800px}
+.content-section.dark p{color:var(--mist)}
+.content-section.alt{background:var(--white)}
+
+/* HIGHLIGHT BOXES */
+.highlight-box{margin:32px 0;padding:28px 32px;background:rgba(91,127,149,.06);border-left:4px solid var(--steel);border-radius:0 16px 16px 0}
+.highlight-box-dark{margin:32px 0;padding:28px 32px;background:rgba(255,255,255,.04);border-left:4px solid var(--warm);border-radius:0 16px 16px 0}
+.highlight-box h3,.highlight-box-dark h3{font-family:'Public Sans',sans-serif;font-size:1.1rem;margin-bottom:10px}
+.highlight-box h3{color:var(--deep)}
+.highlight-box-dark h3{color:var(--white)}
+.highlight-box p{color:var(--text-muted);font-size:.95rem;line-height:1.7;font-weight:300;max-width:100%;margin-bottom:0}
+.highlight-box-dark p{color:var(--mist);font-size:.95rem;line-height:1.7;font-weight:300;max-width:100%;margin-bottom:0}
+
+/* TRUSTEES-STYLE GRID (for rights section in dark) */
+.rights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
+.right-card{padding:28px 24px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);text-align:left;transition:all .4s cubic-bezier(.22,1,.36,1)}
+.right-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.15);border-color:rgba(212,165,116,.2)}
+.right-card h4{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:8px}
+.right-card p{font-size:.85rem;color:var(--mist);line-height:1.55;font-weight:400}
+
+/* CTA BANNER */
+.cta-banner{padding:80px 48px;background:linear-gradient(135deg,var(--deep),var(--teal));text-align:center}
+.cta-banner h2{font-family:'Public Sans',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);margin-bottom:16px}
+.cta-banner p{color:var(--mist);font-size:1.05rem;font-weight:300;margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;background:var(--white);color:var(--deep);border:none;border-radius:60px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .4s cubic-bezier(.22,1,.36,1);text-decoration:none}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.2)}
+.btn-warm{background:var(--warm);color:var(--deep)}
+.btn-warm:hover{background:var(--warm-light)}
+
+/* FOOTER */
+footer{padding:48px 48px 32px;background:#0F252F;border-top:1px solid rgba(255,255,255,.05)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.footer-logo{display:flex;align-items:center}
+.footer-logo-img{height:30px;width:auto}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{color:var(--mist);text-decoration:none;font-size:.85rem;font-weight:400;transition:color .3s}
+.footer-links a:hover{color:var(--warm-light)}
+.footer-social a{display:inline-flex;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);align-items:center;justify-content:center;color:var(--mist);transition:all .3s;text-decoration:none}
+.footer-social a:hover{background:rgba(212,165,116,.15);border-color:var(--warm);color:var(--warm)}
+.footer-bottom{max-width:1200px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);text-align:center;color:rgba(139,170,187,.5);font-size:.8rem}
+
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .nav-links{gap:20px}
+  .page-hero,.content-section,.content-section.dark,.cta-banner{padding-left:24px!important;padding-right:24px!important}
+}
+@media(max-width:640px){
+  .nav-hamburger{display:flex}
+  .nav-links{display:none!important;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--white);box-shadow:0 8px 32px rgba(27,58,75,.12);padding:16px 24px;gap:0!important;z-index:1050}
+  .nav-links.nav-open{display:flex!important}
+  .nav-links a,.nav-dropdown-trigger{padding:14px 0;display:block;width:100%;text-align:left;border-bottom:1px solid var(--ice);color:var(--text-dark)!important;font-size:1rem}
+  .nav-dropdown-menu{position:static!important;opacity:1!important;visibility:visible!important;transform:none!important;box-shadow:none!important;background:transparent!important;padding:0 0 0 16px!important;pointer-events:auto!important}
+  .nav-cta,.nav-cta-outline{text-align:center!important;margin-top:12px!important;border-bottom:none!important}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+  .rights-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ── LEGAL PAGE STYLES ── */
+.legal-toc{background:var(--white);border:1px solid rgba(91,127,149,.1);border-left:4px solid var(--steel);border-radius:0 16px 16px 0;padding:32px 36px;margin-bottom:52px}
+.legal-toc-title{font-size:.78rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--steel);margin-bottom:16px}
+.legal-toc ol{padding-left:18px;column-count:2;column-gap:32px}
+.legal-toc li{margin-bottom:9px;break-inside:avoid}
+.legal-toc a{font-size:.88rem;font-weight:500;color:var(--teal);text-decoration:none;transition:color .2s}
+.legal-toc a:hover{color:var(--deep)}
+
+.legal-block{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid var(--ice)}
+.legal-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.legal-block-num{font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:8px}
+.legal-block h3{font-family:'Public Sans',sans-serif;font-size:1.3rem;font-weight:700;color:var(--deep);margin-bottom:14px;letter-spacing:-.2px}
+.legal-block h4{font-size:1rem;font-weight:600;color:var(--teal);margin:20px 0 8px}
+.legal-block p{font-size:.97rem;color:var(--text-muted);line-height:1.8;font-weight:300;margin-bottom:12px;max-width:860px}
+.legal-block p:last-child{margin-bottom:0}
+.legal-block ul{padding-left:20px;margin:10px 0 14px}
+.legal-block li{font-size:.97rem;color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:8px}
+.legal-block strong{font-weight:600;color:var(--text-dark)}
+
+.data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem;border-radius:12px;overflow:hidden}
+.data-table th{text-align:left;padding:12px 16px;background:rgba(27,58,75,.07);font-weight:600;color:var(--deep);font-size:.78rem;letter-spacing:.8px;text-transform:uppercase;border-bottom:2px solid rgba(91,127,149,.15)}
+.data-table td{padding:13px 16px;border-bottom:1px solid var(--ice);color:var(--text-muted);font-size:.92rem;line-height:1.65;font-weight:300;vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}
+.data-table td:first-child{font-weight:500;color:var(--text-dark)}
+
+.data-table-dark{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem}
+.data-table-dark th{text-align:left;padding:12px 16px;background:rgba(255,255,255,.06);font-weight:600;color:var(--warm-light);font-size:.78rem;letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.1)}
+.data-table-dark td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--mist);font-size:.92rem;line-height:1.65;font-weight:300;vertical-align:top}
+.data-table-dark tr:last-child td{border-bottom:none}
+.data-table-dark td:first-child{color:var(--white);font-weight:500}
+
+.oipc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 32px;margin-top:20px}
+.oipc-card h4{color:var(--warm-light);font-size:1rem;font-weight:600;margin-bottom:12px}
+.oipc-card p{color:var(--mist);font-size:.92rem;line-height:1.7;font-weight:300;margin-bottom:6px;max-width:100%}
+.oipc-card p:last-child{margin-bottom:0}
+.oipc-card a{color:var(--warm);text-decoration:none}
+.oipc-card a:hover{text-decoration:underline}
+
+.contact-highlight{background:rgba(91,127,149,.06);border:1px solid rgba(91,127,149,.12);border-radius:16px;padding:28px 32px;margin-top:20px}
+.contact-highlight h4{font-size:1rem;font-weight:700;color:var(--deep);margin-bottom:12px}
+.contact-highlight p{color:var(--text-muted);font-size:.92rem;line-height:1.7;font-weight:300;margin-bottom:6px;max-width:100%}
+.contact-highlight p:last-child{margin-bottom:0}
+.contact-highlight a{color:var(--teal);text-decoration:none}
+.contact-highlight a:hover{text-decoration:underline}
+
+@media(max-width:640px){
+  .legal-toc ol{column-count:1}
+  .rights-grid{grid-template-columns:1fr}
+  .data-table,.data-table-dark{font-size:.82rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <!-- PASTE DARK LOGO BASE64 HERE -->
+    <img src="" alt="CUtrust" class="nav-logo-img nav-logo-dark">
+    <!-- PASTE LIGHT LOGO BASE64 HERE -->
+    <img src="" alt="CUtrust" class="nav-logo-img nav-logo-light">
+  </a>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <div class="nav-dropdown">
+      <span class="nav-dropdown-trigger">Our Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      <div class="nav-dropdown-menu">
+        <a href="pension.html">Pension</a>
+        <a href="benefits.html">Benefits</a>
+      </div>
+    </div>
+    <a href="employers.html">Employers</a>
+    <div class="nav-dropdown">
+      <span class="nav-dropdown-trigger">Resources <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+      <div class="nav-dropdown-menu">
+        <a href="resources.html">Resources &amp; Insights</a>
+        <a href="retiree-corner.html">Retiree Corner</a>
+      </div>
+    </div>
+    <a href="about.html">About</a>
+    <a href="https://cutadmin.hroffice.com/Excalibur_CUBT/Admin/Standard/Security?ReturnUrl=%2FExcalibur_CUBT%2FAdmin%2FStandard%2Fwf%2FStandardAjaxPage%2FmssLifeworksHome" class="nav-cta nav-cta-outline" target="_blank" rel="noopener noreferrer">Employer Portal</a>
+    <a href="https://cutrust.com/" class="nav-cta" target="_blank" rel="noopener noreferrer">Member Portal</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-label">Legal</div>
+    <h1>Privacy <em>Policy</em></h1>
+    <p>Effective May 1, 2026 &nbsp;·&nbsp; Last Reviewed May 1, 2026. CUtrust is committed to protecting the privacy of your personal information in connection with the cutrust.com website, in compliance with British Columbia's <em>Personal Information Protection Act</em> (PIPA) and Canada's <em>PIPEDA</em>.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: INTRO + TOC + WHO WE ARE + SCOPE -->
+<div class="content-section">
+  <div class="legal-toc reveal">
+    <p class="legal-toc-title">Contents</p>
+    <ol>
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#scope">Scope &amp; Applicable Law</a></li>
+      <li><a href="#what-we-collect">Personal Information We Collect</a></li>
+      <li><a href="#purposes">Purposes for Collection</a></li>
+      <li><a href="#how-we-use">How We Use Your Information</a></li>
+      <li><a href="#disclosure">Disclosure to Third Parties</a></li>
+      <li><a href="#security">Data Security</a></li>
+      <li><a href="#retention">Retention &amp; Destruction</a></li>
+      <li><a href="#your-rights">Your Rights Under PIPA</a></li>
+      <li><a href="#cross-border">Cross-Border Transfers</a></li>
+      <li><a href="#cookies">Cookies &amp; Analytics</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#changes-policy">Changes to This Policy</a></li>
+      <li><a href="#privacy-officer">Contact Our Privacy Officer</a></li>
+      <li><a href="#oipc">Filing a Complaint with the OIPC</a></li>
+    </ol>
+  </div>
+
+  <div class="legal-block reveal delay-1" id="who-we-are">
+    <span class="legal-block-num">Section 01</span>
+    <h3>Who We Are</h3>
+    <p><strong>Credit Union Pension &amp; Benefits Trust</strong> ("CUtrust", "we", "us", or "our") is an umbrella entity comprising two core programs serving credit union employees and their families across British Columbia:</p>
+    <ul>
+      <li><strong>BC Credit Union Employees' Pension Plan</strong> — a multi-employer registered pension plan governed by a Board of Trustees, registered under the <em>Pension Benefits Standards Act</em> (BC) and the <em>Pension Benefits Standards Act, 1985</em> (Canada). The Plan provides defined benefit and money purchase retirement, death, and termination benefits.</li>
+      <li><strong>BC Credit Union Employee Benefits Trust</strong> — a multi-employer employee life and health trust continued under the <em>Income Tax Act</em> (Canada) effective January 1, 2021. The Trust delivers comprehensive employment benefits including life insurance, disability coverage, extended health, dental, vision, EFAP+, virtual wellness, family building benefits, and spending accounts.</li>
+    </ul>
+    <p>CUtrust is based in Vancouver, British Columbia, and has designated a <strong>Privacy Officer</strong> responsible for overseeing compliance with this Policy and applicable privacy legislation. See <a href="#privacy-officer" style="color:var(--teal)">Section 14</a> for contact details.</p>
+  </div>
+
+  <div class="legal-block reveal delay-2" id="scope">
+    <span class="legal-block-num">Section 02</span>
+    <h3>Scope &amp; Applicable Law</h3>
+    <p>This Privacy Policy applies to personal information collected through the <strong>cutrust.com website</strong> (the "Website"), including contact forms, the AI-powered assistant ("Ask CUtrust"), LinkedIn feed content, and other digital interactions initiated through the Website.</p>
+    <h4>What This Policy Does NOT Cover</h4>
+    <ul>
+      <li>Personal information held in pension plan administration systems — such as contribution histories, service records, and defined benefit entitlements — operated by TELUS Health on behalf of CUtrust</li>
+      <li>Benefits claims, health information, dental or drug records, disability claims, or any coverage records — administered by GreenShield Administration / HRoffice on behalf of CUtrust</li>
+      <li>Information held in member portals or employer portals operated by CUtrust's plan service providers</li>
+      <li>Personal information collected directly by participating credit union employers from their own employees</li>
+    </ul>
+    <h4>Applicable Legislation</h4>
+    <ul>
+      <li><strong>BC PIPA</strong> — British Columbia's <em>Personal Information Protection Act</em>, SBC 2003, c. 63. The primary applicable law for personal information collected within BC by private-sector organizations, including trusts, not-for-profits, and benefit plan administrators.</li>
+      <li><strong>PIPEDA</strong> — Canada's <em>Personal Information Protection and Electronic Documents Act</em>. Applies to the extent personal information crosses provincial or national borders in the course of CUtrust's activities.</li>
+      <li><strong>Sector-specific legislation</strong> — the <em>Pension Benefits Standards Act</em> (BC), the <em>Income Tax Act</em> (Canada), and related regulations impose specific obligations regarding the handling of pension and benefits records.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 2: WHAT WE COLLECT + PURPOSES -->
+<div class="content-section alt">
+  <div class="legal-block reveal" id="what-we-collect">
+    <span class="legal-block-num">Section 03</span>
+    <h3>Personal Information We Collect</h3>
+    <p>CUtrust collects personal information through the Website only to the extent necessary for the purposes described in this Policy:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>How Collected</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Contact Information</td>
+          <td>Name, email address, phone number, employer or credit union affiliation</td>
+          <td>Contact form submissions</td>
+        </tr>
+        <tr>
+          <td>Communications Content</td>
+          <td>Content of messages or questions about pension, benefits, or employer programs</td>
+          <td>Web forms, AI assistant chat</td>
+        </tr>
+        <tr>
+          <td>Website Usage Data</td>
+          <td>IP address, browser type and version, pages visited, time of visit, referral URL, device type</td>
+          <td>Automatically via analytics tools and server logs</td>
+        </tr>
+        <tr>
+          <td>AI Assistant Interactions</td>
+          <td>Questions submitted to Ask CUtrust about pension divisions, benefits coverage, or plan features</td>
+          <td>AI assistant chat interface</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:24px">
+      <h3>What We Do Not Collect Through This Website</h3>
+      <p>Please do not submit sensitive personal information through the public Website's contact form or AI assistant. This includes your Social Insurance Number (SIN), banking details, personal health information, benefits claims, member ID or employer plan codes, or login credentials. This information is handled exclusively within secure plan administration systems operated by our service providers.</p>
+    </div>
+  </div>
+
+  <div class="legal-block reveal delay-1" id="purposes">
+    <span class="legal-block-num">Section 04</span>
+    <h3>Purposes for Collection</h3>
+    <p>CUtrust collects personal information through the Website for the following purposes, which a reasonable person would consider appropriate in the circumstances:</p>
+    <ul>
+      <li><strong>Responding to enquiries</strong> — to respond to questions or requests from plan members, beneficiaries, employer representatives, or prospective participants about the Pension Plan, Benefits Trust programs, or employer administration</li>
+      <li><strong>Improving the Website</strong> — to understand how visitors use the Website, including which pension and benefits resources are most accessed, in order to improve content and navigation</li>
+      <li><strong>AI assistant quality assurance</strong> — to review and improve the accuracy and helpfulness of the Ask CUtrust assistant's responses about pension plan divisions, benefits coverage types, and program administration</li>
+      <li><strong>Security and fraud prevention</strong> — to detect, investigate, and prevent unauthorized, fraudulent, or illegal activity</li>
+      <li><strong>Legal and regulatory compliance</strong> — to meet obligations under applicable pension, benefits, and privacy legislation</li>
+    </ul>
+    <p>We will identify the purpose for collecting personal information at or before the time of collection and will not collect information beyond what is reasonably necessary for those purposes.</p>
+  </div>
+</div>
+
+<!-- SECTION 3: HOW WE USE + DISCLOSURE -->
+<div class="content-section">
+  <div class="legal-block reveal" id="how-we-use">
+    <span class="legal-block-num">Section 05</span>
+    <h3>How We Use Your Information</h3>
+    <p>Personal information collected through the Website will be used only for the purposes for which it was collected, or for consistent purposes, or as required or authorized by law. We will not use your personal information for marketing or promotional communications without your express consent.</p>
+    <p>CUtrust does not sell personal information to any third party. As a not-for-profit trust operating exclusively for the benefit of credit union members and employers, CUtrust has no commercial advertising relationships. Website usage data is used in aggregated and anonymized form to improve the site and is not used to build individual profiles for commercial purposes.</p>
+  </div>
+
+  <div class="legal-block reveal delay-1" id="disclosure">
+    <span class="legal-block-num">Section 06</span>
+    <h3>Disclosure to Third Parties</h3>
+    <p>CUtrust does not sell, rent, or trade personal information. We may disclose personal information to the following categories of third parties, only to the extent necessary for the purposes described in this Policy:</p>
+
+    <h4>Plan Administration Service Providers</h4>
+    <p>CUtrust works with contracted service providers who assist in administering the Pension Plan and Benefits Trust programs. These include:</p>
+    <ul>
+      <li><strong>TELUS Health (HRoffice)</strong> — pension plan employer and member administration; Employer Portal operations</li>
+      <li><strong>GreenShield Administration / HRoffice</strong> — benefits plan employer and member administration, including enrolment, billing, claims management for health, dental, disability, and life insurance programs</li>
+      <li><strong>Teladoc Health</strong> — virtual healthcare, mental wellness support, and Cognitive Behavioural Therapy (CBT) platform for eligible benefits members</li>
+      <li><strong>Perkopolis</strong> — employee perks, discounts, and wellness platform for eligible benefits members</li>
+      <li>Actuarial, investment management, legal, audit, and consulting service providers engaged from time to time in support of both programs</li>
+    </ul>
+
+    <h4>Technology &amp; Website Service Providers</h4>
+    <ul>
+      <li><strong>Website hosting provider</strong> — for hosting and maintaining the Website infrastructure</li>
+      <li><strong>Analytics provider</strong> — for anonymized/aggregated website traffic analysis (see <a href="#cookies" style="color:var(--teal)">Section 11</a>)</li>
+      <li><strong>AI technology provider</strong> — powering the Ask CUtrust assistant. Query data is processed subject to appropriate data processing agreements; your queries are not used to train third-party AI models without authorization</li>
+    </ul>
+
+    <h4>Legal and Regulatory Disclosure</h4>
+    <p>We may disclose personal information without your consent where required or authorized by law, including to: comply with a valid court order, subpoena, or legal process; respond to a lawful request from the BC Financial Services Authority (pension plan regulator), the Canada Revenue Agency, or the Office of the Superintendent of Financial Institutions; or investigate or prevent fraud, security threats, or abuse of the Website. Where permitted by law, we will make reasonable efforts to notify you before disclosing your information in response to a legal request.</p>
+
+    <p>All contracted service providers are required to use personal information only for the purposes for which it was disclosed and to protect it with appropriate safeguards consistent with PIPA.</p>
+  </div>
+</div>
+
+<!-- DARK SECTION: SECURITY + RETENTION -->
+<div class="content-section dark">
+  <div class="section-inner">
+    <div class="section-label reveal">Data Protection</div>
+    <h2 class="reveal delay-1">Security &amp; Retention</h2>
+
+    <div id="security">
+      <p class="reveal delay-2">CUtrust implements reasonable administrative, physical, and technical safeguards to protect personal information collected through the Website against unauthorized access, collection, use, disclosure, modification, loss, or destruction.</p>
+      <div class="highlight-box-dark reveal delay-3">
+        <h3>Our Safeguards Include</h3>
+        <p>HTTPS (TLS) encryption across all Website communications · Access controls limiting data access to authorized staff on a need-to-know basis · Regular security assessments and monitoring · Staff training on privacy obligations, data handling practices, and breach protocols · Contractual security requirements for third-party service providers handling personal information on our behalf</p>
+      </div>
+      <p class="reveal delay-4" style="margin-top:24px">In the event of a material breach of security that creates a real risk of significant harm to individuals, CUtrust will notify affected individuals and the Office of the Information and Privacy Commissioner for British Columbia (OIPC), in accordance with applicable legal requirements under PIPA.</p>
+    </div>
+
+    <div id="retention" style="margin-top:52px">
+      <div class="section-label reveal">Retention</div>
+      <h2 class="reveal delay-1">How Long We Keep Your Information</h2>
+      <p class="reveal delay-2">CUtrust retains personal information only for as long as necessary to fulfil the purposes for which it was collected, or as required by applicable law. Once no longer required, personal information is securely destroyed, erased, or rendered anonymous.</p>
+      <table class="data-table-dark reveal delay-3">
+        <thead>
+          <tr>
+            <th>Type of Information</th>
+            <th>Retention Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contact form submissions (pension, benefits, or general enquiries)</td>
+            <td>Up to 2 years from submission, or until the enquiry is resolved</td>
+          </tr>
+          <tr>
+            <td>Website analytics data</td>
+            <td>Up to 26 months; aggregated data may be retained indefinitely</td>
+          </tr>
+          <tr>
+            <td>AI assistant interaction logs (quality assurance)</td>
+            <td>Up to 12 months; earlier deletion available upon request</td>
+          </tr>
+          <tr>
+            <td>Server and security logs</td>
+            <td>Up to 12 months, or longer if required for a security incident or legal matter</td>
+          </tr>
+          <tr>
+            <td>Information related to a legal matter or regulatory complaint</td>
+            <td>Duration of the matter plus any applicable limitation period under BC law</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="reveal delay-4" style="margin-top:16px">Pursuant to PIPA, personal information used to make a decision that directly affects an individual will be retained for at least one year from the date of that decision, to allow a reasonable opportunity to access it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: YOUR RIGHTS + CROSS-BORDER + COOKIES -->
+<div class="content-section alt">
+  <div class="legal-block reveal" id="your-rights">
+    <span class="legal-block-num">Section 09</span>
+    <h3>Your Rights Under PIPA</h3>
+    <p>Under British Columbia's Personal Information Protection Act, you have the following rights with respect to personal information CUtrust holds about you through the Website:</p>
+    <div class="rights-grid" style="margin-top:24px">
+      <!-- reusing trustee-card visual pattern but light -->
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Your Right</th><th>What It Means</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Right to Access</td>
+          <td>You may request access to personal information CUtrust holds about you and receive an explanation of how it has been used and disclosed. We will respond within 30 days of a complete written request.</td>
+        </tr>
+        <tr>
+          <td>Right to Correct</td>
+          <td>If you believe personal information we hold about you is inaccurate or incomplete, you may request that it be corrected or annotated. We will respond within 30 days.</td>
+        </tr>
+        <tr>
+          <td>Right to Withdraw Consent</td>
+          <td>You may withdraw your consent to the collection, use, or disclosure of your personal information at any time, subject to legal and contractual restrictions. Note that withdrawal cannot be retroactive.</td>
+        </tr>
+        <tr>
+          <td>Right to Challenge Compliance</td>
+          <td>You may challenge CUtrust's compliance with PIPA by contacting our Privacy Officer. If unsatisfied with the response, you may escalate to the OIPC (see Section 15).</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="margin-top:24px">
+      <h3>How to Make a Privacy Request</h3>
+      <p>Submit your request in writing to our Privacy Officer at <strong>info@cutrust.com</strong> or by mail to 908–1166 Alberni Street, Vancouver, BC V6E 3Z3. Please include sufficient information to verify your identity and describe the information or action requested. We will respond within 30 days of receiving a complete request, or notify you if additional time is required under PIPA.</p>
+    </div>
+  </div>
+
+  <div class="legal-block reveal delay-1" id="cross-border">
+    <span class="legal-block-num">Section 10</span>
+    <h3>Cross-Border Transfers</h3>
+    <p>CUtrust's primary operations and data storage are located in Canada. However, some of our third-party service providers — including cloud infrastructure providers and AI technology providers powering the Ask CUtrust assistant — may process or store data in jurisdictions outside of Canada, including the United States.</p>
+    <p>Where personal information is transferred outside of British Columbia or Canada, CUtrust takes reasonable steps to ensure that the recipient provides a comparable level of protection through contractual data processing agreements consistent with PIPA. You should be aware that personal information transferred outside Canada may be subject to access by foreign governments, courts, or law enforcement agencies under the laws of that jurisdiction.</p>
+  </div>
+
+  <div class="legal-block reveal delay-2" id="cookies">
+    <span class="legal-block-num">Section 11</span>
+    <h3>Cookies &amp; Analytics</h3>
+    <p>The Website uses cookies and similar tracking technologies to improve the user experience, understand how the Website is used, and support its technical operation.</p>
+    <h4>Types of Cookies</h4>
+    <ul>
+      <li><strong>Strictly Necessary:</strong> Required for the Website to function. These cannot be disabled without affecting core site functionality (e.g., session management, security).</li>
+      <li><strong>Analytics:</strong> Used to collect anonymized information about how visitors use the Website — which pension and benefits pages are most visited, navigation patterns, and time on site. This data is aggregated and does not identify you individually.</li>
+      <li><strong>Functionality:</strong> Used to remember preferences you have set.</li>
+    </ul>
+    <h4>Managing Cookies</h4>
+    <p>Most web browsers allow you to control cookies through their settings. You can choose to block or delete cookies, though doing so may affect the functionality of the Website. You may also opt out of analytics tracking by using your browser's privacy settings or a relevant opt-out extension. Refer to your browser's help documentation for instructions.</p>
+  </div>
+</div>
+
+<!-- SECTION 6: CHILDREN + CHANGES + PRIVACY OFFICER + OIPC -->
+<div class="content-section">
+  <div class="legal-block reveal" id="children">
+    <span class="legal-block-num">Section 12</span>
+    <h3>Children's Privacy</h3>
+    <p>The Website is intended for adults — specifically, employees and HR administrators at participating BC credit unions, plan members, and beneficiaries aged 18 and over. We do not knowingly collect personal information from individuals under 18 through the public Website. If you believe a minor has submitted personal information, please contact our Privacy Officer immediately so we may take appropriate steps.</p>
+  </div>
+
+  <div class="legal-block reveal delay-1" id="changes-policy">
+    <span class="legal-block-num">Section 13</span>
+    <h3>Changes to This Policy</h3>
+    <p>CUtrust may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. When we make material changes, we will update the "Last Reviewed" date at the top of this page and, where appropriate, provide more prominent notice. We encourage you to review this Policy periodically. Your continued use of the Website after any changes constitutes acceptance of the revised Policy.</p>
+  </div>
+
+  <div class="legal-block reveal delay-2" id="privacy-officer">
+    <span class="legal-block-num">Section 14</span>
+    <h3>Contact Our Privacy Officer</h3>
+    <p>If you have questions, concerns, or requests related to this Privacy Policy or CUtrust's handling of your personal information through this Website, please contact our designated Privacy Officer:</p>
+    <div class="contact-highlight">
+      <h4>Privacy Officer — Credit Union Pension &amp; Benefits Trust</h4>
+      <p><strong>Management Office:</strong> 908–1166 Alberni Street, Vancouver, BC V6E 3Z3</p>
+      <p><strong>Member Service &amp; Admin Office:</strong> 768 Seymour Street, 11th Floor, Vancouver, BC V6B 3K9</p>
+      <p style="margin-top:10px"><strong>For pension-related privacy matters:</strong> <a href="mailto:pensions@cutrust.com">pensions@cutrust.com</a></p>
+      <p><strong>For benefits-related privacy matters:</strong> <a href="mailto:benefits@cutrust.com">benefits@cutrust.com</a></p>
+      <p><strong>General privacy enquiries:</strong> <a href="mailto:info@cutrust.com">info@cutrust.com</a></p>
+      <p><strong>Phone (Members):</strong> 1-844-451-9698</p>
+      <p style="margin-top:12px;font-size:.88rem;color:var(--text-muted)">We will acknowledge your request and respond in writing within <strong style="color:var(--text-dark)">30 days</strong> of receipt, as required by PIPA. If additional time is required, we will notify you.</p>
+    </div>
+  </div>
+
+  <div class="legal-block reveal delay-3" id="oipc">
+    <span class="legal-block-num">Section 15</span>
+    <h3>Filing a Complaint with the OIPC</h3>
+    <p>If you are unsatisfied with CUtrust's response to your privacy concern, or believe CUtrust has not complied with its obligations under BC PIPA, you have the right to file a complaint with the Office of the Information and Privacy Commissioner for British Columbia (OIPC). We encourage you to contact our Privacy Officer first, as many concerns can be resolved quickly through direct communication.</p>
+    <div class="highlight-box">
+      <h3>Office of the Information and Privacy Commissioner for BC</h3>
+      <p>PO Box 9038, Stn. Prov. Govt. &nbsp;·&nbsp; Victoria, BC V8W 9A4</p>
+      <p>Toll-Free: 1-800-663-7867 &nbsp;·&nbsp; <a href="https://www.oipc.bc.ca" target="_blank" rel="noopener" style="color:var(--teal)">www.oipc.bc.ca</a></p>
+    </div>
+    <p style="margin-top:20px">For concerns involving personal information that crosses provincial borders (PIPEDA matters), you may also contact the <strong>Office of the Privacy Commissioner of Canada</strong> at <a href="https://www.priv.gc.ca" target="_blank" rel="noopener" style="color:var(--teal)">www.priv.gc.ca</a>.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2 class="reveal">Privacy Questions?</h2>
+  <p class="reveal delay-1">Our Privacy Officer is here to help with any questions about how CUtrust collects, uses, or protects your personal information.</p>
+  <a href="mailto:info@cutrust.com" class="btn-primary btn-warm reveal delay-2">Contact Our Privacy Officer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <a href="index.html">
+        <!-- PASTE FOOTER LOGO BASE64 HERE -->
+        <img src="" alt="CUtrust" class="footer-logo-img">
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#contact">Contact</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/cutrustbc/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Credit Union Pension &amp; Benefits Trust. All rights reserved.</div>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const obs = new IntersectionObserver(e => e.forEach(en => { if(en.isIntersecting) en.target.classList.add('visible') }), {threshold:.1,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el => obs.observe(el));
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+document.querySelectorAll('a[href^="#"]').forEach(l => l.addEventListener('click', e => {const t=document.querySelector(l.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
+const hamburger = document.querySelector('.nav-hamburger');
+const navLinks = document.querySelector('.nav-links');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('nav-open'); });
+  navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('nav-open'); }); });
+  document.addEventListener('click', (e) => { if (!e.target.closest('nav')) { hamburger.classList.remove('active'); navLinks.classList.remove('nav-open'); } });
+}
+</script>
+</body>
+</html>
