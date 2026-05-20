@@ -637,12 +637,37 @@ nav.scrolled .nav-dropdown:hover .nav-dropdown-trigger{color:var(--warm-light)}
 }
 
 /* ─── QUICK NAV ─── */
+/* Updated */
 .quick-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
   margin-top: 32px;
+}
+
+/* New */
+.quick-nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.quick-nav-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--warm-light);
+  opacity: 0.75;
+}
+
+.quick-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 .quick-nav a {
   display: inline-flex;
@@ -826,15 +851,25 @@ footer {
     </div>
     <h1>Retiree Corner</h1>
     <p>A dedicated resource hub for the retired members of our Pension Plan — everything you need to know about your pension payments, benefits, and thriving in retirement.</p>
-    <div class="quick-nav">
+<div class="quick-nav">
+  <div class="quick-nav-group">
+    <span class="quick-nav-label">For Defined Benefit Pensioners</span>
+    <div class="quick-nav-links">
       <a href="#payments">Pension Payments</a>
       <a href="#indexing">Pension Increases</a>
       <a href="#account">Your Account</a>
       <a href="#life-changes">Life Changes</a>
+    </div>
+  </div>
+  <div class="quick-nav-group">
+    <span class="quick-nav-label">General</span>
+    <div class="quick-nav-links">
       <a href="#wellness">Wellness</a>
       <a href="#resources">Resources</a>
       <a href="#contact">Contact Us</a>
     </div>
+  </div>
+</div>
   </div>
 </section>
 
