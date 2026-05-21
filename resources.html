@@ -490,6 +490,31 @@ nav.scrolled .nav-hamburger span {
 }
 .news-card:hover .read-more { gap: 12px; }
 
+
+/* Fallback for unstyled anchor tags — prevents browser default dark blue */
+a:not([class]) {
+  color: var(--warm-light); /* matches your existing styled links */
+}
+a:not([class]):hover {
+  color: var(--warm);
+  text-decoration: underline;
+}
+
+/* Also cover links inside specific containers that don't apply a class to <a> */
+.callout-box a,
+.health-open a,
+.hidden a {
+  color: var(--warm-light);
+}
+.callout-box a:hover,
+.health-open a:hover,
+.hidden a:hover {
+  color: var(--warm);
+  text-decoration: underline;
+}
+
+  
+  
 /* ─── PLANS ─── */
 .plans {
   padding: 120px 48px;
@@ -3008,10 +3033,10 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     </div>
     <div id="understandingbenefits-content" class="hidden" style="margin-top:32px;">
 
-      <!-- Not all benefits apply to everyone -->
+      <!-- Not all benefits apply to everyone 
       <div style="background:rgba(212,165,116,0.1);border-left:3px solid var(--warm);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:32px;">
         <p style="color:var(--warm-light);font-size:0.95rem;margin:0;line-height:1.7;"><strong style="color:var(--warm);">Not all benefits listed here apply to every member.</strong> Each participating employer has the discretion to elect which plans and benefit categories are offered to their employees. The details in this section describe the full range of benefits available across the CUtrust Benefits Trust — your specific coverage depends on the plan your employer has chosen. Refer to your Benefits Summary or contact your plan administrator to confirm what applies to you.</p>
-      </div>
+      </div>-->
 
       <!-- Two plan types -->
       <p style="color:var(--mist);line-height:1.8;font-weight:300;margin-bottom:28px;">CUtrust members may be enrolled in one of two benefit plan structures, depending on their employer:</p>
@@ -3084,7 +3109,7 @@ nav.scrolled .nav-dropdown-menu a:hover{background:rgba(255,255,255,.08);color:v
     </div>
     <div id="provincialhealthcare-content" class="hidden" style="margin-top:32px;">
 
-      <p style="color:var(--mist);line-height:1.8;font-weight:300;margin-bottom:28px;">Before your CUtrust extended benefits apply, British Columbia's <strong style="color:var(--white);">Medical Services Plan (MSP)</strong> is your mandatory provincial health insurance — covering the core of your medical care. Enrolment is required under the <em>Medicare Protection Act</em> for all eligible BC residents and their dependents. MSP is administered by <strong style="color:var(--white);">Health Insurance BC (HIBC)</strong>.</p>
+      <p style="color:var(--mist);line-height:1.8;font-weight:300;margin-bottom:28px;">Before your CUtrust extended benefits apply, British Columbia's <strong style="color:var(--white);">Medical Services Plan (MSP)</strong> is your mandatory provincial health insurance — covering the core of your medical care. Enrolment is required under the <em>Medicare Protection Act</em> for all eligible BC residents and their dependents. MSP is administered by <strong style="color:var(--white);">Health Insurance British Columbia (HIBC)</strong>.</p>
 
       <!-- What MSP Covers -->
       <div style="margin-bottom:28px;">
