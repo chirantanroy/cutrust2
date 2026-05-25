@@ -501,10 +501,14 @@ a:not([class]):hover {
 }
 
 /* Also cover links inside specific containers that don't apply a class to <a> */
-.callout-box a,
-.health-open a,
-.hidden a {
-  color: var(--warm-light);
+.callout-box a {
+  color: var(--teal);       /* dark teal on white background */
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.health-open a, .hidden a {
+  color: var(--warm-light); /* golden stays on dark sections */
 }
 .callout-box a:hover,
 .health-open a:hover,
