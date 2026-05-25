@@ -513,7 +513,15 @@ a:not([class]):hover {
   text-decoration: underline;
 }
 
-  
+/* Fixing the nav bar colour change issue arising due to above */
+  .nav-links > a:not([class]) {
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-links > a:not([class]):hover {
+  color: var(--warm-light);
+  text-decoration: none;
+}
   
 /* ─── PLANS ─── */
 .plans {
