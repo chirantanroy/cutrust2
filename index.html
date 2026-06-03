@@ -705,8 +705,9 @@ nav.scrolled .nav-hamburger span {
               0 2px 8px rgba(91, 127, 149, 0.2);
 }
 .chatbot-input::placeholder {
-  color: var(--mist);
+  color: var(--teal);   /* #3D6B7E — 5.27:1 contrast */
   font-weight: 400;
+  opacity: 1;           /* prevents Firefox's default placeholder fade */
 }
 .chatbot-send {
   background: linear-gradient(135deg, #5b7f95, #3d6478);
